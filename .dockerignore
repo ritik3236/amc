@@ -1,0 +1,32 @@
+# Node modules directory (these will be installed in the image)
+node_modules
+
+# Log files
+*.log
+
+# Build output
+.next
+
+# Development files
+*.md
+*.git
+*.gitignore
+Dockerfile
+.dockerignore
+
+# Environment files (you might have sensitive data here)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# OS and editor-specific files
+.DS_Store
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*.vscode
+
+LICENSE
