@@ -12,9 +12,11 @@ import {
     NavbarMenuToggle,
 } from '@nextui-org/navbar';
 import { link as linkStyles } from '@nextui-org/theme';
+
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
+
 import { DiscordIcon, GithubIcon, HeartFilledIcon, Logo, SearchIcon, TwitterIcon } from 'src/components/icons';
 import { ThemeSwitch } from 'src/components/theme-switch';
 import { siteConfig } from 'src/config/site';
