@@ -6,8 +6,8 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
         'plugin:jsx-a11y/recommended',
+        'next/core-web-vitals',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -17,7 +17,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', 'unused-imports', 'import', '@typescript-eslint', '@stylistic/eslint-plugin', 'eslint-plugin-react-hooks', 'jsx-a11y'],
+    plugins: ['react', 'unused-imports', 'import', '@typescript-eslint', '@stylistic/eslint-plugin', 'jsx-a11y'],
     root: true,
     rules: {
         '@stylistic/arrow-parens': ['warn', 'always'],
@@ -38,7 +38,14 @@ module.exports = {
         }],
 
         '@typescript-eslint/no-explicit-any': 'warn',
-        '@typescript-eslint/no-unused-vars': 'error',
+        '@typescript-eslint/no-unused-vars': [
+            'warn',
+            {
+                'argsIgnorePattern': '^_',
+                'varsIgnorePattern': '^_',
+                'caughtErrorsIgnorePattern': '^_',
+            },
+        ],
 
         'react/prop-types': 'off',
         'react/jsx-uses-react': 'off',
@@ -53,16 +60,20 @@ module.exports = {
                 'reservedFirst': true,
             },
         ],
+        'react/function-component-definition': [
+            'warn',
+            {
+                namedComponents: 'arrow-function',
+                unnamedComponents: 'arrow-function',
+            },
+        ],
 
-        'react-hooks/exhaustive-deps': 'warn',
-        'react-hooks/rules-of-hooks': 'error',
         'jsx-a11y/click-events-have-key-events': 'warn',
         'jsx-a11y/interactive-supports-focus': 'warn',
 
-        'no-unused-vars': 'off',
-        'unused-imports/no-unused-vars': 'off',
-        'unused-imports/no-unused-imports': 'warn',
         'no-console': ['error', {allow: ['warn', 'error', 'info']}],
+
+        'unused-imports/no-unused-imports': 'error',
 
         'import/order': [
             'error',
@@ -72,6 +83,7 @@ module.exports = {
                 // define next-ui group that will appear separately after other main externals
                 'pathGroups': [
                     {pattern: '@nextui-org/{**}', group: 'external', position: 'after'},
+                    {pattern: 'react', group: 'external', position: 'before'},
                 ],
                 'newlines-between': 'always-and-inside-groups',
                 'distinctGroup': false,

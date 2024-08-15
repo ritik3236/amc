@@ -6,7 +6,7 @@
 		"dev": "next dev --turbo",
 		"build": "next build",
 		"start": "next start",
-		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
+		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.js --fix"
 	},
 	"dependencies": {
 		"@nextui-org/aria-utils": "^2.0.24",
@@ -23,8 +23,9 @@
 		"@nextui-org/theme": "2.2.9",
 		"@react-aria/ssr": "3.9.5",
 		"@react-aria/visually-hidden": "3.8.14",
+		"axios": "^1.7.4",
 		"clsx": "2.1.1",
-		"framer-motion": "~11.3.24",
+		"framer-motion": "~11.3.27",
 		"intl-messageformat": "^10.5.14",
 		"next": "14.2.5",
 		"next-themes": "^0.3.0",
