@@ -7,6 +7,7 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
+        'plugin:tailwindcss/recommended',
         'next/core-web-vitals',
     ],
     parser: '@typescript-eslint/parser',
@@ -58,13 +59,6 @@ module.exports = {
                 'shorthandFirst': true,
                 'noSortAlphabetically': false,
                 'reservedFirst': true,
-            },
-        ],
-        'react/function-component-definition': [
-            'warn',
-            {
-                namedComponents: 'arrow-function',
-                unnamedComponents: 'arrow-function',
             },
         ],
 

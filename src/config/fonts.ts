@@ -1,11 +1,9 @@
-import { Fira_Code as FontMono, Inter as FontSans } from 'next/font/google';
+import { Figtree, Inter } from 'next/font/google';
 
-export const fontSans = FontSans({
+export const inter = Inter({
     subsets: ['latin'],
-    variable: '--font-sans',
 });
 
-export const fontMono = FontMono({
+export const figTree = Figtree({
     subsets: ['latin'],
-    variable: '--font-mono',
 });

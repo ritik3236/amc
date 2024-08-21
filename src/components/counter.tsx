@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@nextui-org/button';
 
 export const Counter = () => {
-    const [count, setCount] = useState(0);
+    const [count, _setCount] = useState(0);
 
     const handleClick = async () => {
         try {

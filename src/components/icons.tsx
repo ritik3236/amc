@@ -179,3 +179,34 @@ export const NextUILogo: React.FC<IconSvgProps> = (props) => {
         </svg>
     );
 };
+
+export const Arrow: React.FC<IconSvgProps> = (props) => {
+    const { width, size, height = 48 } = props;
+
+    return (
+        <svg
+            fill="currentColor"
+            height={size || height}
+            viewBox="0 0 24 24"
+            width={width}
+            xmlns="http://www.w3.org/2000/svg"
+            
+            {...props}
+        >
+            <g fill="none">
+                <path
+                    d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z"
+                    fill="currentColor"
+                    opacity={0.5}
+                />
+                <path
+                    d="m14 6 6 6-6 6"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                />
+            </g>
+        </svg>
+    );
+};
