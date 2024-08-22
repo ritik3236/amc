@@ -1,8 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-    name: 'Next.js + NextUI',
-    description: 'Make beautiful websites regardless of your design experience.',
+    name: 'CoinDhan Pay',
+    description: 'Coindhan Pay: A simple and secure crypto payment gateway for your business.',
     navItems: [
         {
             label: 'Home',
