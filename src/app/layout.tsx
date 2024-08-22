@@ -64,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                     title="nextui.org homepage"
                                 >
                                     <span className="text-default-600">Powered by</span>
-                                    <p className="text-primary">NextUI</p>
+                                    <p className="text-primary">Me</p>
                                 </Link>
                             </footer>
                         </div>
