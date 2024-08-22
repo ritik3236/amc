@@ -1,20 +1,27 @@
 'use client';
 
 import React from 'react';
-import { Card, CardBody } from '@nextui-org/card';
-import { Tab, Tabs } from '@nextui-org/tabs';
 
-const TabContainerSvg = () => {
+import { Button } from '@nextui-org/button';
+import { Card, CardFooter } from '@nextui-org/card';
+import { Image } from '@nextui-org/image';
+import { Link } from '@nextui-org/link';
+import clsx from 'clsx';
+
+import { Icons } from '@/components/icons';
+import { pageConstants } from '@/constant';
+
+const TabContainerSvg: React.FC = React.memo(() => {
     return (
-        <svg className="scale-x-[200%] transition delay-150 duration-300 ease-in-out" height="100%" id="svg"
-            viewBox="0 0 1440 690" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <svg className="scale-x-[200%]" height="100%" id="svg" viewBox="0 0 1440 690" width="100%"
+            xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="gradient" x1="60%" x2="40%" y1="1%" y2="99%">
                     <stop offset="5%" stopColor="#2563eb"/>
                     <stop offset="95%" stopColor="#7c3aed"/>
                 </linearGradient>
             </defs>
-            <path className="transition-all delay-150 duration-300 ease-in-out"
+            <path className="animate-path-0 transition-all delay-150 duration-300 ease-in-out"
                 d="M 0,700 L 0,175 C 62.945139911634755,169.53810751104567 125.89027982326951,164.07621502209133 180,146 C 234.1097201767305,127.92378497790868 279.38402061855675,97.23324742268039 345,90 C 410.61597938144325,82.76675257731961 496.57363770250356,98.99079528718707 562,131 C 627.4263622974964,163.00920471281293 672.3214285714287,210.8035714285714 719,238 C 765.6785714285713,265.1964285714286 814.140648011782,271.79491899852724 877,237 C 939.859351988218,202.20508100147276 1017.1159793814431,126.01675257731961 1075,110 C 1132.8840206185569,93.98324742268039 1171.3954344624449,138.1380706921944 1229,159 C 1286.6045655375551,179.8619293078056 1363.3022827687776,177.4309646539028 1440,175 L 1440,700 L 0,700 Z"
                 fill="url(#gradient)" fillOpacity="0.53" stroke="none"
                 strokeWidth="0"
@@ -32,81 +39,79 @@ const TabContainerSvg = () => {
             />
         </svg>
     );
-};
-
-const TabContainer = () => {
-    return (
-        <div className="relative col-span-4 overflow-hidden bg-gray-200"
-            // style="box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 40px inset;"
-        >
-            <div className="absolute inset-x-0 bottom-0"><TabContainerSvg/></div>
-            <div
-                className="relative  col-span-4 grid grid-cols-1 flex-col overflow-hidden border-x border-b border-dashed border-black/5 bg-white/10 lg:grid-cols-2">
-                <div className="fade-in-up relative m-4 flex flex-col bg-white/80 p-4 pr-8 backdrop-blur-2xl">
-                    <div
-                        className="mb-4 flex size-10 items-center justify-center rounded-2xl bg-gray-900 text-white shadow-2xl shadow-gray-900/20"/>
-                    <h1 className="mb-2 text-xl font-semibold text-gray-950">Global card acceptance
-                    </h1>
-                    <p className="text-start text-sm text-gray-800">
-                        Open your business to the world. Sell digital
-                        goods and services seamlessly with 1 click checkout. Tap into the most popular payment
-                        methods, empowering your business to drive revenue instantly and securely, wherever your
-                        customers are.
-                    </p>
-                    <a
-                        className="mt-8 flex items-center space-x-1 text-base text-blue-600 transition hover:opacity-70"
-                        href="/contact"
-                    >
-                        <span>Let&apos;s chat</span>
-
-                    </a></div>
-            </div>
-        </div>
-    );
-};
+});
 
 export const Services: React.FC = () => {
-    const [selected, setSelected] = React.useState('photos');
+    const [selected, setSelected] = React.useState('global');
+
+    const activeService = pageConstants.landing.services[selected];
 
     return (
         <div className="col-span-4 flex w-full flex-col">
-            <Tabs
-                aria-label="Options"
-                classNames={{
-                    tabList: 'grid md:flex grid-cols-2 flex-1',
-                    // tabList: 'gap-6 w-full relative rounded-none p-0 border-b border-divider',
-                    // cursor: 'w-full bg-[#22d3ee]',
-                    panel: 'px-0',
-                    tab: 'justify-start md:justify-center',
-                    // tabContent: 'group-data-[selected=true]:text-[#06b6d4]',
-                }}
-                color="primary"
-                selectedKey={selected}
-                variant="underlined"
-
-                onSelectionChange={setSelected as any}
-            >
-                <Tab key="photos" title="Photos">
-                    <TabContainer/>
-                </Tab>
-                <Tab key="music" title="Music">
-                    <Card>
-                        <CardBody>
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur.
-                        </CardBody>
-                    </Card>
-                </Tab>
-                <Tab key="videos" title="Videos">
-                    <Card>
-                        <CardBody>
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                            anim id est laborum.
-                        </CardBody>
-                    </Card>
-                </Tab>
-            </Tabs>
+            <div
+                className="col-span-4 grid grid-cols-2 flex-wrap justify-center border-b border-dashed lg:flex">
+                {Object.values(pageConstants.landing.services).map((service) => (
+                    <div key={service.key} className="flex flex-col space-y-1">
+                        <button
+                            className={clsx('group flex items-center space-x-2 whitespace-nowrap rounded-lg px-4 py-3 text-xs font-semibold outline-none transition hover:bg-gray-500/5', { 'text-primary-500': selected === service.key })}
+                            onClick={() => setSelected(service.key)}
+                        >
+                            <service.tabIcon/>
+                            <span>{service.tabTitle}</span>
+                        </button>
+                        <div
+                            className={clsx('h-0.5 w-full transition-all', { 'bg-primary-500': selected === service.key })}/>
+                    </div>
+                ))}
+            </div>
+            <div className="relative overflow-hidden bg-gray-200">
+                <div className="absolute inset-x-0 bottom-0"><TabContainerSvg/></div>
+                <div
+                    className="relative col-span-4 grid grid-cols-1 flex-col overflow-hidden bg-white/10 lg:grid-cols-2">
+                    <div className="m-4 flex flex-col bg-white/80 p-4 pr-8 backdrop-blur-2xl">
+                        <div
+                            className="mb-4 flex size-10 items-center justify-center rounded-2xl bg-gray-900 text-white">
+                            <activeService.contentIcon/>
+                        </div>
+                        <h2 className="mb-2 text-xl font-semibold text-gray-950">
+                            {activeService.contentTitle}
+                        </h2>
+                        <p className="text-start text-sm text-gray-800">
+                            {activeService.contentDesc}
+                        </p>
+                        <Link
+                            className="mt-8 flex items-center space-x-1 hover:opacity-70"
+                            href="/about"
+                        >
+                            <span>Let&apos;s chat</span>
+                            <Icons.arrowRight/>
+                        </Link>
+                    </div>
+                    <div className="flex flex-col items-center justify-center p-4">
+                        <div className="rounded-2xl border border-white/20 bg-white/30 p-3">
+                            <Card isFooterBlurred className="w-[200px]" radius="lg">
+                                <Image
+                                    isZoomed
+                                    alt="Woman listing to music"
+                                    className="object-cover"
+                                    height={200}
+                                    src="https://nextui-docs-v2.vercel.app/images/card-example-2.jpeg"
+                                    width={200}
+                                />
+                                <CardFooter className="absolute bottom-1 z-10 ml-1 w-[calc(100%_-_8px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
+                                    <p className="text-tiny text-white/80">coming soon.</p>
+                                    <Button
+                                        className="bg-black/20 text-tiny text-white"
+                                        color="default" radius="lg" size="sm" variant="flat"
+                                    >
+                                        Notify me
+                                    </Button>
+                                </CardFooter>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

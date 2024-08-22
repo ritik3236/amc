@@ -438,6 +438,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nextui-org/image@npm:^2.0.31":
+  version: 2.0.31
+  resolution: "@nextui-org/image@npm:2.0.31"
+  dependencies:
+    "@nextui-org/react-utils": "npm:2.0.16"
+    "@nextui-org/shared-utils": "npm:2.0.7"
+    "@nextui-org/use-image": "npm:2.0.6"
+  peerDependencies:
+    "@nextui-org/system": ">=2.0.0"
+    "@nextui-org/theme": ">=2.1.0"
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 10c0/e894a1146f12ade270005e6913807106824f9a6600d1776662260efc9c15bd12f39f0ce9e16596cf3bbb1ec4d0e23bb33c33259f9633a6f0cf28bd7d8e3a8f5f
+  languageName: node
+  linkType: hard
+
 "@nextui-org/input@npm:2.2.4":
   version: 2.2.4
   resolution: "@nextui-org/input@npm:2.2.4"
@@ -821,6 +837,17 @@ __metadata:
   peerDependencies:
     react: ">=18"
   checksum: 10c0/19afe18e0123890d1c8f562f492643e349ddece7f24ec1c62f2b5f09c3d9bea6a317450cb8e84979f69baedc3062dc3489cc97b35bb9ad960d0a905b4b194cec
+  languageName: node
+  linkType: hard
+
+"@nextui-org/use-image@npm:2.0.6":
+  version: 2.0.6
+  resolution: "@nextui-org/use-image@npm:2.0.6"
+  dependencies:
+    "@nextui-org/use-safe-layout-effect": "npm:2.0.6"
+  peerDependencies:
+    react: ">=18"
+  checksum: 10c0/3e0e5c6625f07a2910030e0ed4e6e75509649a86cda7e157d6cd34633d5a114303b4f146abf2b246c7b615742243d64ac9c093a9e6844f99f7092d3773a78c66
   languageName: node
   linkType: hard
 
@@ -4950,6 +4977,7 @@ __metadata:
     "@nextui-org/button": "npm:2.0.37"
     "@nextui-org/card": "npm:^2.0.33"
     "@nextui-org/code": "npm:2.0.32"
+    "@nextui-org/image": "npm:^2.0.31"
     "@nextui-org/input": "npm:2.2.4"
     "@nextui-org/kbd": "npm:2.0.33"
     "@nextui-org/link": "npm:2.0.34"
@@ -4990,6 +5018,7 @@ __metadata:
     prettier: "npm:^3.3.3"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
+    react-icons: "npm:^5.3.0"
     tailwind-variants: "npm:0.2.1"
     tailwindcss: "npm:3.4.9"
     typescript: "npm:5.5.4"
@@ -5546,6 +5575,15 @@ __metadata:
   version: 3.2.2
   resolution: "react-fast-compare@npm:3.2.2"
   checksum: 10c0/0bbd2f3eb41ab2ff7380daaa55105db698d965c396df73e6874831dbafec8c4b5b08ba36ff09df01526caa3c61595247e3269558c284e37646241cba2b90a367
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "react-icons@npm:5.3.0"
+  peerDependencies:
+    react: "*"
+  checksum: 10c0/a53af0de558f0e2bacfbafc973aa8ca1e6a429006a2f83d70becad5be431726a691e096336c95949bb0d967587b145264c5046d2bc1518969dbae731855d0712
   languageName: node
   linkType: hard
 
