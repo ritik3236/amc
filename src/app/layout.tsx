@@ -47,26 +47,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 className="relative z-10 w-full grow bg-background/70 pt-16 backdrop-blur-[100px]"
                             >
                                 <div
-                                    className="fixed inset-y-0 left-1/2 right-0 z-20 hidden -translate-x-1/2 grid-cols-4 border-x border-dashed border-primary/5 dark:border-slate-800 lg:grid lg:w-[1080px]">
+                                    className="fixed inset-y-0 left-1/2 right-0 z-20 hidden -translate-x-1/2 grid-cols-4 border-x border-dashed border-primary/5 dark:border-slate-900 lg:grid lg:w-[1080px]">
                                     <div />
-                                    <div className="border-x border-dashed border-black/5 dark:border-slate-800" />
-                                    <div className="border-r border-dashed border-black/5 dark:border-slate-800" />
+                                    <div className="border-x border-dashed border-black/5 dark:border-slate-900" />
+                                    <div className="border-r border-dashed border-black/5 dark:border-slate-900" />
                                 </div>
                                 {children}
                                 <SpeedInsights/>
                                 <Footer/>
                             </main>
-                            {/*<footer className="z-10 flex w-full items-center justify-center py-3 backdrop-blur-[100px]">*/}
-                            {/*    <Link*/}
-                            {/*        isExternal*/}
-                            {/*        className="flex items-center gap-1 text-current"*/}
-                            {/*        href="https://coinDhan.com"*/}
-                            {/*        title="nextui.org homepage"*/}
-                            {/*    >*/}
-                            {/*        <span className="text-default-600">Powered by</span>*/}
-                            {/*        <p className="text-primary">CoinDhan Pay</p>*/}
-                            {/*    </Link>*/}
-                            {/*</footer>*/}
                             <BgCircle/>
                         </div>
                     </div>

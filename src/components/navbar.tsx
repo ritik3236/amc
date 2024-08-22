@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
 import { Kbd } from '@nextui-org/kbd';
 import { Link } from '@nextui-org/link';
@@ -17,7 +16,7 @@ import { link as linkStyles } from '@nextui-org/theme';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 
-import { DiscordIcon, GithubIcon, HeartFilledIcon, Logo, SearchIcon, TwitterIcon } from 'src/components/icons';
+import { DiscordIcon, GithubIcon, Logo, SearchIcon, TwitterIcon } from 'src/components/icons';
 import { ThemeSwitch } from 'src/components/theme-switch';
 import { siteConfig } from 'src/config/site';
 
@@ -49,7 +48,7 @@ export const Navbar: React.FC = () => {
                 <NavbarBrand as="li" className="max-w-fit gap-3">
                     <NextLink className="flex items-center justify-start gap-1" href="/">
                         <Logo/>
-                        <p className="font-bold text-inherit">ACME</p>
+                        <p className="font-bold text-inherit">CoinDhan Pay</p>
                     </NextLink>
                 </NavbarBrand>
                 <ul className="ml-2 hidden justify-start gap-4 lg:flex">
@@ -87,18 +86,6 @@ export const Navbar: React.FC = () => {
                     <ThemeSwitch/>
                 </NavbarItem>
                 <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-                <NavbarItem className="hidden md:flex">
-                    <Button
-                        isExternal
-                        as={Link}
-                        className="bg-default-100 text-sm font-normal text-default-600"
-                        href={siteConfig.links.sponsor}
-                        startContent={<HeartFilledIcon className="text-danger"/>}
-                        variant="flat"
-                    >
-                        Sponsor
-                    </Button>
-                </NavbarItem>
             </NavbarContent>
 
             <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
