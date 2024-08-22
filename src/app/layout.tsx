@@ -1,5 +1,6 @@
 import 'src/styles/globals.css';
 import { Link } from '@nextui-org/link';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import clsx from 'clsx';
 import { Metadata, Viewport } from 'next';
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                     <div className="border-r border-dashed border-black/5 dark:border-slate-800" />
                                 </div>
                                 {children}
+                                <SpeedInsights/>
                             </main>
                             <BgCircle/>
                             <footer className="z-10 flex w-full items-center justify-center py-3 backdrop-blur-[100px]">
