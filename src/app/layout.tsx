@@ -1,10 +1,10 @@
 import 'src/styles/globals.css';
-import { Link } from '@nextui-org/link';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import clsx from 'clsx';
 import { Metadata, Viewport } from 'next';
 
 import { BgCircle } from '@/components/bgCircle';
+import Footer from '@/components/Footer';
 import { figTree } from '@/config/fonts';
 import { Navbar } from 'src/components/navbar';
 import { siteConfig } from 'src/config/site';
@@ -54,19 +54,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 </div>
                                 {children}
                                 <SpeedInsights/>
+                                <Footer/>
                             </main>
+                            {/*<footer className="z-10 flex w-full items-center justify-center py-3 backdrop-blur-[100px]">*/}
+                            {/*    <Link*/}
+                            {/*        isExternal*/}
+                            {/*        className="flex items-center gap-1 text-current"*/}
+                            {/*        href="https://coinDhan.com"*/}
+                            {/*        title="nextui.org homepage"*/}
+                            {/*    >*/}
+                            {/*        <span className="text-default-600">Powered by</span>*/}
+                            {/*        <p className="text-primary">CoinDhan Pay</p>*/}
+                            {/*    </Link>*/}
+                            {/*</footer>*/}
                             <BgCircle/>
-                            <footer className="z-10 flex w-full items-center justify-center py-3 backdrop-blur-[100px]">
-                                <Link
-                                    isExternal
-                                    className="flex items-center gap-1 text-current"
-                                    href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                                    title="nextui.org homepage"
-                                >
-                                    <span className="text-default-600">Powered by</span>
-                                    <p className="text-primary">Me</p>
-                                </Link>
-                            </footer>
                         </div>
                     </div>
                 </Providers>
