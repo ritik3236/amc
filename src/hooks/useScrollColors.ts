@@ -23,6 +23,7 @@ const getColorCombinationsInRange = (colors: string[], shades: number[], value: 
 
 export const useScrollColors = (colors: string[], shades: number[]) => {
     const [bgColors, setBgColors] = useState(() => getColorCombinationsInRange(colors, shades, 0));
+    const [scrollPercentage, setScrollPercentage] = useState(0);
 
     const debouncedFun = useCallback(() => {
         const scrollY = window.scrollY;
@@ -30,11 +31,12 @@ export const useScrollColors = (colors: string[], shades: number[]) => {
         const newColors = getColorCombinationsInRange(colors, shades, scrollPercentage);
 
         setBgColors(newColors);
+        setScrollPercentage(scrollPercentage);
     }, [colors, shades]);
 
     const { run } = useDebounceFn(debouncedFun, { wait: 100 });
 
     useEventListener('scroll', run);
 
-    return bgColors;
+    return [bgColors, scrollPercentage] as const;
 };
