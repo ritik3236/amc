@@ -53,14 +53,13 @@ export const Services: React.FC = () => {
                 {Object.values(pageConstants.landing.services).map((service) => (
                     <div key={service.key} className="flex flex-col space-y-1">
                         <button
-                            className={clsx('group flex items-center space-x-2 whitespace-nowrap rounded-lg px-4 py-3 text-xs font-semibold outline-none transition hover:bg-gray-500/5', { 'text-primary-500': selected === service.key })}
+                            className={clsx('flex items-center space-x-2 whitespace-nowrap rounded-lg px-4 py-3 text-xs font-semibold transition hover:bg-gray-500/5', { 'text-primary-500': selected === service.key })}
                             onClick={() => setSelected(service.key)}
                         >
                             <service.tabIcon/>
                             <span>{service.tabTitle}</span>
                         </button>
-                        <div
-                            className={clsx('h-0.5 w-full transition-all', { 'bg-primary-500': selected === service.key })}/>
+                        <div className={clsx('h-0.5 w-full transition-all', { 'bg-primary-500': selected === service.key })}/>
                     </div>
                 ))}
             </div>

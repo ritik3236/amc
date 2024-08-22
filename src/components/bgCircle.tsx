@@ -5,7 +5,7 @@ import React from 'react';
 import { useScrollColors } from '@/hooks/useScrollColors';
 
 export const BgCircle: React.FC = () => {
-    const bgColors = useScrollColors(['red', 'yellow', 'blue', 'red', 'yellow'], [300, 500, 400, 600]);
+    const bgColors = useScrollColors(['red', 'blue', 'yellow'], [300, 500, 400, 600]);
 
     return (
         <div className="fixed inset-x-0 bottom-0 z-0 flex items-center justify-between">

@@ -42,13 +42,31 @@ export const title = tv({
 });
 
 export const subtitle = tv({
-    base: 'my-2 block w-full max-w-full text-small text-default-500 md:w-1/2 lg:text-base',
+    base: 'text-sm font-semibold text-default-900',
     variants: {
-        fullWidth: {
-            true: '!w-full',
+        size: {
+            xsm: 'text-sm',
+            sm: 'text-sm lg:text-base',
+            md: 'text-base lg:text-lg',
+            lg: 'text-lg lg:text-xl',
         },
     },
     defaultVariants: {
-        fullWidth: true,
+        size: 'md',
+    },
+});
+
+export const description = tv({
+    base: 'my-2 block w-full text-default-500',
+    variants: {
+        size: {
+            xsm: 'text-sm',
+            sm: 'text-sm lg:text-base',
+            md: 'text-base lg:text-lg',
+            lg: 'text-lg lg:text-xl',
+        },
+    },
+    defaultVariants: {
+        size: 'sm',
     },
 });

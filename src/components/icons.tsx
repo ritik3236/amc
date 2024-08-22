@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import {
-    LuArrowRight, LuCoins,
+    LuArrowRight, LuBarChart, LuBriefcase, LuCheck, LuCoins, LuDices, LuGamepad,
     LuGitMerge,
     LuGlobe,
     LuInfinity,
-    LuLayoutDashboard,
+    LuLayoutDashboard, LuPlane, LuScale, LuShoppingCart, LuStore, LuX,
     LuZap,
 } from 'react-icons/lu';
 
@@ -197,4 +197,14 @@ export const Icons = {
     zap: LuZap,
     gitMerge: LuGitMerge,
     dashboard: LuLayoutDashboard,
+    plane: LuPlane,
+    shop: LuStore,
+    law: LuScale,
+    dice: LuDices,
+    chart: LuBarChart,
+    cart: LuShoppingCart,
+    gamepad: LuGamepad,
+    fund: LuBriefcase,
+    check: LuCheck,
+    cancel: LuX,
 };
