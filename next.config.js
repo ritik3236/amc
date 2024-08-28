@@ -12,6 +12,11 @@ const nextConfig = {
                 hostname: 'coinflow.cash',
                 port: '',
                 pathname: '/assets/**',
+            },{
+                protocol: 'https',
+                hostname: 'pbs.twimg.com',
+                port: '',
+                pathname: '/profile_images/**',
             },
         ],
     },

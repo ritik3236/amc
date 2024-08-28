@@ -9,6 +9,7 @@
 		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.js --fix"
 	},
 	"dependencies": {
+		"@bitjson/qr-code": "^1.0.2",
 		"@nextui-org/aria-utils": "^2.0.24",
 		"@nextui-org/button": "2.0.37",
 		"@nextui-org/card": "^2.0.33",
@@ -20,9 +21,9 @@
 		"@nextui-org/listbox": "2.1.25",
 		"@nextui-org/navbar": "2.0.36",
 		"@nextui-org/snippet": "2.0.41",
+		"@nextui-org/spinner": "^2.0.33",
 		"@nextui-org/switch": "2.0.33",
 		"@nextui-org/system": "2.2.5",
-		"@nextui-org/tabs": "^2.0.35",
 		"@nextui-org/theme": "2.2.9",
 		"@react-aria/ssr": "3.9.5",
 		"@react-aria/visually-hidden": "3.8.14",

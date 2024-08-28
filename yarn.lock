@@ -21,6 +21,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bitjson/qr-code@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@bitjson/qr-code@npm:1.0.2"
+  checksum: 10c0/d9127221124783da25d1a21930d9b7684523f9c458dcb7f2d3977b4e48f9f71693ca805c7a1e0963e47365230729a6c895f75b23a840b7e027aa2c92b4ccf884
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:0.5.7":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -618,6 +625,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nextui-org/skeleton@npm:^2.0.31":
+  version: 2.0.31
+  resolution: "@nextui-org/skeleton@npm:2.0.31"
+  dependencies:
+    "@nextui-org/react-utils": "npm:2.0.16"
+    "@nextui-org/shared-utils": "npm:2.0.7"
+  peerDependencies:
+    "@nextui-org/system": ">=2.0.0"
+    "@nextui-org/theme": ">=2.1.0"
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 10c0/ed9d95cf966b6ae46db7e03e061ed67d2c8b4ccfe859c8ecbbf5a6e9c4d6eec1a716e0c6bcfd052e7e0b9f9d9386d4a9773e7c5667f565ddc4d24ba748283943
+  languageName: node
+  linkType: hard
+
 "@nextui-org/snippet@npm:2.0.41":
   version: 2.0.41
   resolution: "@nextui-org/snippet@npm:2.0.41"
@@ -640,7 +662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nextui-org/spinner@npm:2.0.33":
+"@nextui-org/spinner@npm:2.0.33, @nextui-org/spinner@npm:^2.0.33":
   version: 2.0.33
   resolution: "@nextui-org/spinner@npm:2.0.33"
   dependencies:
@@ -4680,6 +4702,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.isequal@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.isequal@npm:4.5.0"
+  checksum: 10c0/dfdb2356db19631a4b445d5f37868a095e2402292d59539a987f134a8778c62a2810c2452d11ae9e6dcac71fc9de40a6fedcb20e2952a15b431ad8b29e50e28f
+  languageName: node
+  linkType: hard
+
 "lodash.kebabcase@npm:^4.1.1":
   version: 4.1.1
   resolution: "lodash.kebabcase@npm:4.1.1"
@@ -4972,6 +5001,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "next-app-template@workspace:."
   dependencies:
+    "@bitjson/qr-code": "npm:^1.0.2"
     "@next/bundle-analyzer": "npm:^14.2.5"
     "@nextui-org/aria-utils": "npm:^2.0.24"
     "@nextui-org/button": "npm:2.0.37"
@@ -4983,7 +5013,9 @@ __metadata:
     "@nextui-org/link": "npm:2.0.34"
     "@nextui-org/listbox": "npm:2.1.25"
     "@nextui-org/navbar": "npm:2.0.36"
+    "@nextui-org/skeleton": "npm:^2.0.31"
     "@nextui-org/snippet": "npm:2.0.41"
+    "@nextui-org/spinner": "npm:^2.0.33"
     "@nextui-org/switch": "npm:2.0.33"
     "@nextui-org/system": "npm:2.2.5"
     "@nextui-org/tabs": "npm:^2.0.35"
@@ -5019,6 +5051,7 @@ __metadata:
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     react-icons: "npm:^5.3.0"
+    react-qrcode-logo: "npm:^3.0.0"
     tailwind-variants: "npm:0.2.1"
     tailwindcss: "npm:3.4.9"
     typescript: "npm:5.5.4"
@@ -5552,6 +5585,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"qrcode-generator@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "qrcode-generator@npm:1.4.4"
+  checksum: 10c0/3249fcff98cb9fa17c21329d3dfd895e294a2d6ea48161f7b377010779d41f0cd88668b7fb3478a659725061bb0a770b40a227c2f4853e8c4a6b947a9e8bf17a
+  languageName: node
+  linkType: hard
+
 "queue-microtask@npm:^1.2.2":
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
@@ -5591,6 +5631,19 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 10c0/33977da7a5f1a287936a0c85639fec6ca74f4f15ef1e59a6bc20338fc73dc69555381e211f7a3529b8150a1f71e4225525b41b60b52965bda53ce7d47377ada1
+  languageName: node
+  linkType: hard
+
+"react-qrcode-logo@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "react-qrcode-logo@npm:3.0.0"
+  dependencies:
+    lodash.isequal: "npm:^4.5.0"
+    qrcode-generator: "npm:^1.4.4"
+  peerDependencies:
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
+  checksum: 10c0/5f179762e8354bd8325d4c274cf731466b908a0e297541b7d9a7ebf94ac7cc86872364924402f6dea096d396b4cb70436cd2b496fe6af6bef5d1872d1c07bdd3
   languageName: node
   linkType: hard
 
