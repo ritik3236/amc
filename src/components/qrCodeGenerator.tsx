@@ -35,14 +35,13 @@ export const QRCodeGenerator: React.FC<OwnProps> = (props) => {
         if (qrRef.current) {
             qrRef.current.animateQRCode('FadeInTopDown');
             logoRef.current.classList.remove('hidden');
-
             setLoading(false);
         }
     }, { target: qrRef });
 
     return (
         <div className="relative mx-auto flex items-center justify-center" style={sizes[size]}>
-            {loading && <Spinner color="default"/>}
+            {loading && <Spinner className="absolute inset-0" color="default"/>}
             <qr-code
                 ref={qrRef}
                 className="relative"

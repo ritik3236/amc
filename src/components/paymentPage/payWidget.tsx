@@ -2,12 +2,14 @@ import { Divider } from '@nextui-org/divider';
 
 import { Snippet } from '@nextui-org/snippet';
 
-import { Logo } from '@/components/icons';
+import { Icons, Logo } from '@/components/icons';
 import { QRCodeGenerator } from '@/components/qrCodeGenerator';
 
 export const PayWidget = () => {
     return (
-        <section className="w-full rounded-lg bg-white shadow-lg contain-content dark:bg-default-50 md:w-[380px]">
+        <section
+            className="w-full rounded-lg border border-dashed bg-white shadow-lg contain-content dark:border-default dark:bg-default-50 md:w-[380px]"
+        >
             <div className="bg-default-100 p-4">
                 <div className="flex items-center justify-between">
                     <div className="-ml-1 flex items-center gap-1">
@@ -16,11 +18,20 @@ export const PayWidget = () => {
                     </div>
                     <div>Order Id: <span className="text-sm font-semibold">#8945</span></div>
                 </div>
-                <div className="font-semibold">Fiat: 42724.823 USD</div>
+                <div className="font-semibold">Fiat: 5,000.00 USD</div>
             </div>
             <div className="p-4">
-                <div className="text-center font-semibold">Network: ETH</div>
-                <QRCodeGenerator value="0x502aECFE253E6AA0e8D2A06E12438FFeD0Fe16a0"/>
+                <div
+                    className="mx-auto mb-2 flex w-fit items-center justify-center gap-2 rounded border border-dashed px-2 py-1 text-sm dark:border-default"
+                >
+                    <span>Network :</span>
+                    <span className="flex items-center justify-center font-semibold">
+                        <Icons.eth/>
+                        <span className="ml-1 mr-2">ETH Mainnet </span>
+                        <Icons.info className="text-primary"/>
+                    </span>
+                </div>
+                <QRCodeGenerator value="0x5753db8ea94bfd98377fee96e0ef8cf2544ca421"/>
                 <div className="mb-4">
                     <div className="mb-1 text-sm font-semibold">Amount:</div>
                     <Snippet
@@ -29,7 +40,7 @@ export const PayWidget = () => {
                         classNames={{ pre: 'break-all whitespace-normal' }}
                         radius="sm"
                     >
-                        42790724.823 BCH
+                        1.98 ETH
                     </Snippet>
                 </div>
                 <div className="mb-4">
@@ -40,12 +51,12 @@ export const PayWidget = () => {
                         classNames={{ pre: 'break-all whitespace-normal' }}
                         radius="sm"
                     >
-                        0x502aECFE253E6AA0e8D2A06E12438FFeD0Fe16a0
+                        0x5753db8ea94bfd98377fee96e0ef8cf2544ca421
                     </Snippet>
                 </div>
                 <Divider/>
                 <div className="flex items-center justify-center gap-1 pt-4 text-sm">
-                    <span>Time Remaining:</span><span className="text-danger-500">00:01:36s</span>
+                    <span>Time Remaining:</span><span className="text-success">00:20:36s</span>
                 </div>
             </div>
         </section>

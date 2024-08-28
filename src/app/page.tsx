@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { Icons } from '@/components/icons';
 import { Services } from '@/components/landingPage/services';
 import { LogoCarousel } from '@/components/logo-carousel';
+import { PayConfirm } from '@/components/paymentPage/payConfirm';
+import { PayCTA } from '@/components/paymentPage/payCTA';
 import { PayWidget } from '@/components/paymentPage/payWidget';
 import { description, subtitle, title } from '@/components/primitives';
 import { pageConstants } from '@/constant';
@@ -15,7 +17,7 @@ export default function Home() {
     return (
         <React.Fragment>
             <section
-                className="relative z-20 col-span-4 mb-32 flex flex-1 translate-y-0 flex-col items-center opacity-100 transition-all duration-1000"
+                className="relative z-20 col-span-4 mb-32 flex flex-1 translate-y-0 flex-col items-center overflow-hidden opacity-100 transition-all duration-1000"
             >
                 <div
                     className="mx-auto mb-32 grid w-full flex-1 grid-cols-1 px-4 pt-10 lg:w-[1080px] lg:grid-cols-4 lg:px-0">
@@ -54,11 +56,22 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-2 mx-auto">
-                        <PayWidget/>
+                    <div className="group col-span-2 mx-auto">
+                        <div className="relative">
+                            <PayWidget/>
+                            <div
+                                className="absolute left-2/3 top-16 hidden transition-all group-hover:left-[80%] md:block">
+                                <PayCTA/>
+                            </div>
+                            <div
+                                className="absolute -bottom-10 right-2/3 hidden transition-all group-hover:right-[80%] md:block"
+                            >
+                                <PayConfirm/>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <LogoCarousel/>
+                <LogoCarousel className="lg:w-3/4"/>
             </section>
             <section
                 className="relative z-20 mx-auto grid w-full translate-y-0 py-8 opacity-100 transition-all duration-1000 md:py-32 lg:w-[1080px] lg:grid-cols-4 ">
@@ -84,12 +97,10 @@ export default function Home() {
                                     <h2 className={title({ size: 'xsm' })}>
                                         Crypto Payment Is Tailored for All Types of Business Model
                                     </h2>
-                                    <p className={description({})}>
+                                    <p className={description()}>
                                         Crypto payment is perfect for any business model and can be easily integrated
-                                        into
-                                        your existing operations or set up as a brand new service. We cover everyone
-                                        from
-                                        Forex and Crypto brokers to gaming!
+                                        into your existing operations or set up as a brand new service. We cover
+                                        everyone from Forex and Crypto brokers to gaming!
                                     </p>
                                     <Link className="group flex items-center pt-4 hover:opacity-70" href="/about">
                                         <span>Contact sales</span>
@@ -126,10 +137,8 @@ export default function Home() {
                                     </h2>
                                     <p className={description({})}>
                                         Crypto payments have many advantages compared with traditional Fiat payment
-                                        methods.
-                                        eg. Crypto payments are cheaper, faster, and more secure than traditional
-                                        payment
-                                        methods. See the facts for yourself!
+                                        methods. eg. Crypto payments are cheaper, faster, and more secure than
+                                        traditional payment methods. See the facts for yourself!
                                     </p>
                                     <Link className="group flex items-center pt-4 hover:opacity-70" href="/about">
                                         <span>Contact sales</span>
@@ -138,25 +147,30 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="relative mt-12 whitespace-nowrap border-t border-dashed bg-gray-200/10 lg:mt-0">
-                            <div className="absolute h-10 w-px bg-yellow-500"/>
-                            <div className="flex border-b border-dashed p-3 font-semibold">
+                        <div className="relative mt-12 whitespace-nowrap border-t border-dashed bg-gray-200/10 dark:border-default lg:mt-0">
+                            <div className="absolute h-12 w-px bg-yellow-500"/>
+                            <div className="flex border-b border-dashed p-3 font-semibold dark:border-default">
                                 <span className="w-1/3">Features</span>
                                 <span className="w-1/3 text-center">Crypto Payments</span>
                                 <span className="w-1/3 text-center">Fiat Payments</span>
                             </div>
                             {pageConstants.landing.cryptoVsFiat.map((item) => (
-                                <div key={item.feature}
-                                    className="flex justify-between border-b border-dashed p-3 text-sm text-default-500"
+                                <div
+                                    key={item.feature}
+                                    className="flex justify-between border-b border-dashed p-3 text-sm text-default-500 dark:border-default"
                                 >
                                     <span className="w-1/3 font-semibold">{item.feature}</span>
                                     <span className="flex w-1/3 items-center justify-center">
-                                        {item.crypto === 'yes' ? <Icons.check className="text-green-500"/> : item.crypto === 'no'
-                                            ? <Icons.cancel className="text-red-500"/> : item.crypto}
+                                        {item.crypto === 'yes'
+                                            ? <Icons.check className="text-green-500"/> : item.crypto === 'no'
+                                                ? <Icons.cancel className="text-red-500"/> : item.crypto
+                                        }
                                     </span>
                                     <span className="flex w-1/3 items-center justify-center">
-                                        {item.fiat === 'yes' ? <Icons.check className="text-green-500"/> : item.fiat === 'no'
-                                            ? <Icons.cancel className="text-red-500"/> : item.fiat}
+                                        {item.fiat === 'yes'
+                                            ? <Icons.check className="text-green-500"/> : item.fiat === 'no'
+                                                ? <Icons.cancel className="text-red-500"/> : item.fiat
+                                        }
                                     </span>
                                 </div>
                             ))}

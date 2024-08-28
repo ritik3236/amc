@@ -42,7 +42,7 @@ export const LogoCarousel: React.FC<OwnProps> = (props) => {
                     </li>
                 ))}
             </ul>
-            <ul aria-hidden="true"
+            <ul
                 className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8">
                 {logos.map((logo, index) => (
                     <li key={index}>

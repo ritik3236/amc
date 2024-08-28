@@ -1,13 +1,27 @@
 import * as React from 'react';
 
 import {
-    LuArrowRight, LuBarChart, LuBriefcase, LuCheck, LuCoins, LuDices, LuGamepad,
+    LuArrowRight,
+    LuBarChart,
+    LuBriefcase,
+    LuCheck,
+    LuCoins,
+    LuDices,
+    LuGamepad,
     LuGitMerge,
     LuGlobe,
     LuInfinity,
-    LuLayoutDashboard, LuPlane, LuScale, LuShoppingCart, LuStore, LuX,
-    LuZap,
+    LuInfo,
+    LuLayoutDashboard,
+    LuPlane,
+    LuScale,
+    LuShoppingCart,
+    LuStore,
+    LuX,
+    LuZap, LuCheckCircle, LuFlower,
 } from 'react-icons/lu';
+
+import { SiEthereum } from 'react-icons/si';
 
 import { IconSvgProps } from 'src/types';
 
@@ -207,4 +221,8 @@ export const Icons = {
     fund: LuBriefcase,
     check: LuCheck,
     cancel: LuX,
+    info: LuInfo,
+    eth: SiEthereum,
+    circle: LuCheckCircle,
+    flower: LuFlower,
 };
