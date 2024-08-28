@@ -34,7 +34,7 @@ export const useScrollColors = (colors: string[], shades: number[]) => {
         setScrollPercentage(scrollPercentage);
     }, [colors, shades]);
 
-    const { run } = useDebounceFn(debouncedFun, { wait: 100 });
+    const { run } = useDebounceFn(debouncedFun, { wait: 80 });
 
     useEventListener('scroll', run);
 

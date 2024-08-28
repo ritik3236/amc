@@ -9,6 +9,7 @@ import { Link } from '@nextui-org/link';
 import clsx from 'clsx';
 
 import { Icons } from '@/components/icons';
+import { description, subtitle } from '@/components/primitives';
 import { pageConstants } from '@/constant';
 
 const TabContainerSvg: React.FC = React.memo(() => {
@@ -49,7 +50,7 @@ export const Services: React.FC = () => {
     return (
         <div className="col-span-4 flex w-full flex-col">
             <div
-                className="col-span-4 grid grid-cols-2 flex-wrap justify-center border-b border-dashed lg:flex">
+                className="col-span-4 grid grid-cols-2 flex-wrap justify-center border-b border-dashed dark:border-default lg:flex">
                 {Object.values(pageConstants.landing.services).map((service) => (
                     <div key={service.key} className="flex flex-col space-y-1">
                         <button
@@ -67,19 +68,19 @@ export const Services: React.FC = () => {
                 <div className="absolute inset-x-0 bottom-0"><TabContainerSvg/></div>
                 <div
                     className="relative col-span-4 grid grid-cols-1 flex-col overflow-hidden bg-white/10 lg:grid-cols-2">
-                    <div className="m-4 flex flex-col bg-white/80 p-4 pr-8 backdrop-blur-2xl">
+                    <div className="m-4 flex flex-col bg-white/80 p-4 pr-8 backdrop-blur-2xl dark:bg-black/80">
                         <div
                             className="mb-4 flex size-10 items-center justify-center rounded-2xl bg-gray-900 text-white">
                             <activeService.contentIcon/>
                         </div>
-                        <h2 className="mb-2 text-xl font-semibold text-gray-950">
+                        <h2 className={subtitle({size: 'lg'})}>
                             {activeService.contentTitle}
                         </h2>
-                        <p className="text-start text-sm text-gray-800">
+                        <p className={description({size: 'xsm'})}>
                             {activeService.contentDesc}
                         </p>
                         <Link
-                            className="mt-8 flex items-center space-x-1 hover:opacity-70"
+                            className="mt-4 flex items-center space-x-1 hover:opacity-70"
                             href="/about"
                         >
                             <span>Let&apos;s chat</span>

@@ -20,7 +20,7 @@ export default function Home() {
                 className="relative z-20 col-span-4 mb-32 flex flex-1 translate-y-0 flex-col items-center overflow-hidden opacity-100 transition-all duration-1000"
             >
                 <div
-                    className="mx-auto mb-32 grid w-full flex-1 grid-cols-1 px-4 pt-10 lg:w-[1080px] lg:grid-cols-4 lg:px-0">
+                    className="mx-auto mb-40 grid w-full flex-1 grid-cols-1 px-4 pt-10 lg:w-[1080px] lg:grid-cols-4 lg:px-0">
                     <div className="col-span-2">
                         <h1 className="mb-5">
                             <span className={title()}>Accept&nbsp;</span>
