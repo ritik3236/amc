@@ -6,7 +6,7 @@ const landingPageServices = {
         tabIcon: Icons.globe,
         tabTitle: 'Global acceptance',
         contentIcon: Icons.globe,
-        contentTitle: 'Global card acceptance',
+        contentTitle: 'Global crypto acceptance',
         contentDesc: 'Open your business to the world. Sell digital goods and services seamlessly with 1 click checkout. Tap into the most popular payment methods, empowering your business to drive revenue instantly and securely, wherever your customers are.',
     },
     'currency': {
@@ -160,10 +160,29 @@ const landingPageCryptoVsFiat = [
     },
 ];
 
+const landingPageCryptoIcons = [
+    { icon: Icons.ada, name: 'Cardano', fill: '#0133AD' },
+    { icon: Icons.bnb, name: 'BNB', fill: '#F0B90B' },
+    { icon: Icons.polygon, name: 'Polygon', fill: '#7B3FE4' },
+    { icon: Icons.doge, name: 'Dogecoin', fill: '#C2A633' },
+    { icon: Icons.eth, name: 'Ethereum', fill: '#3C3C3D' },
+    { icon: Icons.helium, name: 'Helium', fill: '#0ACF83' },
+    { icon: Icons.ltc, name: 'Litecoin', fill: '#A6A9AA' },
+    { icon: Icons.solana, name: 'Solana', fill: '#9945FF' },
+    { icon: Icons.monero, name: 'Monero', fill: '#FF6600' },
+    { icon: Icons.near, name: 'Near', fill: '#000000' },
+    { icon: Icons.polkadot, name: 'Polkadot', fill: '#E6007A' },
+    { icon: Icons.btc, name: 'Bitcoin', fill: '#F7931A' },
+    { icon: Icons.usdt, name: 'Tether', fill: '#50AF95' },
+    { icon: Icons.xlm, name: 'Stellar', fill: '#7D00FF' },
+    { icon: Icons.xrp, name: 'XRP', fill: '#25A768' },
+];
+
 export const pageConstants = {
     landing: {
         services: landingPageServices,
         useCases: landingPageUseCases,
         cryptoVsFiat: landingPageCryptoVsFiat,
+        cryptoIcons: landingPageCryptoIcons,
     },
 };

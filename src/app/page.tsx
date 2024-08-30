@@ -17,10 +17,10 @@ export default function Home() {
     return (
         <React.Fragment>
             <section
-                className="relative z-20 col-span-4 mb-16 flex flex-1 translate-y-0 flex-col items-center overflow-hidden opacity-100 transition-all duration-1000 md:mb-32"
+                className="relative z-20 col-span-4 mb-16 flex flex-1 translate-y-0 flex-col items-center overflow-hidden opacity-100 transition-all duration-1000 md:mb-28"
             >
                 <div
-                    className="mx-auto mb-16 grid w-full flex-1 grid-cols-1 px-4 pt-10 md:mb-40 lg:w-[1080px] lg:grid-cols-4 lg:px-0">
+                    className="mx-auto mb-16 grid w-full flex-1 grid-cols-1 px-4 pt-10 md:mb-48 lg:w-[1080px] lg:grid-cols-4 lg:px-0">
                     <div className="col-span-2">
                         <h1 className="mb-5">
                             <span className={title()}>Accept&nbsp;</span>
@@ -74,7 +74,7 @@ export default function Home() {
                 <LogoCarousel className="lg:w-3/4"/>
             </section>
             <section
-                className="relative z-20 mx-auto grid w-full translate-y-0 py-8 opacity-100 transition-all duration-1000 md:py-32 lg:w-[1080px] lg:grid-cols-4 ">
+                className="relative z-20 mx-auto grid w-full translate-y-0 py-8 opacity-100 transition-all duration-1000 md:py-28 lg:w-[1080px] lg:grid-cols-4 ">
                 <div className="col-span-4 mb-16 flex flex-col gap-6 text-center lg:col-span-2 lg:col-start-2">
                     <h2 className={title({ size: 'sm' })}>
                         Elevate your earnings with modern payments technology
@@ -87,7 +87,7 @@ export default function Home() {
                 </div>
                 <Services/>
             </section>
-            <section className="w-full py-8 md:py-32">
+            <section className="w-full py-8 md:py-28">
                 <div className="relative z-20 mx-auto grid w-full translate-y-0 grid-cols-4 lg:w-[1080px] ">
                     <div className="relative col-span-4 grid grid-cols-1 lg:grid-cols-2">
                         <div>
@@ -125,7 +125,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="w-full py-8 md:py-32">
+            <section className="w-full py-8 md:py-28">
                 <div className="relative z-20 mx-auto grid w-full translate-y-0 grid-cols-4 lg:w-[1080px] ">
                     <div className="relative col-span-4 grid grid-cols-1 lg:grid-cols-2">
                         <div>
@@ -147,7 +147,8 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="relative mt-12 whitespace-nowrap border-t border-dashed bg-gray-200/10 dark:border-default lg:mt-0">
+                        <div
+                            className="relative mt-12 whitespace-nowrap border-t border-dashed bg-gray-200/10 dark:border-default lg:mt-0">
                             <div className="absolute h-12 w-px bg-yellow-500"/>
                             <div className="flex border-b border-dashed p-3 font-semibold dark:border-default">
                                 <span className="w-1/3">Features</span>

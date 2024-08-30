@@ -78,7 +78,7 @@ module.exports = {
             },
         },
         animation: {
-            'infinite-scroll': 'infinite-scroll 25s linear infinite',
+            'infinite-scroll': 'infinite-scroll 30s linear infinite',
             'move': 'move 5s ease-in-out infinite',
             'path-0': 'pathAnim-0 14s linear infinite',
             'path-1': 'pathAnim-1 8s linear infinite',
