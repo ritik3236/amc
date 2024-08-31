@@ -13,7 +13,7 @@ export const title = tv({
             foreground: 'dark:from-[#FFFFFF] dark:to-[#4B4B4B]',
         },
         size: {
-            xsm: 'text-2xl lg:text-3xl',
+            xs: 'text-2xl lg:text-3xl',
             sm: 'text-3xl lg:text-4xl',
             md: 'text-[2.3rem] lg:text-5xl ',
             lg: 'text-4xl lg:text-6xl',
@@ -45,10 +45,11 @@ export const subtitle = tv({
     base: 'text-sm font-semibold text-default-900',
     variants: {
         size: {
-            xsm: 'text-sm',
+            xs: 'text-sm',
             sm: 'text-sm lg:text-base',
             md: 'text-base lg:text-lg',
             lg: 'text-lg lg:text-xl',
+            base: 'text-base',
         },
     },
     defaultVariants: {

@@ -160,6 +160,33 @@ const landingPageCryptoVsFiat = [
     },
 ];
 
+const landingPageCryptoSteps = {
+    'step-1': {
+        key: 'step-1',
+        icon: Icons.cursor,
+        title: '1: Choosing a Method',
+        desc: 'The customer chooses to pay with crypto using our CoinDhan Pay payment method.',
+    },
+    'step-2': {
+        key: 'step-2',
+        icon: Icons.eth,
+        title: '2: Selecting a Currency',
+        desc: 'The customer selects the specific currency they want to use for the transaction.',
+    },
+    'step-3': {
+        key: 'step-3',
+        icon: Icons.qrCode,
+        title: '3: Transferring Funds',
+        desc: 'The customer sends funds to the provided deposit address, which is unique to their payment.',
+    },
+    'step-4': {
+        key: 'step-4',
+        icon: Icons.flower,
+        title: '4: Requesting Withdrawal',
+        desc: 'CoinDhan Pay processes the your withdrawal request and sends the payment in the preferred cryptocurrency.',
+    },
+};
+
 const landingPageCryptoIcons = [
     { icon: Icons.ada, name: 'Cardano', fill: '#0133AD' },
     { icon: Icons.bnb, name: 'BNB', fill: '#F0B90B' },
@@ -184,5 +211,6 @@ export const pageConstants = {
         useCases: landingPageUseCases,
         cryptoVsFiat: landingPageCryptoVsFiat,
         cryptoIcons: landingPageCryptoIcons,
+        cryptoSteps: landingPageCryptoSteps,
     },
 };

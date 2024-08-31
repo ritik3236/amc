@@ -74,7 +74,7 @@ export default function Home() {
                 <LogoCarousel className="lg:w-3/4"/>
             </section>
             <section
-                className="relative z-20 mx-auto grid w-full translate-y-0 py-8 opacity-100 transition-all duration-1000 md:py-28 lg:w-[1080px] lg:grid-cols-4 ">
+                className="relative z-20 mx-auto grid w-full translate-y-0 py-8 opacity-100 transition-all duration-1000 md:py-28 lg:w-[1080px] lg:grid-cols-4">
                 <div className="col-span-4 mb-16 flex flex-col gap-6 text-center lg:col-span-2 lg:col-start-2">
                     <h2 className={title({ size: 'sm' })}>
                         Elevate your earnings with modern payments technology
@@ -94,7 +94,7 @@ export default function Home() {
                             <div className="sticky top-32 flex flex-col pr-8">
                                 <div className="absolute h-10 w-px bg-blue-500"/>
                                 <div className="ml-4">
-                                    <h2 className={title({ size: 'xsm' })}>
+                                    <h2 className={title({ size: 'sm' })}>
                                         Crypto Payment Is Tailored for All Types of Business Model
                                     </h2>
                                     <p className={description()}>
@@ -109,10 +109,13 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-12 grid grid-cols-1 lg:mt-auto lg:grid-cols-2">
+                        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:mt-auto">
                             {Object.values(pageConstants.landing.useCases).map((item) => (
                                 <div key={item.key} className="mb-16 flex flex-col space-y-4">
-                                    <h3 className={subtitle({ className: 'flex border-l border-blue-600 pl-4 !text-base' })}>
+                                    <h3 className={subtitle({
+                                        className: 'flex border-l border-blue-600 pl-4',
+                                        size: 'base',
+                                    })}>
                                         <item.icon className="mr-4 text-blue-600" size={24}/>
                                         {item.title}
                                     </h3>
@@ -126,13 +129,13 @@ export default function Home() {
                 </div>
             </section>
             <section className="w-full py-8 md:py-28">
-                <div className="relative z-20 mx-auto grid w-full translate-y-0 grid-cols-4 lg:w-[1080px] ">
+                <div className="relative z-20 mx-auto grid w-full translate-y-0 grid-cols-4 lg:w-[1080px]">
                     <div className="relative col-span-4 grid grid-cols-1 lg:grid-cols-2">
                         <div>
                             <div className="sticky top-32 flex flex-col pr-8">
                                 <div className="absolute h-10 w-px bg-yellow-500"/>
                                 <div className="ml-4">
-                                    <h2 className={title({ size: 'xsm' })}>
+                                    <h2 className={title({ size: 'sm' })}>
                                         Crypto vs Cards/Fiat
                                     </h2>
                                     <p className={description({})}>
@@ -176,6 +179,73 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section className="relative z-20 mx-auto grid w-full py-8 md:py-28 lg:w-[1080px] lg:grid-cols-4">
+                <div className="relative col-span-4 lg:col-span-2">
+                    <div>
+                        <div className="sticky top-32 flex flex-col pr-8">
+                            <div className="absolute h-10 w-px bg-orange-500"/>
+                            <div className="ml-4">
+                                <h2 className={title({ size: 'sm' })}>
+                                    How crypto payments works?
+                                </h2>
+                                <p className={description({})}>
+                                    A cryptocurrency payment gateway works in just 4 easy steps: choosing a payment
+                                    method, selecting a currency, transferring funds to the deposit address,
+                                    and receiving the payment in your preferred cryptocurrency.
+                                </p>
+                                <Link className="group flex items-center pt-4 hover:opacity-70" href="/about">
+                                    <span>Learn more</span>
+                                    <Icons.arrowRight className="ml-1 transition-all group-hover:ml-2"/>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-span-4 md:col-span-2">
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:mt-auto">
+                        {Object.values(pageConstants.landing.cryptoSteps).map((item) => (
+                            <div key={item.key} className="mb-16 flex flex-col space-y-4">
+                                <h3 className={subtitle({
+                                    className: 'flex border-l border-orange-600 pl-4',
+                                    size: 'base',
+                                })}>
+                                    <item.icon className="mr-4 text-orange-600" size={24}/>
+                                    <span>{item.title}</span>
+                                </h3>
+                                <p className={description({ size: 'xsm', className: 'px-4' })}>
+                                    {item.desc}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            <section className="relative z-20 mx-auto grid w-full py-8 md:py-28 lg:w-[1080px] lg:grid-cols-4">
+                <div className="col-span-4 grid space-y-12 rounded-xl bg-neutral-950 p-12 text-center text-neutral-50">
+                    <h2 className={title({ size: 'xs' })}>Start accepting payments in crypto
+                        <span className={title({ size: 'xs', color: 'yellow' })}>&nbsp;now!</span>
+                    </h2>
+                    <Link
+                        className="group mx-auto w-fit rounded-full bg-primary px-8 py-3 text-sm text-white shadow-xl shadow-blue-500/20 transition"
+                        href="/about">
+                        <span>Get Started</span>
+                        <Icons.arrowRight className="ml-2 transition-all group-hover:translate-x-1"/>
+                    </Link>
+                    <p className={description()}>
+                        Join the thousands of users who have already started accepting crypto payments.
+                    </p>
+                    <div className="grid grid-cols-4 justify-items-center gap-12">
+                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
+                        <Image alt="Vercel" height={40} src="/next.svg" width={120}/>
+                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
+                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
+                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
+                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
+                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
+                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
                     </div>
                 </div>
             </section>
