@@ -61,7 +61,7 @@ export const description = tv({
     base: 'my-2 block w-full text-default-500',
     variants: {
         size: {
-            xsm: 'text-sm',
+            xs: 'text-sm',
             sm: 'text-sm lg:text-base',
             md: 'text-base lg:text-lg',
             lg: 'text-lg lg:text-xl',

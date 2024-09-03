@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Button } from '@nextui-org/button';
 import { Link } from '@nextui-org/link';
 
 import Image from 'next/image';
@@ -11,6 +12,7 @@ import { PayConfirm } from '@/components/paymentPage/payConfirm';
 import { PayCTA } from '@/components/paymentPage/payCTA';
 import { PayWidget } from '@/components/paymentPage/payWidget';
 import { description, subtitle, title } from '@/components/primitives';
+import { Meteors } from '@/components/ui/meteors';
 import { pageConstants } from '@/constant';
 
 export default function Home() {
@@ -94,8 +96,8 @@ export default function Home() {
                             <div className="sticky top-32 flex flex-col pr-8">
                                 <div className="absolute h-10 w-px bg-blue-500"/>
                                 <div className="ml-4">
-                                    <h2 className={title({ size: 'sm' })}>
-                                        Crypto Payment Is Tailored for All Types of Business Model
+                                    <h2 className={title({ size: 'sm' })}  >
+                                        Crypto payments for every business
                                     </h2>
                                     <p className={description()}>
                                         Crypto payment is perfect for any business model and can be easily integrated
@@ -119,7 +121,7 @@ export default function Home() {
                                         <item.icon className="mr-4 text-blue-600" size={24}/>
                                         {item.title}
                                     </h3>
-                                    <p className={description({ size: 'xsm', className: 'px-4' })}>
+                                    <p className={description({ size: 'xs', className: 'px-4' })}>
                                         {item.desc}
                                     </p>
                                 </div>
@@ -215,7 +217,7 @@ export default function Home() {
                                     <item.icon className="mr-4 text-orange-600" size={24}/>
                                     <span>{item.title}</span>
                                 </h3>
-                                <p className={description({ size: 'xsm', className: 'px-4' })}>
+                                <p className={description({ size: 'xs', className: 'px-4' })}>
                                     {item.desc}
                                 </p>
                             </div>
@@ -224,29 +226,65 @@ export default function Home() {
                 </div>
             </section>
             <section className="relative z-20 mx-auto grid w-full py-8 md:py-28 lg:w-[1080px] lg:grid-cols-4">
-                <div className="col-span-4 grid space-y-12 rounded-xl bg-neutral-950 p-12 text-center text-neutral-50">
-                    <h2 className={title({ size: 'xs' })}>Start accepting payments in crypto
-                        <span className={title({ size: 'xs', color: 'yellow' })}>&nbsp;now!</span>
+                <div className="relative col-span-4 lg:col-span-2">
+                    <div>
+                        <div className="sticky top-32 flex flex-col pr-8">
+                            <div className="absolute h-10 w-px bg-blue-500"/>
+                            <div className="ml-4">
+                                <h2 className={title({ size: 'sm' })}>
+                                    Easy integration and setup
+                                </h2>
+                                <p className={description({})}>
+                                    CoinDhan crypto payment gateway integrates seamlessly with
+                                    WordPress, Magento, Opencart, Prestashop, Laravel, PHP and Node.js for consuming
+                                    payment gateway services without leaving the website.
+                                </p>
+                                <Link className="group flex items-center pt-4 hover:opacity-70" href="/about">
+                                    <span>Learn more</span>
+                                    <Icons.arrowRight className="ml-1 transition-all group-hover:ml-2"/>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="relative col-span-4 lg:col-span-2">
+                    <div>
+                        <Image
+                            alt=""
+                            className="mx-auto max-w-xs"
+                            height={300}
+                            src="https://cdn.rareblocks.xyz/collection/celebration/images/integration/2/services-icons.png"
+                            width={300}
+                        />
+                    </div>
+                </div>
+            </section>
+            <section className="relative z-20 mx-auto grid w-full py-8 md:py-28 lg:w-[1080px] lg:grid-cols-4">
+                <div
+                    className="relative col-span-4 grid space-y-12 overflow-hidden rounded-xl bg-neutral-950 p-12 text-center text-neutral-50">
+                    <h2 className={title({ size: 'sm' })}>
+                        <span>Start accepting payments in</span>
+                        <br/>
+                        <span className={title({ size: 'sm', color: 'yellow' })}>crypto now!</span>
                     </h2>
-                    <Link
-                        className="group mx-auto w-fit rounded-full bg-primary px-8 py-3 text-sm text-white shadow-xl shadow-blue-500/20 transition"
-                        href="/about">
-                        <span>Get Started</span>
-                        <Icons.arrowRight className="ml-2 transition-all group-hover:translate-x-1"/>
-                    </Link>
+                    <div className="flex justify-center gap-4">
+                        <Link
+                            className="group w-fit rounded-full bg-primary px-8 py-3 text-sm text-white shadow-xl shadow-blue-500/20 transition"
+                            href="/about">
+                            <span>Get Started</span>
+                            <Icons.arrowRight className="ml-2 transition-all group-hover:translate-x-1"/>
+                        </Link>
+                        <Button className="border" color="primary" radius="full" size="lg" variant="bordered">
+                            <Icons.video/>
+                            Watch Video
+                        </Button>
+                    </div>
                     <p className={description()}>
                         Join the thousands of users who have already started accepting crypto payments.
+                        <br/>
+                        Support is just a few taps away. Get your questions answered by using our help library.
                     </p>
-                    <div className="grid grid-cols-4 justify-items-center gap-12">
-                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
-                        <Image alt="Vercel" height={40} src="/next.svg" width={120}/>
-                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
-                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
-                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
-                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
-                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
-                        <Image alt="Vercel" height={40} src="/vercel.svg" width={120}/>
-                    </div>
+                    <Meteors number={15} position={800}/>
                 </div>
             </section>
         </React.Fragment>

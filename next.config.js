@@ -18,6 +18,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/profile_images/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'cdn.rareblocks.xyz',
+                port: '',
+                pathname: '/collection/celebration/images/**',
+            },
         ],
     },
     eslint: {

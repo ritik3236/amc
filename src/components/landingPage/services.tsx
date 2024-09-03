@@ -18,8 +18,8 @@ const TabContainerSvg: React.FC = React.memo(() => {
             xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="gradient" x1="60%" x2="40%" y1="1%" y2="99%">
-                    <stop offset="5%" stopColor="#2563eb"/>
-                    <stop offset="95%" stopColor="#7c3aed"/>
+                    <stop offset="5%" stopColor="#ff8e5a"/>
+                    <stop offset="95%" stopColor="#ff8e5a"/>
                 </linearGradient>
             </defs>
             <path className="animate-path-0 transition-all delay-150 duration-300 ease-in-out"
@@ -29,7 +29,7 @@ const TabContainerSvg: React.FC = React.memo(() => {
             />
             <defs>
                 <linearGradient id="gradient" x1="60%" x2="40%" y1="1%" y2="99%">
-                    <stop offset="5%" stopColor="#2563eb"/>
+                    <stop offset="5%" stopColor="#ff8e5a"/>
                     <stop offset="95%" stopColor="#db2777"/>
                 </linearGradient>
             </defs>
@@ -76,7 +76,7 @@ export const Services: React.FC = () => {
                         <h2 className={subtitle({size: 'lg'})}>
                             {activeService.contentTitle}
                         </h2>
-                        <p className={description({size: 'xsm'})}>
+                        <p className={description({size: 'xs'})}>
                             {activeService.contentDesc}
                         </p>
                         <Link
