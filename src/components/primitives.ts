@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import {tv} from 'tailwind-variants';
 
 export const title = tv({
     base: 'inline-block font-semibold !leading-tight tracking-tight',
@@ -69,5 +69,43 @@ export const description = tv({
     },
     defaultVariants: {
         size: 'sm',
+    },
+});
+
+export const link = tv({
+    slots: {
+        base: 'group relative inline-flex  items-center gap-2 text-medium outline-none transition-opacity hover:opacity-80 active:opacity-disabled',
+        icon: 'transition-all group-hover:translate-x-1',
+    },
+    variants: {
+        type: {
+            solid: 'rounded-full px-6 py-3',
+            outline: 'rounded-full border px-6 py-3',
+        },
+        color: {
+            primary: 'text-primary',
+        },
+        size: {
+            xs: 'text-sm',
+            sm: 'text-sm lg:text-base',
+            md: 'text-base lg:text-lg',
+            lg: 'text-lg lg:text-xl',
+            base: 'text-base',
+        },
+    },
+    compoundVariants: [
+        {
+            type: 'solid',
+            color: 'primary',
+            class: 'bg-primary text-white',
+        },
+        {
+            type: 'outline',
+            color: 'primary',
+            class: 'border-primary text-primary',
+        },
+    ],
+    defaultVariants: {
+        color: 'primary',
     },
 });

@@ -9,7 +9,7 @@ import { ThemeSwitch } from '@/components/theme-switch';
 
 export default function Footer() {
     return (
-        <footer className="relative z-20 w-full bg-default-50/50">
+        <footer className="relative z-20 w-full border-t border-dashed border-black/5 bg-default-50/50 dark:border-slate-900">
             <section className="mx-auto w-full py-12 lg:w-[1080px]">
                 <div className="grid grid-cols-4 [&_li]:mb-2">
                     <div className="relative col-span-4 px-4 md:col-span-1">
@@ -80,7 +80,7 @@ export default function Footer() {
                         <Logo/>
                         <p className="font-bold text-inherit">CoinDhan Pay</p>
                     </NextLink>
-                    <p className="text-default-400">© 2024 CoinDhan Pay. All rights reserved.</p>
+                    <p className="text-xs">© 2024 CoinDhan Pay. All rights reserved.</p>
                     <div className="flex items-center gap-4">
                         <ThemeSwitch/>
                     </div>

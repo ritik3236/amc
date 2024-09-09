@@ -7,9 +7,7 @@ import { QRCodeGenerator } from '@/components/qrCodeGenerator';
 
 export const PayWidget = () => {
     return (
-        <section
-            className="w-full rounded-lg border border-dashed bg-white shadow-lg contain-content dark:border-default dark:bg-default-50 md:w-[380px]"
-        >
+        <section className="w-full rounded-lg border border-dashed bg-white shadow-lg contain-content dark:border-default dark:bg-default-50 md:w-[380px]">
             <div className="bg-default-100 p-4">
                 <div className="flex items-center justify-between">
                     <div className="-ml-1 flex items-center gap-1">

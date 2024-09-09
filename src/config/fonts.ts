@@ -1,8 +1,4 @@
-import { Figtree, Inter } from 'next/font/google';
-
-export const inter = Inter({
-    subsets: ['latin'],
-});
+import { Figtree } from 'next/font/google';
 
 export const figTree = Figtree({
     subsets: ['latin'],

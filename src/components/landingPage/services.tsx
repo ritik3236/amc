@@ -5,8 +5,8 @@ import React from 'react';
 import { Button } from '@nextui-org/button';
 import { Card, CardFooter } from '@nextui-org/card';
 import { Image } from '@nextui-org/image';
-import { Link } from '@nextui-org/link';
 import clsx from 'clsx';
+import  Link  from 'next/link';
 
 import { Icons } from '@/components/icons';
 import { description, subtitle } from '@/components/primitives';
