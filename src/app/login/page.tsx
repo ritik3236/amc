@@ -19,7 +19,7 @@ export default function LoginPage() {
                     Not a member? Start a 14 day free trial
                 </p>
             </div>
-            <div className="p-6" >
+            <div className="p-6">
                 <LoginForm/>
             </div>
             <div className="pb-6">

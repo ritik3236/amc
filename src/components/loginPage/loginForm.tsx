@@ -7,6 +7,7 @@ import {Checkbox} from '@nextui-org/checkbox';
 import {Input} from '@nextui-org/input';
 import {EyeFilledIcon, EyeSlashFilledIcon} from '@nextui-org/shared-icons';
 import NextLink from 'next/link';
+import {useSearchParams} from 'next/navigation';
 import {Controller, useForm} from 'react-hook-form';
 
 import {z} from 'zod';
@@ -17,8 +18,10 @@ import {link} from '@/components/primitives';
 import {signInSchema} from '@/lib/zod';
 
 export const LoginForm = () => {
-    const [globalError, setGlobalError] = useState<string>('');
     const [isVisible, setIsVisible] = useState(false);
+
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get('callbackUrl') || '';
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -32,11 +35,7 @@ export const LoginForm = () => {
     });
 
     const onSubmit = async (values: z.infer<typeof signInSchema>) => {
-        const result = await doLogin(values);
-
-        if (!!result?.error) {
-            setGlobalError(result.error);
-        }
+        await doLogin(values, callbackUrl);
     };
 
     return (

@@ -1,14 +1,8 @@
-//Todo Update me
-import {parse} from 'cookie';
-import {cookies} from 'next/headers';
-import NextAuth, {CredentialsSignin, NextAuthConfig} from 'next-auth';
+import NextAuth, {NextAuthConfig} from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import {signInSchema} from '@/lib/zod';
-
-class InvalidLoginError extends CredentialsSignin {
-    code = 'Invalid identifier or password';
-}
+import {AccountVerificationError, InvalidCredentialsError, OtpRequiredError} from '@/lib/errors';
+import {setAuthCookie} from '@/lib/utils';
 
 export const authConfig: NextAuthConfig = {
     providers: [
@@ -20,71 +14,43 @@ export const authConfig: NextAuthConfig = {
                 remember: {label: 'Remember', type: 'boolean'},
             },
             async authorize(credentials) {
-                const parsedCredentials = signInSchema.safeParse(credentials);
-
-                if (!parsedCredentials.success) {
-                    console.error('Auth.ts|Invalid credentials', parsedCredentials.error);
-
-                    return null;
-                }
-
+                // return {
+                //     id: '23232',
+                //     email: credentials.email,
+                //     name: 'John Doe',
+                //     image: '',
+                // } as User;
+                
                 const res = await fetch('https://gamma.coinfinacle.com/api/v2/barong/identity/sessions', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
-                        email: parsedCredentials.data.email,
-                        password: parsedCredentials.data.password,
+                        email: credentials.email,
+                        password: credentials.password,
                     }),
                 });
 
-                // console.log('===============Response|auth.ts==================');
-                // console.log('res', res);
+                const resBody = await res.json();
 
                 if (res.ok) {
-                    const user = await res.json();
-                    // console.log('===============User|auth.ts==================');
-                    // console.log('user', user);
+                    setAuthCookie(res.headers.get('set-cookie'));
 
-                    const parsedCookie = parse(res.headers.get('set-cookie'));
-                    const [cookieName, cookieValue] = Object.entries(parsedCookie)[0];
-
-                    cookies().set({
-                        name: cookieName,
-                        value: cookieValue,
-                        httpOnly: true,
-                        maxAge: parseInt(parsedCookie['Max-Age']),
-                        path: parsedCookie.path,
-                        sameSite: parsedCookie.samesite as any,
-                        expires: new Date(parsedCookie.expires),
-                        secure: true,
-                    });
-
-                    // console.log('===============Cookies|auth.ts==================');
-                    // console.log('cookies', cookie);
-
-                    return user;
+                    return resBody;
+                } else if (resBody.errors && Array.isArray(resBody.errors)) {
+                    if (resBody.errors.includes('identity.session.missing_otp')) {
+                        throw new OtpRequiredError(resBody.errors);
+                    }
+                    if (resBody.errors.includes('identity.session.account_not_verified')) {
+                        throw new AccountVerificationError(resBody.errors);
+                    }
+                    throw new InvalidCredentialsError(resBody.errors);
                 } else {
-                    throw new InvalidLoginError;
+                    throw new InvalidCredentialsError();
                 }
             },
         }),
     ],
     callbacks: {
-        async authorized({ request: { nextUrl }, auth }) {
-            const isLoggedIn = !!auth?.user;
-            const { pathname } = nextUrl;
-            // const role = auth?.user.role || 'user';
-
-            if (pathname.startsWith('/login') && isLoggedIn) {
-                return Response.redirect(new URL('/', nextUrl));
-            }
-            // if (pathname.startsWith('/page2') && role !== 'admin') {
-            //     return Response.redirect(new URL('/', nextUrl));
-            // }
-
-            return !!auth;
-        },
-        
         async jwt({token, user}) {
             if (user) {
                 token.user = user;
