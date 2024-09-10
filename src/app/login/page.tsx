@@ -1,3 +1,4 @@
+import {Suspense} from 'react';
 import NextLink from 'next/link';
 
 import {Logo} from '@/components/icons';
@@ -20,7 +21,9 @@ export default function LoginPage() {
                 </p>
             </div>
             <div className="p-6">
-                <LoginForm/>
+                <Suspense>
+                    <LoginForm/>
+                </Suspense>
             </div>
             <div className="pb-6">
                 <p className="flex justify-center gap-1 text-center text-sm">
