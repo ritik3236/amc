@@ -1,8 +1,8 @@
-import {auth} from '@/auth';
-import {apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes} from '@/routes';
+import { auth } from '@/auth';
+import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from '@/routes';
 
 export default auth((req) => {
-    const {nextUrl} = req;
+    const { nextUrl } = req;
     const isLoggedIn = !!req.auth;
 
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
@@ -38,5 +38,7 @@ export default auth((req) => {
 });
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+    matcher: [
+        '/((?!api|_next/static|_next/image|images/|favicon.ico|sitemap.xml|robots.txt).*)',
+    ],
 };

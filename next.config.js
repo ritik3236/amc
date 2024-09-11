@@ -24,6 +24,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/collection/celebration/images/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'nextui.org',
+                port: '',
+                pathname: '/images/**',
+            },
         ],
     },
     eslint: {

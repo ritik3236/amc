@@ -1,6 +1,5 @@
-// @ts-nocheck
-
 'use client';
+
 import React, { useEffect } from 'react';
 import * as qr from '@bitjson/qr-code';
 import { Spinner } from '@nextui-org/spinner';
@@ -42,6 +41,7 @@ export const QRCodeGenerator: React.FC<OwnProps> = (props) => {
     return (
         <div className="relative mx-auto flex items-center justify-center" style={sizes[size]}>
             {loading && <Spinner className="absolute inset-0" color="default"/>}
+            {/*@ts-ignore*/}
             <qr-code
                 ref={qrRef}
                 className="relative"
@@ -50,7 +50,15 @@ export const QRCodeGenerator: React.FC<OwnProps> = (props) => {
                 position-center-color="#ff8e5a"
                 position-ring-color="#bf6331"
             >
-                <Image ref={logoRef} alt="" className="hidden" height="64" slot="icon" src="/logo.svg" width="64"/>
+                <Image
+                    ref={logoRef}
+                    alt=""
+                    className="hidden"
+                    height="64"
+                    slot="icon"
+                    src="/images/logo.svg"
+                    width="64"
+                />
             </qr-code>
         </div>
     );

@@ -1831,6 +1831,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stylistic/eslint-plugin-js@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "@stylistic/eslint-plugin-js@npm:2.8.0"
+  dependencies:
+    eslint-visitor-keys: "npm:^4.0.0"
+    espree: "npm:^10.1.0"
+  peerDependencies:
+    eslint: ">=8.40.0"
+  checksum: 10c0/35eafe7587a9c9c06c98b1a97386a2791fac48d86ab8f7670794f7f83092956bf1b65e8b31d93315c8b459b2f45322c7f4c7ec18ef6da266a4013c1da18b0443
+  languageName: node
+  linkType: hard
+
 "@stylistic/eslint-plugin-jsx@npm:2.6.4":
   version: 2.6.4
   resolution: "@stylistic/eslint-plugin-jsx@npm:2.6.4"
@@ -5109,6 +5121,7 @@ __metadata:
     "@react-aria/ssr": "npm:3.9.5"
     "@react-aria/visually-hidden": "npm:3.8.14"
     "@stylistic/eslint-plugin": "npm:^2.6.2"
+    "@stylistic/eslint-plugin-js": "npm:^2.8.0"
     "@types/node": "npm:22.2.0"
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:18.3.0"

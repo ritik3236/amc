@@ -18,7 +18,16 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', 'unused-imports', 'import', '@typescript-eslint', '@stylistic/eslint-plugin', 'jsx-a11y'],
+    plugins: [
+        'react',
+        'unused-imports',
+        'import',
+        '@typescript-eslint',
+        '@stylistic/eslint-plugin',
+        'jsx-a11y',
+        'tailwindcss',
+        '@stylistic/js',
+    ],
     root: true,
     rules: {
         '@stylistic/arrow-parens': ['warn', 'always'],
@@ -27,7 +36,8 @@ module.exports = {
         '@stylistic/jsx-indent-props': [2, 4],
         '@stylistic/jsx-quotes': ['warn', 'prefer-double'],
         '@stylistic/member-delimiter-style': 'off',
-        '@stylistic/no-multiple-empty-lines': ['error', {max: 1, maxEOF: 0}],
+        '@stylistic/js/object-curly-spacing': ['error', 'always'],
+        '@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
         '@stylistic/quotes': ['error', 'single'],
         '@stylistic/semi': ['error', 'always'],
         '@stylistic/comma-dangle': ['warn', {
@@ -66,7 +76,7 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'warn',
         'jsx-a11y/interactive-supports-focus': 'warn',
 
-        'no-console': ['error', {allow: ['warn', 'error', 'info']}],
+        'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
 
         'unused-imports/no-unused-imports': 'error',
 
@@ -77,19 +87,19 @@ module.exports = {
                 'pathGroupsExcludedImportTypes': ['builtin'],
                 // define next-ui group that will appear separately after other main externals
                 'pathGroups': [
-                    {pattern: '@nextui-org/{**}', group: 'external', position: 'after'},
-                    {pattern: 'react', group: 'external', position: 'before'},
+                    { pattern: '@nextui-org/{**}', group: 'external', position: 'after' },
+                    { pattern: 'react', group: 'external', position: 'before' },
                 ],
                 'newlines-between': 'always-and-inside-groups',
                 'distinctGroup': false,
-                'alphabetize': {order: 'asc', caseInsensitive: true},
+                'alphabetize': { order: 'asc', caseInsensitive: true },
             },
         ],
 
         'padding-line-between-statements': [
             'warn',
-            {'blankLine': 'always', 'prev': '*', 'next': 'return'},
-            {'blankLine': 'always', 'prev': ['const', 'let', 'var'], 'next': '*'},
+            { 'blankLine': 'always', 'prev': '*', 'next': 'return' },
+            { 'blankLine': 'always', 'prev': ['const', 'let', 'var'], 'next': '*' },
             {
                 'blankLine': 'any',
                 'prev': ['const', 'let', 'var'],
