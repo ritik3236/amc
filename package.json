@@ -12,7 +12,6 @@
 	"dependencies": {
 		"@bitjson/qr-code": "^1.0.2",
 		"@hookform/resolvers": "^3.9.0",
-		"@nextui-org/accordion": "^2.0.38",
 		"@nextui-org/aria-utils": "^2.0.24",
 		"@nextui-org/avatar": "^2.0.32",
 		"@nextui-org/badge": "^2.0.31",
@@ -25,7 +24,6 @@
 		"@nextui-org/input": "2.2.4",
 		"@nextui-org/kbd": "2.0.33",
 		"@nextui-org/link": "2.0.34",
-		"@nextui-org/listbox": "2.1.25",
 		"@nextui-org/navbar": "2.0.36",
 		"@nextui-org/snippet": "2.0.41",
 		"@nextui-org/spinner": "^2.0.33",
