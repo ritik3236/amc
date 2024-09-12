@@ -1,3 +1,5 @@
+import { Icons } from '@/components/icons';
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
@@ -57,6 +59,28 @@ export const siteConfig = {
         {
             label: 'Logout',
             href: '/logout',
+        },
+    ],
+    dashboardSideNavItems: [
+        {
+            label: 'Home',
+            href: '/',
+            icon: Icons.home,
+        },
+        {
+            label: 'Dashboard',
+            href: '/dashboard',
+            icon: Icons.dashboard,
+        },
+        {
+            label: 'Calendar',
+            href: '/calendar',
+            icon: Icons.calendar,
+        },
+        {
+            label: 'Settings',
+            href: '/settings',
+            icon: Icons.settings,
         },
     ],
     links: {

@@ -12,11 +12,15 @@
 	"dependencies": {
 		"@bitjson/qr-code": "^1.0.2",
 		"@hookform/resolvers": "^3.9.0",
+		"@nextui-org/accordion": "^2.0.38",
 		"@nextui-org/aria-utils": "^2.0.24",
+		"@nextui-org/avatar": "^2.0.32",
+		"@nextui-org/badge": "^2.0.31",
 		"@nextui-org/button": "2.0.37",
 		"@nextui-org/card": "^2.0.33",
 		"@nextui-org/checkbox": "^2.1.4",
 		"@nextui-org/code": "2.0.32",
+		"@nextui-org/dropdown": "^2.1.29",
 		"@nextui-org/image": "^2.0.31",
 		"@nextui-org/input": "2.2.4",
 		"@nextui-org/kbd": "2.0.33",
@@ -49,7 +53,6 @@
 	"devDependencies": {
 		"@next/bundle-analyzer": "^14.2.5",
 		"@stylistic/eslint-plugin": "^2.6.2",
-		"@stylistic/eslint-plugin-js": "^2.8.0",
 		"@types/node": "22.2.0",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",

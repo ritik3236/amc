@@ -1,17 +1,11 @@
-import {cookies} from 'next/headers';
+import { Button } from '@nextui-org/button';
 
-import { signOut } from '@/auth';
+import { doLogout } from '@/actions/auth';
 
 export function SignOut() {
     return (
-        <form
-            action={async () => {
-                'use server';
-                cookies().delete('_barong_session');
-                await signOut();
-            }}
-        >
-            <button type="submit">Sign Out</button>
+        <form action={doLogout}>
+            <Button type="submit">Sign Out</Button>
         </form>
     );
 }

@@ -26,7 +26,6 @@ module.exports = {
         '@stylistic/eslint-plugin',
         'jsx-a11y',
         'tailwindcss',
-        '@stylistic/js',
     ],
     root: true,
     rules: {
@@ -36,8 +35,9 @@ module.exports = {
         '@stylistic/jsx-indent-props': [2, 4],
         '@stylistic/jsx-quotes': ['warn', 'prefer-double'],
         '@stylistic/member-delimiter-style': 'off',
-        '@stylistic/js/object-curly-spacing': ['error', 'always'],
+        '@stylistic/object-curly-spacing': ['error', 'always'],
         '@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+        '@stylistic/eol-last': ['error', 'always'],
         '@stylistic/quotes': ['error', 'single'],
         '@stylistic/semi': ['error', 'always'],
         '@stylistic/comma-dangle': ['warn', {

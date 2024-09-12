@@ -1,14 +1,15 @@
 'use server';
 
-import {isRedirectError} from 'next/dist/client/components/redirect';
+import { isRedirectError } from 'next/dist/client/components/redirect';
 
-import {AuthError} from 'next-auth';
-import {z} from 'zod';
+import { cookies } from 'next/headers';
+import { AuthError } from 'next-auth';
+import { z } from 'zod';
 
-import {signIn} from '@/auth';
-import {AccountVerificationError, CustomError, InvalidCredentialsError, OtpRequiredError} from '@/lib/errors';
-import {signInSchema} from '@/lib/zod';
-import {DEFAULT_LOGIN_REDIRECT} from '@/routes';
+import { signIn, signOut } from '@/auth';
+import { AccountVerificationError, CustomError, InvalidCredentialsError, OtpRequiredError } from '@/lib/errors';
+import { signInSchema } from '@/lib/zod';
+import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
 export async function doLogin(formData: z.infer<typeof signInSchema>, callbackUrl = DEFAULT_LOGIN_REDIRECT) {
     try {
@@ -17,11 +18,12 @@ export async function doLogin(formData: z.infer<typeof signInSchema>, callbackUr
         if (!parsedCredentials.success) {
             return {
                 success: false,
-                error: {message: parsedCredentials.error.message, details: parsedCredentials.error.errors},
+                error: { message: parsedCredentials.error.message, details: parsedCredentials.error.errors },
             };
         }
 
         await signIn('credentials', {
+            redirect: true,
             redirectTo: callbackUrl,
             email: parsedCredentials.data.email,
             password: parsedCredentials.data.password,
@@ -33,18 +35,29 @@ export async function doLogin(formData: z.infer<typeof signInSchema>, callbackUr
         const error = nextError.cause?.err as CustomError;
 
         if (!error) {
-            return {success: false, error: {message: 'An unexpected error occurred.'}};
+            return { success: false, error: { message: 'An unexpected error occurred.' } };
         }
 
         if (error instanceof InvalidCredentialsError) {
-            return {success: false, error: {message: error.message, details: error.errors}};
+            return { success: false, error: { message: error.message, details: error.errors } };
         }
 
         if (error instanceof OtpRequiredError || error instanceof AccountVerificationError) {
-            return {success: false, error: {message: error.message, details: error.errors}};
+            return { success: false, error: { message: error.message, details: error.errors } };
         }
 
         // Handle unexpected CustomError types
-        return {success: false, error: {message: 'An unexpected error occurred.'}};
+        return { success: false, error: { message: 'An unexpected error occurred.' } };
+    }
+}
+
+export async function doLogout() {
+    try {
+        await signOut({ redirectTo: '/', redirect: true });
+        cookies().delete('_barong_session');
+    } catch (e) {
+        if (isRedirectError(e)) throw e;
+
+        return { success: false, error: { message: 'An unexpected error occurred.' } };
     }
 }

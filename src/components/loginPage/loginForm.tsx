@@ -1,31 +1,32 @@
 'use client';
 
-import {Suspense, useState} from 'react';
-import {zodResolver} from '@hookform/resolvers/zod';
-import {Button} from '@nextui-org/button';
-import {Checkbox} from '@nextui-org/checkbox';
-import {Input} from '@nextui-org/input';
-import {EyeFilledIcon, EyeSlashFilledIcon} from '@nextui-org/shared-icons';
+import { Suspense, useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@nextui-org/button';
+import { Checkbox } from '@nextui-org/checkbox';
+import { Input } from '@nextui-org/input';
+import { EyeFilledIcon, EyeSlashFilledIcon } from '@nextui-org/shared-icons';
 import NextLink from 'next/link';
-import {useSearchParams} from 'next/navigation';
-import {Controller, useForm} from 'react-hook-form';
+import { useSearchParams } from 'next/navigation';
+import { Controller, useForm } from 'react-hook-form';
 
-import {z} from 'zod';
+import { z } from 'zod';
 
-import {doLogin} from '@/actions/auth';
-import {link} from '@/components/primitives';
+import { doLogin } from '@/actions/auth';
+import { link } from '@/components/primitives';
 
-import {signInSchema} from '@/lib/zod';
+import { signInSchema } from '@/lib/zod';
+import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
 export const LoginForm = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get('callbackUrl') || '';
+    const callbackUrl = searchParams.get('callbackUrl') || DEFAULT_LOGIN_REDIRECT;
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
-    const {handleSubmit, formState, control} = useForm<z.infer<typeof signInSchema>>({
+    const { handleSubmit, formState, control } = useForm<z.infer<typeof signInSchema>>({
         resolver: zodResolver(signInSchema),
         defaultValues: {
             email: '',
@@ -39,11 +40,11 @@ export const LoginForm = () => {
     };
 
     return (
-        <form autoComplete="off" className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+        <form autoComplete="off" className="flex flex-col gap-6" method="POST" onSubmit={handleSubmit(onSubmit)}>
             <Controller
                 control={control}
                 name="email"
-                render={({field, formState}) => (
+                render={({ field, formState }) => (
                     <Input
                         autoComplete="off"
                         errorMessage={formState.errors?.['email']?.message?.toString()}
@@ -59,7 +60,7 @@ export const LoginForm = () => {
             <Controller
                 control={control}
                 name="password"
-                render={({field, formState}) => (
+                render={({ field, formState }) => (
                     <Input
                         autoComplete="off"
                         endContent={
@@ -87,13 +88,13 @@ export const LoginForm = () => {
                 <Controller
                     control={control}
                     name="remember"
-                    render={({field}) => (
+                    render={({ field }) => (
                         <Checkbox checked={field.value} onChange={field.onChange}>
                             Remember me
                         </Checkbox>
                     )}
                 />
-                <NextLink className={link().base({size: 'xs'})} href={'/'} prefetch={true}>
+                <NextLink className={link().base({ size: 'xs' })} href={'/'} prefetch={true}>
                     Forget Password?
                 </NextLink>
             </div>

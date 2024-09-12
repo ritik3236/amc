@@ -3,15 +3,15 @@ import React from 'react';
 import Image from 'next/image';
 import NextLink from 'next/link';
 
-import {Icons} from '@/components/icons';
-import {Services} from '@/components/landingPage/services';
-import {LogoCarousel} from '@/components/logo-carousel';
-import {PayConfirm} from '@/components/paymentPage/payConfirm';
-import {PayCTA} from '@/components/paymentPage/payCTA';
-import {PayWidget} from '@/components/paymentPage/payWidget';
-import {description, link, subtitle, title} from '@/components/primitives';
-import {Meteors} from '@/components/ui/meteors';
-import {pageConstants} from '@/constant';
+import { Icons } from '@/components/icons';
+import { Services } from '@/components/landingPage/services';
+import { LogoCarousel } from '@/components/logo-carousel';
+import { PayConfirm } from '@/components/paymentPage/payConfirm';
+import { PayCTA } from '@/components/paymentPage/payCTA';
+import { PayWidget } from '@/components/paymentPage/payWidget';
+import { description, link, subtitle, title } from '@/components/primitives';
+import { Meteors } from '@/components/ui/meteors';
+import { pageConstants } from '@/constant';
 
 export default function Home() {
     return (
@@ -24,16 +24,16 @@ export default function Home() {
                     <div className="col-span-2">
                         <h1 className="mb-5">
                             <span className={title()}>Accept&nbsp;</span>
-                            <span className={title({color: 'violet'})}>Payments</span>
+                            <span className={title({ color: 'violet' })}>Payments</span>
                             <br/>
-                            <span className={title({color: 'yellow'})}>
+                            <span className={title({ color: 'yellow' })}>
                                 in crypto within seconds
                             </span>
                         </h1>
                         <span className="mb-8 flex w-full text-sm  text-gray-600 lg:text-base">
                             Enhance revenue by improving conversion rates with global payment acceptance, featuring instant settlement and payouts, all customized to meet the unique needs of each business.
                         </span>
-                        <NextLink className={link().base({type: 'solid'})} href="/login">
+                        <NextLink className={link().base({ type: 'solid' })} href="/login">
                             <span>Get Started</span>
                             <Icons.arrowRight className={link().icon()}/>
                         </NextLink>
@@ -76,10 +76,10 @@ export default function Home() {
             <section
                 className="relative z-20 mx-auto grid w-full translate-y-0 py-8 opacity-100 transition-all duration-1000 md:py-28 lg:w-[1080px] lg:grid-cols-4">
                 <div className="col-span-4 mb-16 flex flex-col gap-6 text-center lg:col-span-2 lg:col-start-2">
-                    <h2 className={title({size: 'sm'})}>
+                    <h2 className={title({ size: 'sm' })}>
                         Elevate your earnings with modern payments technology
                     </h2>
-                    <p className={description({size: 'md'})}>
+                    <p className={description({ size: 'md' })}>
                         Reduce costs, grow revenue, and run your business more efficiently on a fully integrated
                         platform. Use Coinflow to handle all of your payments-related needs, manage revenue operations,
                         and launch (or invent) new business models
@@ -94,10 +94,10 @@ export default function Home() {
                             <div className="sticky top-32 flex flex-col pr-8">
                                 <div className="absolute h-10 w-px bg-blue-500"/>
                                 <div className="ml-4">
-                                    <h2 className={title({size: 'sm'})}>
+                                    <h2 className={title({ size: 'sm' })}>
                                         Crypto payments for every business
                                     </h2>
-                                    <p className={description({className: 'mb-4'})}>
+                                    <p className={description({ className: 'mb-4' })}>
                                         Crypto payment is perfect for any business model and can be easily integrated
                                         into your existing operations or set up as a brand new service. We cover
                                         everyone from Forex and Crypto brokers to gaming!
@@ -119,7 +119,7 @@ export default function Home() {
                                         <item.icon className="mr-4 text-blue-600" size={24}/>
                                         {item.title}
                                     </h3>
-                                    <p className={description({size: 'xs', className: 'px-4'})}>
+                                    <p className={description({ size: 'xs', className: 'px-4' })}>
                                         {item.desc}
                                     </p>
                                 </div>
@@ -135,10 +135,10 @@ export default function Home() {
                             <div className="sticky top-32 flex flex-col pr-8">
                                 <div className="absolute h-10 w-px bg-yellow-500"/>
                                 <div className="ml-4">
-                                    <h2 className={title({size: 'sm'})}>
+                                    <h2 className={title({ size: 'sm' })}>
                                         Crypto vs Cards/Fiat
                                     </h2>
-                                    <p className={description({className: 'mb-4'})}>
+                                    <p className={description({ className: 'mb-4' })}>
                                         Crypto payments have many advantages compared with traditional Fiat payment
                                         methods. eg. Crypto payments are cheaper, faster, and more secure than
                                         traditional payment methods. See the facts for yourself!
@@ -188,10 +188,10 @@ export default function Home() {
                         <div className="sticky top-32 flex flex-col pr-8">
                             <div className="absolute h-10 w-px bg-orange-500"/>
                             <div className="ml-4">
-                                <h2 className={title({size: 'sm'})}>
+                                <h2 className={title({ size: 'sm' })}>
                                     How crypto payments works?
                                 </h2>
-                                <p className={description({className: 'mb-4'})}>
+                                <p className={description({ className: 'mb-4' })}>
                                     A cryptocurrency payment gateway works in just 4 easy steps: choosing a payment
                                     method, selecting a currency, transferring funds to the deposit address,
                                     and receiving the payment in your preferred cryptocurrency.
@@ -215,7 +215,7 @@ export default function Home() {
                                     <item.icon className="mr-4 text-orange-600" size={24}/>
                                     <span>{item.title}</span>
                                 </h3>
-                                <p className={description({size: 'xs', className: 'px-4'})}>
+                                <p className={description({ size: 'xs', className: 'px-4' })}>
                                     {item.desc}
                                 </p>
                             </div>
@@ -229,10 +229,10 @@ export default function Home() {
                         <div className="sticky top-32 flex flex-col pr-8">
                             <div className="absolute h-10 w-px bg-blue-500"/>
                             <div className="ml-4">
-                                <h2 className={title({size: 'sm'})}>
+                                <h2 className={title({ size: 'sm' })}>
                                     Easy integration and setup
                                 </h2>
-                                <p className={description({className: 'mb-4'})}>
+                                <p className={description({ className: 'mb-4' })}>
                                     CoinDhan crypto payment gateway integrates seamlessly with
                                     WordPress, Magento, Opencart, Prestashop, Laravel, PHP and Node.js for consuming
                                     payment gateway services without leaving the website.
@@ -260,17 +260,20 @@ export default function Home() {
             <section className="relative z-20 mx-auto grid w-full py-8 md:py-28 lg:w-[1080px] lg:grid-cols-4">
                 <div
                     className="relative col-span-4 grid space-y-12 overflow-hidden rounded-xl bg-neutral-950 p-12 text-center text-neutral-50">
-                    <h2 className={title({size: 'sm'})}>
+                    <h2 className={title({ size: 'sm' })}>
                         <span>Start accepting payments in</span>
                         <br/>
-                        <span className={title({size: 'sm', color: 'yellow'})}>crypto now!</span>
+                        <span className={title({ size: 'sm', color: 'yellow' })}>crypto now!</span>
                     </h2>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <NextLink className={link().base({type: 'solid', className: 'text-sm shadow-xl shadow-blue-500/20'})} href="/about">
+                        <NextLink className={link().base({
+                            type: 'solid',
+                            className: 'text-sm shadow-xl shadow-blue-500/20',
+                        })} href="/about">
                             <span>Get Started</span>
                             <Icons.arrowRight className={link().icon()}/>
                         </NextLink>
-                        <NextLink className={link().base({type: 'outline', size: 'xs'})} href="/">
+                        <NextLink className={link().base({ type: 'outline', size: 'xs' })} href="/public">
                             <Icons.video/>
                             <span>Watch Video</span>
                         </NextLink>

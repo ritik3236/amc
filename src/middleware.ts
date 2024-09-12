@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from '@/routes';
+import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, privateRoutes, publicRoutes } from '@/routes';
 
 export default auth((req) => {
     const { nextUrl } = req;
@@ -7,19 +7,26 @@ export default auth((req) => {
 
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
+    const isPrivateRoute = privateRoutes.includes(nextUrl.pathname);
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-    if (isApiAuthRoute) {
+    if (isApiAuthRoute || isPublicRoute) {
         return null;
     }
 
-    if (isAuthRoute) {
-        if (!isLoggedIn) return;
+    if (!isLoggedIn && isAuthRoute) {
+        return null;
+    }
 
+    if (isLoggedIn && isAuthRoute) {
         return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     }
 
-    if (!isLoggedIn && !isPublicRoute) {
+    if (isLoggedIn && isPrivateRoute) {
+        return null;
+    }
+
+    if (!isLoggedIn && isPrivateRoute) {
         let callbackUrl = nextUrl.pathname;
 
         if (nextUrl.search) {

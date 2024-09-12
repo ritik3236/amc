@@ -3,7 +3,9 @@ import * as React from 'react';
 import {
     LuArrowRight,
     LuBarChart,
+    LuBell,
     LuBriefcase,
+    LuCalendar,
     LuCheck,
     LuCheckCircle,
     LuCoins,
@@ -12,6 +14,7 @@ import {
     LuGamepad,
     LuGitMerge,
     LuGlobe,
+    LuHome,
     LuInfinity,
     LuInfo,
     LuLayoutDashboard,
@@ -20,6 +23,7 @@ import {
     LuPlay,
     LuQrCode,
     LuScale,
+    LuSettings,
     LuShoppingCart,
     LuStore,
     LuX,
@@ -227,7 +231,8 @@ export const NextUILogo: React.FC<IconSvgProps> = (props) => {
 
 const BgWaveSvg: React.FC<IconSvgProps> = () => {
     return (
-        <svg className="scale-x-[200%]" height="100%" id="svg" viewBox="0 0 1440 690" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <svg className="scale-x-[200%]" height="100%" id="svg" viewBox="0 0 1440 690" width="100%"
+            xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="gradient" x1="60%" x2="40%" y1="1%" y2="99%">
                     <stop offset="5%" stopColor="#ff8e5a"/>
@@ -268,6 +273,7 @@ export const Svgs = {
 export const Icons = {
     ada: SiCardano,
     arrowRight: LuArrowRight,
+    bell: LuBell,
     bnb: SiBinance,
     btc: SiBitcoin,
     cancel: LuX,
@@ -280,6 +286,7 @@ export const Icons = {
     dash: SiDash,
     dashboard: LuLayoutDashboard,
     dice: LuDices,
+    calendar: LuCalendar,
     doge: SiDogecoin,
     eth: SiEthereum,
     flower: LuFlower,
@@ -288,6 +295,7 @@ export const Icons = {
     gitMerge: LuGitMerge,
     globe: LuGlobe,
     helium: SiHelium,
+    home: LuHome,
     infinity: LuInfinity,
     info: LuInfo,
     law: LuScale,
@@ -298,6 +306,7 @@ export const Icons = {
     polkadot: SiPolkadot,
     polygon: SiPolygon,
     qrCode: LuQrCode,
+    settings: LuSettings,
     shop: LuStore,
     solana: SiSolana,
     usdt: SiTether,

@@ -1,17 +1,17 @@
-import NextAuth, {NextAuthConfig} from 'next-auth';
+import NextAuth, { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import {AccountVerificationError, InvalidCredentialsError, OtpRequiredError} from '@/lib/errors';
-import {setAuthCookie} from '@/lib/utils';
+import { AccountVerificationError, InvalidCredentialsError, OtpRequiredError } from '@/lib/errors';
+import { setAuthCookie } from '@/lib/utils';
 
 export const authConfig: NextAuthConfig = {
     providers: [
         Credentials({
             name: 'Credentials',
             credentials: {
-                email: {label: 'Email', type: 'text'},
-                password: {label: 'Password', type: 'password'},
-                remember: {label: 'Remember', type: 'boolean'},
+                email: { label: 'Email', type: 'text' },
+                password: { label: 'Password', type: 'password' },
+                remember: { label: 'Remember', type: 'boolean' },
             },
             async authorize(credentials) {
                 // return {
@@ -20,10 +20,10 @@ export const authConfig: NextAuthConfig = {
                 //     name: 'John Doe',
                 //     image: '',
                 // } as User;
-                
+
                 const res = await fetch('https://gamma.coinfinacle.com/api/v2/barong/identity/sessions', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         email: credentials.email,
                         password: credentials.password,
@@ -51,7 +51,7 @@ export const authConfig: NextAuthConfig = {
         }),
     ],
     callbacks: {
-        async jwt({token, user}) {
+        async jwt({ token, user }) {
             if (user) {
                 token.user = user;
             }
@@ -62,7 +62,7 @@ export const authConfig: NextAuthConfig = {
 
             return token;
         },
-        async session({session, token}) {
+        async session({ session, token }) {
             // session.user = token.user;
 
             // console.log('===============Callback session|auth.ts==================');
@@ -80,4 +80,4 @@ export const authConfig: NextAuthConfig = {
     },
 };
 
-export const {handlers, signIn, signOut, auth} = NextAuth(authConfig);
+export const { handlers, signIn, signOut, auth } = NextAuth(authConfig);
