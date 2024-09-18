@@ -2,7 +2,7 @@ import NextAuth, { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
 import { AccountVerificationError, InvalidCredentialsError, OtpRequiredError } from '@/lib/errors';
-import { setAuthCookie } from '@/lib/utils';
+import { setAuthCookie } from '@/lib/server-utils';
 
 export const authConfig: NextAuthConfig = {
     providers: [

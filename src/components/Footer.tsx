@@ -1,3 +1,4 @@
+import 'server-only';
 import React from 'react';
 
 import { Divider } from '@nextui-org/divider';
@@ -7,9 +8,10 @@ import { Logo } from '@/components/icons';
 import { description, subtitle } from '@/components/primitives';
 import { ThemeSwitch } from '@/components/theme-switch';
 
-export default function Footer() {
+export const Footer: React.FC = async () => {
     return (
-        <footer className="relative z-20 w-full border-t border-dashed border-black/5 bg-default-50/50 dark:border-slate-900">
+        <footer
+            className="relative z-20 w-full border-t border-dashed border-black/5 bg-default-50/50 dark:border-slate-900">
             <section className="mx-auto w-full py-12 lg:w-[1080px]">
                 <div className="grid grid-cols-4 [&_li]:mb-2">
                     <div className="relative col-span-4 px-4 md:col-span-1">
@@ -88,4 +90,4 @@ export default function Footer() {
             </section>
         </footer>
     );
-}
+};

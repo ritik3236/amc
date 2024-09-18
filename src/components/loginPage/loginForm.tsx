@@ -10,12 +10,12 @@ import NextLink from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Controller, useForm } from 'react-hook-form';
 
-import { z } from 'zod';
+import { toast } from 'sonner';
 
 import { doLogin } from '@/actions/auth';
 import { link } from '@/components/primitives';
 
-import { signInSchema } from '@/lib/zod';
+import { SignInSchema, signInSchema } from '@/lib/zod';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
 export const LoginForm = () => {
@@ -26,7 +26,7 @@ export const LoginForm = () => {
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
-    const { handleSubmit, formState, control } = useForm<z.infer<typeof signInSchema>>({
+    const { handleSubmit, formState, control } = useForm<SignInSchema>({
         resolver: zodResolver(signInSchema),
         defaultValues: {
             email: '',
@@ -35,8 +35,10 @@ export const LoginForm = () => {
         },
     });
 
-    const onSubmit = async (values: z.infer<typeof signInSchema>) => {
-        await doLogin(values, callbackUrl);
+    const onSubmit = async (values: SignInSchema) => {
+        const { error } = await doLogin(values, callbackUrl) || {};
+
+        if (error) toast.error(error?.message);
     };
 
     return (

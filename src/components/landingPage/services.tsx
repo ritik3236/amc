@@ -5,13 +5,13 @@ import React from 'react';
 import { Button } from '@nextui-org/button';
 import { Card, CardFooter } from '@nextui-org/card';
 import { Image } from '@nextui-org/image';
-import clsx from 'clsx';
 import NextImage from 'next/image';
 import Link from 'next/link';
 
 import { Icons, Svgs } from '@/components/icons';
 import { description, subtitle } from '@/components/primitives';
 import { pageConstants } from '@/constant';
+import { cn } from '@/lib/utils';
 
 export const Services: React.FC = () => {
     const [selected, setSelected] = React.useState('global');
@@ -25,13 +25,14 @@ export const Services: React.FC = () => {
                 {Object.values(pageConstants.landing.services).map((service) => (
                     <div key={service.key} className="flex flex-col space-y-1">
                         <button
-                            className={clsx('flex items-center space-x-2 whitespace-nowrap rounded-lg px-4 py-3 text-xs font-semibold transition hover:bg-gray-500/5', { 'text-primary-500': selected === service.key })}
+                            className={cn('flex items-center space-x-2 whitespace-nowrap rounded-lg px-4 py-3 text-xs font-semibold transition hover:bg-gray-500/5', { 'text-primary-500': selected === service.key })}
                             onClick={() => setSelected(service.key)}
                         >
                             <service.tabIcon/>
                             <span>{service.tabTitle}</span>
                         </button>
-                        <div className={clsx('h-0.5 w-full transition-all', { 'bg-primary-500': selected === service.key })}/>
+                        <div
+                            className={cn('h-0.5 w-full transition-all', { 'bg-primary-500': selected === service.key })}/>
                     </div>
                 ))}
             </div>

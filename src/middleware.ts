@@ -3,7 +3,9 @@ import { apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, privateRoutes, publi
 
 export default auth((req) => {
     const { nextUrl } = req;
-    const isLoggedIn = !!req.auth;
+    
+    const barongSession = req.cookies.get('_barong_session')?.value;
+    const isLoggedIn = !!req.auth && !!barongSession;
 
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname);

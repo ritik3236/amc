@@ -1,7 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
 
 import { pageConstants } from '@/constant';
+import { cn } from '@/lib/utils';
 
 interface OwnProps {
     className?: string;
@@ -12,7 +12,7 @@ export const LogoCarousel: React.FC<OwnProps> = (props) => {
 
     return (
         <div
-            className={clsx('inline-flex w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]', className)}
+            className={cn('inline-flex w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]', className)}
         >
             <ul className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8">
                 {pageConstants.landing.cryptoIcons.map((c, index) => (

@@ -1,9 +1,15 @@
-import { title } from 'src/components/primitives';
 
-export default function ProfilePage() {
+import { getProfile } from '@/actions/dashboard/profile';
+import { Breadcrumbs } from '@/components/ui/Breadcrumb';
+
+export default async function ProfilePage() {
+
+    const profile = await getProfile();
+
     return (
         <div>
-            <h1 className={title({ fullWidth: true })}>Profile</h1>
+            <Breadcrumbs/>
+            {JSON.stringify(profile)}
         </div>
     );
 }

@@ -1,3 +1,5 @@
+import 'server-only';
+
 import React from 'react';
 import { Input } from '@nextui-org/input';
 import { Kbd } from '@nextui-org/kbd';
@@ -20,7 +22,7 @@ import { DiscordIcon, GithubIcon, Logo, SearchIcon, TwitterIcon } from 'src/comp
 import { ThemeSwitch } from 'src/components/theme-switch';
 import { siteConfig } from 'src/config/site';
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC = async () => {
     const searchInput = (
         <Input
             aria-label="Search"

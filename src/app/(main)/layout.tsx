@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BgCircle } from '@/components/bgCircle';
-import Footer from '@/components/Footer';
+import { Footer } from '@/components/Footer';
 import { Navbar } from '@/components/navbar';
 
 export default function PublicRootLayout({ children }: { children: React.ReactNode }) {

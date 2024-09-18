@@ -13,6 +13,7 @@ export const authRoutes: string[] = [
 
 export const privateRoutes: string[] = [
     '/dashboard',
+    '/dashboard/profile',
 ];
 
 export const apiAuthPrefix: string = '/api/auth';

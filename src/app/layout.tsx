@@ -2,11 +2,11 @@ import 'src/styles/globals.css';
 
 import React from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import clsx from 'clsx';
 import { Metadata, Viewport } from 'next';
 
 import { figTree } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+import { cn } from '@/lib/utils';
 
 import { Providers } from './providers';
 
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html suppressHydrationWarning lang="en">
             <body
-                className={clsx('min-h-screen bg-background antialiased ', figTree.className)}
+                className={cn('min-h-screen bg-background antialiased ', figTree.className)}
             >
                 <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark', children: '' }}>
                     {children}

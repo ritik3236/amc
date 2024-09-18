@@ -1,4 +1,4 @@
-import {tv} from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
 export const title = tv({
     base: 'inline-block font-semibold !leading-tight tracking-tight',
@@ -84,6 +84,7 @@ export const link = tv({
         },
         color: {
             primary: 'text-primary',
+            default: 'text-default-400',
         },
         size: {
             xs: 'text-sm',

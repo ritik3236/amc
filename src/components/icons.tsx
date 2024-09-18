@@ -26,6 +26,7 @@ import {
     LuSettings,
     LuShoppingCart,
     LuStore,
+    LuUserCircle,
     LuX,
     LuZap,
 } from 'react-icons/lu';
@@ -282,6 +283,7 @@ export const Icons = {
     check: LuCheck,
     circle: LuCheckCircle,
     coins: LuCoins,
+    userCog: LuUserCircle,
     cursor: LuMousePointerClick,
     dash: SiDash,
     dashboard: LuLayoutDashboard,

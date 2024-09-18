@@ -73,6 +73,10 @@ export const siteConfig = {
             icon: Icons.dashboard,
         },
         {
+            label: 'Profile',
+            href: '/dashboard/profile',
+            icon: Icons.userCog,
+        },{
             label: 'Calendar',
             href: '/calendar',
             icon: Icons.calendar,

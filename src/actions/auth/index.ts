@@ -4,14 +4,13 @@ import { isRedirectError } from 'next/dist/client/components/redirect';
 
 import { cookies } from 'next/headers';
 import { AuthError } from 'next-auth';
-import { z } from 'zod';
 
 import { signIn, signOut } from '@/auth';
 import { AccountVerificationError, CustomError, InvalidCredentialsError, OtpRequiredError } from '@/lib/errors';
-import { signInSchema } from '@/lib/zod';
+import { SignInSchema, signInSchema } from '@/lib/zod';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
-export async function doLogin(formData: z.infer<typeof signInSchema>, callbackUrl = DEFAULT_LOGIN_REDIRECT) {
+export async function doLogin(formData: SignInSchema, callbackUrl = DEFAULT_LOGIN_REDIRECT) {
     try {
         const parsedCredentials = signInSchema.safeParse(formData);
 
@@ -29,6 +28,8 @@ export async function doLogin(formData: z.infer<typeof signInSchema>, callbackUr
             password: parsedCredentials.data.password,
             remember: parsedCredentials.data.remember,
         });
+
+        return { success: true, error: null };
     } catch (e: unknown) {
         if (isRedirectError(e)) throw e;
         const nextError = e as AuthError;
@@ -55,8 +56,9 @@ export async function doLogout() {
     try {
         await signOut({ redirectTo: '/', redirect: true });
         cookies().delete('_barong_session');
-    } catch (e) {
+    } catch (e: unknown) {
         if (isRedirectError(e)) throw e;
+        console.error(e);
 
         return { success: false, error: { message: 'An unexpected error occurred.' } };
     }
