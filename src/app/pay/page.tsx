@@ -1,5 +1,5 @@
 import { redirect, RedirectType } from 'next/navigation';
 
-export default function SettingsPage() {
+export default function PayPage() {
     redirect  ('/', RedirectType.replace );
 }
