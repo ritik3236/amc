@@ -21,10 +21,10 @@ export default async function SecurityPage() {
                 </div>
                 <form className="col-span-4 grid grid-cols-2 gap-x-8 gap-y-4 text-sm">
                     <div className="flex flex-col gap-2">
-                        <Input label="Current Password" size="sm"/>
+                        <Input label="Current Password" size="sm" type="password"/>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <Input label="New Password" size="sm"/>
+                        <Input label="New Password" size="sm" type="password"/>
                     </div>
                     <div/>
                     <div className="flex justify-end gap-2">
