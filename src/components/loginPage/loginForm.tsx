@@ -43,12 +43,11 @@ export const LoginForm = () => {
 
         if (!error) return;
 
-        if (error && error.code === '1005') {
+        if (error.code === '1005') {
             onOpen();
+        } else {
+            toast.error(error?.message);
         }
-
-        toast.error(error?.message);
-
     };
 
     const onModalClose = () => {

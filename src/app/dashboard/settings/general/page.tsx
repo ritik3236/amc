@@ -12,7 +12,7 @@ export default async function GeneralPage() {
             <section className="m-auto">
                 <h2 className={subtitle()}>Error</h2>
                 <p className={description({ className: 'm-0', size: 'xs' })}>
-                    {user.error}
+                    {'An error occurred while fetching your profile information. Please try again later.'}
                 </p>
             </section>
         );
@@ -58,7 +58,7 @@ export default async function GeneralPage() {
                         <p>Referral Link</p>
                         <Snippet hideSymbol classNames={{ pre: 'font-sans' }} radius="lg"
                             size="md">
-                            {`https://gamma.coinfinacle.com/signup?refid=${user.value.uid}`}
+                            {`${process.env.NEXT_PUBLIC_BASE_URL}/signup?refid=${user.value.uid}`}
                         </Snippet>
                     </div>
                 </div>
