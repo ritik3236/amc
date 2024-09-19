@@ -31,15 +31,14 @@ export const LabelSchema = z.object({
 export type Label = z.infer<typeof LabelSchema>;
 
 export const PhoneSchema = z.object({
-    'id': z.number(),
-    'country': z.string(),
-    'number': z.string(),
-    'validated_at': z.null(),
-    'created_at': z.coerce.date(),
-    'updated_at': z.coerce.date(),
+    id: z.number(),
+    country: z.string(),
+    number: z.string(),
+    validated_at: z.date().nullable(),
+    created_at: z.coerce.date(),
+    updated_at: z.coerce.date(),
 });
 export type Phone = z.infer<typeof PhoneSchema>;
-
 export const ProfileSchema = z.object({
     'id': z.number(),
     'first_name': z.string(),
