@@ -42,7 +42,7 @@ export default async function SecurityPage() {
                     </p>
                 </div>
                 <form className="col-span-4 grid grid-cols-2 gap-x-8 gap-y-4 text-sm">
-                    <div className="col-span-2 space-y-4 rounded-small bg-default-100/50 p-4 backdrop-blur-sm">
+                    <div className="col-span-2 space-y-4 rounded-sm bg-default-100/50 p-4 backdrop-blur-sm">
                         <div className="flex items-center justify-between">
                             <p className={description({ size: 'xs' })}>
                                 Two-Factor Authentication (2FA) adds a second verification step to the login process.
