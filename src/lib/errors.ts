@@ -13,7 +13,13 @@ export class CustomError extends Error {
 
 export class OtpRequiredError extends CustomError {
     constructor(errors: string[] = []) {
-        super('OtpRequiredError', 'OTP is required for authentication.', '1001', errors);
+        super('OtpRequiredError', 'OTP is required for authentication.', '1005', errors);
+    }
+}
+
+export class OtpInvalidError extends CustomError {
+    constructor(errors: string[] = []) {
+        super('OtpInvalidError', 'Invalid OTP.', '1006', errors);
     }
 }
 

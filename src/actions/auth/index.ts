@@ -6,7 +6,13 @@ import { cookies } from 'next/headers';
 import { AuthError } from 'next-auth';
 
 import { signIn, signOut } from '@/auth';
-import { AccountVerificationError, CustomError, InvalidCredentialsError, OtpRequiredError } from '@/lib/errors';
+import {
+    AccountVerificationError,
+    CustomError,
+    InvalidCredentialsError,
+    OtpInvalidError,
+    OtpRequiredError,
+} from '@/lib/errors';
 import { SignInSchema, signInSchema } from '@/lib/zod';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
@@ -25,6 +31,7 @@ export async function doLogin(formData: SignInSchema, callbackUrl = DEFAULT_LOGI
             redirect: true,
             redirectTo: callbackUrl,
             email: parsedCredentials.data.email,
+            otp: parsedCredentials.data.otp,
             password: parsedCredentials.data.password,
             remember: parsedCredentials.data.remember,
         });
@@ -39,12 +46,12 @@ export async function doLogin(formData: SignInSchema, callbackUrl = DEFAULT_LOGI
             return { success: false, error: { message: 'An unexpected error occurred.' } };
         }
 
-        if (error instanceof InvalidCredentialsError) {
-            return { success: false, error: { message: error.message, details: error.errors } };
-        }
-
-        if (error instanceof OtpRequiredError || error instanceof AccountVerificationError) {
-            return { success: false, error: { message: error.message, details: error.errors } };
+        if (error instanceof InvalidCredentialsError
+            || error instanceof OtpRequiredError
+            || error instanceof AccountVerificationError
+            || error instanceof OtpInvalidError
+        ) {
+            return { success: false, error: { message: error.message, details: error.errors, code: error.code } };
         }
 
         // Handle unexpected CustomError types

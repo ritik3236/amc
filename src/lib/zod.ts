@@ -8,6 +8,10 @@ export const signInSchema = z.object({
         .min(1, 'Password is required')
         .min(8, 'Password must be more than 8 characters')
         .max(32, 'Password must be less than 32 characters'),
+    otp: z.string()
+        .min(0)
+        .max(6, 'OTP must be 6 characters')
+        .optional(),
     remember: z.union([z.boolean(), z.string()]).optional().transform((val) => {
         if (typeof val === 'string') {
             return val === 'true';
