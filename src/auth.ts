@@ -25,7 +25,7 @@ export const authConfig: NextAuthConfig = {
                 const payload = {
                     email: credentials.email,
                     password: credentials.password,
-                    ...(credentials.otp && { otp_code: credentials.otp }),
+                    ...(!!credentials.otp && { otp_code: credentials.otp }),
                 };
 
                 const res = await fetch('https://gamma.coinfinacle.com/api/v2/barong/identity/sessions', {

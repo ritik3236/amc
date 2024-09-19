@@ -17,7 +17,7 @@ export default function Home() {
     return (
         <React.Fragment>
             <section
-                className="relative z-20 col-span-4 mb-16 flex flex-1 translate-y-0 flex-col items-center overflow-hidden pt-8 opacity-100 transition-all duration-1000 md:mb-28 md:pt-16"
+                className="relative z-20 col-span-4 mb-16 flex flex-1 flex-col items-center overflow-hidden pt-8 transition-all duration-1000 md:mb-28 md:pt-16"
             >
                 <div
                     className="mx-auto mb-16 grid w-full flex-1 grid-cols-1 px-4 pt-10 md:mb-48 lg:w-[1080px] lg:grid-cols-4 lg:px-0">

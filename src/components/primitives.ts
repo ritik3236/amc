@@ -81,7 +81,7 @@ export const link = tv({
         type: {
             solid: 'rounded-full px-6 py-3',
             outline: 'rounded-full border px-6 py-3',
-            tab: 'border-b-2 border-transparent p-4 opacity-100 transition-none hover:border-default-800 hover:text-default-800',
+            tab: 'border-b-2 border-transparent p-4 opacity-100 transition-colors hover:border-default-800 hover:text-default-800',
         },
         color: {
             primary: 'text-primary',

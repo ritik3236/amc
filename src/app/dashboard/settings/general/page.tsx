@@ -18,6 +18,13 @@ export default async function GeneralPage() {
         );
     }
 
+    const userInfo = [
+        { label: 'User Id', value: user.value.uid },
+        { label: 'User Name', value: user.value.username || 'N/A' },
+        { label: 'Email', value: user.value.email },
+        { label: 'Full Name', value: user.value.profiles[0]?.full_name || 'N/A' },
+    ];
+
     return (
         <section className="space-y-8 py-4">
             <div className="mt-4 grid grid-cols-3">
@@ -28,30 +35,14 @@ export default async function GeneralPage() {
                     </p>
                 </div>
                 <div className="col-span-2 grid grid-cols-2 gap-x-8 gap-y-4 text-sm font-medium">
-                    <div className="flex flex-col gap-2">
-                        <p>User Id</p>
-                        <Snippet hideSymbol classNames={{ pre: 'font-sans' }} radius="lg" size="md">
-                            {user.value.uid}
-                        </Snippet>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <p>User Name</p>
-                        <Snippet hideSymbol classNames={{ pre: 'font-sans' }} radius="lg" size="md">
-                            {user.value.username || 'N/A'}
-                        </Snippet>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <p>Email</p>
-                        <Snippet hideSymbol classNames={{ pre: 'font-sans' }} radius="lg" size="md">
-                            {user.value.email}
-                        </Snippet>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <p>Full Name</p>
-                        <Snippet hideSymbol classNames={{ pre: 'font-sans' }} radius="lg" size="md">
-                            {user.value.profiles[0]?.full_name || 'N/A'}
-                        </Snippet>
-                    </div>
+                    {userInfo.map((item) => (
+                        <div key={item.label} className="flex flex-col gap-2">
+                            <p>{item.label}</p>
+                            <Snippet hideSymbol classNames={{ pre: 'font-sans' }} radius="lg" size="md">
+                                {item.value}
+                            </Snippet>
+                        </div>
+                    ))}
                 </div>
             </div>
             <Divider/>
