@@ -67,7 +67,7 @@ export default async function GeneralPage() {
                         <p>Referral Link</p>
                         <Snippet hideSymbol classNames={{ pre: 'font-sans' }} radius="lg"
                             size="md">
-                            {`https://gamma.coinfinacle.com/signup?refid=${user.value.uid}`}
+                            {`${process.env.NEXT_PUBLIC_BASE_URL}/signup?refid=${user.value.uid}`}
                         </Snippet>
                     </div>
                 </div>
