@@ -18,7 +18,7 @@ export default function Page({ params }: { params: { id: string } }) {
             <footer className="flex justify-center">
                 <NextLink className="flex items-center justify-start gap-1" href="/">
                     <Logo/>
-                    <p className="font-bold text-inherit">Powered by CoinDhan Pay</p>
+                    <span className="font-bold text-inherit">Powered by CoinDhan Pay</span>
                 </NextLink>
             </footer>
         </section>
