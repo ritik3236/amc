@@ -55,20 +55,20 @@ export const ProfileSchema = z.object({
 });
 export type Profile = z.infer<typeof ProfileSchema>;
 export const UserSchema = z.object({
-    'email': z.string(),
-    'uid': z.string(),
-    'role': z.string(),
-    'level': z.number(),
-    'otp': z.boolean(),
-    'state': z.string(),
-    'referral_uid': z.null(),
-    'data': z.string(),
-    'username': z.null(),
-    'labels': z.array(LabelSchema),
-    'phones': z.array(PhoneSchema),
-    'profiles': z.array(ProfileSchema),
-    'data_storages': z.array(z.any()),
-    'created_at': z.coerce.date(),
-    'updated_at': z.coerce.date(),
+    email: z.string().email(),
+    uid: z.string(),
+    role: z.string(),
+    level: z.number(),
+    otp: z.boolean(),
+    state: z.string(),
+    referral_uid: z.string().nullable(),
+    data: z.string(),
+    username: z.string().nullable(),
+    labels: z.array(LabelSchema),
+    phones: z.array(PhoneSchema),
+    profiles: z.array(ProfileSchema),
+    data_storages: z.array(z.any()), // Consider defining a specific schema instead of `z.any()`
+    created_at: z.coerce.date(),
+    updated_at: z.coerce.date(),
 });
 export type User = z.infer<typeof UserSchema>;
