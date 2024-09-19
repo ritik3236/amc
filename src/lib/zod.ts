@@ -40,21 +40,20 @@ export const PhoneSchema = z.object({
 });
 export type Phone = z.infer<typeof PhoneSchema>;
 export const ProfileSchema = z.object({
-    'id': z.number(),
-    'first_name': z.string(),
-    'last_name': z.string(),
-    'full_name': z.string(),
-    'dob': z.string(),
-    'address': z.string(),
-    'postcode': z.string(),
-    'city': z.string(),
-    'country': z.string(),
-    'state': z.string(),
-    'created_at': z.coerce.date(),
-    'updated_at': z.coerce.date(),
+    id: z.number(),
+    first_name: z.string(),
+    last_name: z.string(),
+    full_name: z.string(),
+    dob: z.coerce.date(),
+    address: z.string(),
+    postcode: z.string(),
+    city: z.string(),
+    country: z.string(),
+    state: z.string(),
+    created_at: z.coerce.date(),
+    updated_at: z.coerce.date(),
 });
 export type Profile = z.infer<typeof ProfileSchema>;
-
 export const UserSchema = z.object({
     'email': z.string(),
     'uid': z.string(),
