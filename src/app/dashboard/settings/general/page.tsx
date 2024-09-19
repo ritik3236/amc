@@ -12,7 +12,7 @@ export default async function GeneralPage() {
             <section className="m-auto">
                 <h2 className={subtitle()}>Error</h2>
                 <p className={description({ className: 'm-0', size: 'xs' })}>
-                    {user.error}
+                    {'An error occurred while fetching your profile information. Please try again later.'}
                 </p>
             </section>
         );
