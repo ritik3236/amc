@@ -1,5 +1,7 @@
 import { Spinner } from '@nextui-org/spinner';
 
 export default function Loading() {
-    return <Spinner color="warning"/>;
+    return (
+        <Spinner className="m-auto" color="primary"/>
+    );
 }

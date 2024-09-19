@@ -2,7 +2,11 @@
 
 import { cookies } from 'next/headers';
 
-export const getProfile = async () => {
+import { createServerAction, ServerActionError } from '@/lib/server-utils';
+import { User } from '@/lib/zod';
+
+export const getProfile = createServerAction<User>(async () => {
+
     const cookieStore = cookies();
     const barongSession = cookieStore.get('_barong_session')?.value;
 
@@ -13,5 +17,11 @@ export const getProfile = async () => {
         cache: 'no-store',
     });
 
-    return await response.json();
-};
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new ServerActionError('Unable to fetch profile.');
+    }
+
+    return data;
+});

@@ -1,3 +1,6 @@
+import 'server-only';
+
+import React from 'react';
 import { Divider } from '@nextui-org/divider';
 
 import { Snippet } from '@nextui-org/snippet';
@@ -5,9 +8,10 @@ import { Snippet } from '@nextui-org/snippet';
 import { Icons, Logo } from '@/components/icons';
 import { QRCodeGenerator } from '@/components/qrCodeGenerator';
 
-export const PayWidget = () => {
+export const PayWidget: React.FC<{ qrCode?: string }> = ({ qrCode = '0x5753db8ea94bfd98377fee96e0ef8cf2544ca421' }) => {
     return (
-        <section className="w-full rounded-lg border border-dashed bg-white shadow-lg contain-content dark:border-default dark:bg-default-50 md:w-[380px]">
+        <section
+            className="w-full rounded-lg border border-dashed bg-white shadow-lg contain-content dark:border-default dark:bg-default-50 md:w-[380px]">
             <div className="bg-default-100 p-4">
                 <div className="flex items-center justify-between">
                     <div className="-ml-1 flex items-center gap-1">
@@ -29,7 +33,7 @@ export const PayWidget = () => {
                         <Icons.info className="text-primary"/>
                     </span>
                 </div>
-                <QRCodeGenerator value="0x5753db8ea94bfd98377fee96e0ef8cf2544ca421"/>
+                <QRCodeGenerator value={qrCode}/>
                 <div className="mb-4">
                     <div className="mb-1 text-sm font-semibold">Amount:</div>
                     <Snippet
@@ -49,7 +53,7 @@ export const PayWidget = () => {
                         classNames={{ pre: 'break-all whitespace-normal' }}
                         radius="sm"
                     >
-                        0x5753db8ea94bfd98377fee96e0ef8cf2544ca421
+                        {qrCode}
                     </Snippet>
                 </div>
                 <Divider/>

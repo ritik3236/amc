@@ -81,10 +81,11 @@ export const link = tv({
         type: {
             solid: 'rounded-full px-6 py-3',
             outline: 'rounded-full border px-6 py-3',
+            tab: 'border-b-2 border-transparent p-4 opacity-100 transition-none hover:border-default-800 hover:text-default-800',
         },
         color: {
             primary: 'text-primary',
-            default: 'text-default-400',
+            default: 'text-default-500',
         },
         size: {
             xs: 'text-sm',
@@ -92,6 +93,9 @@ export const link = tv({
             md: 'text-base lg:text-lg',
             lg: 'text-lg lg:text-xl',
             base: 'text-base',
+        },
+        active: {
+            true: 'text-primary',
         },
     },
     compoundVariants: [
@@ -104,6 +108,11 @@ export const link = tv({
             type: 'outline',
             color: 'primary',
             class: 'border-primary text-primary',
+        },
+        {
+            type: 'tab',
+            active: true,
+            class: 'border-primary hover:border-primary-600 hover:text-primary-600 hover:opacity-100',
         },
     ],
     defaultVariants: {

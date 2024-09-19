@@ -102,10 +102,10 @@ export default function Home() {
                                         into your existing operations or set up as a brand new service. We cover
                                         everyone from Forex and Crypto brokers to gaming!
                                     </p>
-                                    <NextLink className={link().base()} href="/about">
+                                    `  <NextLink className={link().base()} href="/about">
                                         <span>Contact sales</span>
                                         <Icons.arrowRight className={link().icon()}/>
-                                    </NextLink>
+                                    </NextLink>`
                                 </div>
                             </div>
                         </div>
