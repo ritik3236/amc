@@ -1,8 +1,9 @@
 import NextAuth, { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import { AccountVerificationError, InvalidCredentialsError, OtpRequiredError } from '@/lib/errors';
+import { AccountVerificationError, InvalidCredentialsError, OtpInvalidError, OtpRequiredError } from '@/lib/errors';
 import { setAuthCookie } from '@/lib/server-utils';
+import { SignInSchema } from '@/lib/zod';
 
 export const authConfig: NextAuthConfig = {
     providers: [
@@ -13,7 +14,7 @@ export const authConfig: NextAuthConfig = {
                 password: { label: 'Password', type: 'password' },
                 remember: { label: 'Remember', type: 'boolean' },
             },
-            async authorize(credentials) {
+            async authorize(credentials: SignInSchema) {
                 // return {
                 //     id: '23232',
                 //     email: credentials.email,
@@ -21,13 +22,16 @@ export const authConfig: NextAuthConfig = {
                 //     image: '',
                 // } as User;
 
-                const res = await fetch('https://gamma.coinfinacle.com/api/v2/barong/identity/sessions', {
+                const payload = {
+                    email: credentials.email,
+                    password: credentials.password,
+                    ...(!!credentials.otp && { otp_code: credentials.otp }),
+                };
+
+                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/barong/identity/sessions`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        email: credentials.email,
-                        password: credentials.password,
-                    }),
+                    body: JSON.stringify(payload),
                 });
 
                 const resBody = await res.json();
@@ -40,7 +44,10 @@ export const authConfig: NextAuthConfig = {
                     if (resBody.errors.includes('identity.session.missing_otp')) {
                         throw new OtpRequiredError(resBody.errors);
                     }
-                    if (resBody.errors.includes('identity.session.account_not_verified')) {
+                    if (resBody.errors.includes('identity.session.invalid_otp')) {
+                        throw new OtpInvalidError(resBody.errors);
+                    }
+                    if (resBody.errors.includes('identity.session.not_active')) {
                         throw new AccountVerificationError(resBody.errors);
                     }
                     throw new InvalidCredentialsError(resBody.errors);

@@ -77,14 +77,28 @@ export const siteConfig = {
             href: '/dashboard/profile',
             icon: Icons.userCog,
         },{
-            label: 'Calendar',
-            href: '/calendar',
+            label: 'Payments',
+            href: '/dashboard/payments',
             icon: Icons.calendar,
         },
         {
             label: 'Settings',
-            href: '/settings',
+            href: '/dashboard/settings',
             icon: Icons.settings,
+        },
+    ],
+    dashboardSettingsNavItems: [
+        {
+            label: 'General',
+            path: '/dashboard/settings/general',
+        },
+        {
+            label: 'Security',
+            path: '/dashboard/settings/security',
+        },
+        {
+            label: 'KYC',
+            path: '/dashboard/settings/kyc',
         },
     ],
     links: {

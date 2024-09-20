@@ -12,7 +12,7 @@ export const Breadcrumbs: React.FC = () => {
 
     return (
         <div aria-label="breadcrumb" className="flex">
-            <ul className="flex">
+            <ul className="ml-auto flex text-sm">
                 {pathNames.map((path, index) => {
                     const href = `/${pathNames.slice(0, index + 1).join('/')}`;
                     const isLast = index === pathNames.length - 1;
@@ -22,7 +22,7 @@ export const Breadcrumbs: React.FC = () => {
                             <NextLink
                                 className={link().base({
                                     color: 'default',
-                                    className: isLast && 'text-default-600',
+                                    className: !isLast && 'text-default-400',
                                 })}
                                 href={href}
                             >
