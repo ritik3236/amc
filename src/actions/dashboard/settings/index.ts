@@ -10,6 +10,10 @@ export const getProfile = createServerAction<UserInterface>(async () => {
         const cookieStore = cookies();
         const barongSession = cookieStore.get('_barong_session')?.value;
 
+        if (!barongSession) {
+            return  new ServerActionError('User is not authenticated.');
+        }
+
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/barong/resource/users/me`, {
             headers: {
                 'Cookie': `_barong_session=${barongSession}`,

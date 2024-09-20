@@ -1,2 +1,2 @@
 reviews:
-  path_filters: ["!src/lib/otpInput/**"]
+  path_filters: [ "!src/lib/otpInput/**" ]
