@@ -28,7 +28,7 @@ export const authConfig: NextAuthConfig = {
                     ...(!!credentials.otp && { otp_code: credentials.otp }),
                 };
 
-                const res = await fetch('https://gamma.coinfinacle.com/api/v2/barong/identity/sessions', {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/barong/identity/sessions`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload),
@@ -47,7 +47,7 @@ export const authConfig: NextAuthConfig = {
                     if (resBody.errors.includes('identity.session.invalid_otp')) {
                         throw new OtpInvalidError(resBody.errors);
                     }
-                    if (resBody.errors.includes('identity.session.account_not_verified')) {
+                    if (resBody.errors.includes('identity.session.not_active')) {
                         throw new AccountVerificationError(resBody.errors);
                     }
                     throw new InvalidCredentialsError(resBody.errors);

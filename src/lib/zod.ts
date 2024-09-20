@@ -23,12 +23,43 @@ export const signInSchema = z.object({
 
 export type SignInSchema = z.infer<typeof signInSchema>;
 
+export const signUpSchema = z
+    .object({
+        email: z.string({ required_error: 'Email is required' })
+            .min(1, 'Email is required')
+            .email('Invalid email'),
+        password: z.string({ required_error: 'Password is required' })
+            .min(1, 'Password is required')
+            .min(8, 'Password must be more than 8 characters')
+            .max(32, 'Password must be less than 32 characters'),
+        confirm_password: z.string({ required_error: 'Confirm password is required' })
+            .min(1, 'Confirm password is required')
+            .min(8, 'Confirm password must be more than 8 characters')
+            .max(32, 'Confirm password must be less than 32 characters'),
+        terms: z.union([z.boolean(), z.string()]).transform((val) => {
+            if (typeof val === 'string') {
+                return val === 'true';
+            }
+
+            return val;
+        }),
+        referral_code: z.string().optional(),
+    }).refine((data) => data.password === data.confirm_password, {
+        path: ['confirm_password'],
+        message: 'Passwords do not match',
+    }).refine((data) => data.terms === true, {
+        path: ['terms'],
+        message: 'You must accept the terms and conditions',
+    });
+
+export type SignUpSchema = z.infer<typeof signUpSchema>;
+
 export const LabelSchema = z.object({
-    'key': z.string(),
-    'value': z.string(),
-    'scope': z.string(),
+    key: z.string(),
+    value: z.string(),
+    scope: z.string(),
 });
-export type Label = z.infer<typeof LabelSchema>;
+export type LabelInterface = z.infer<typeof LabelSchema>;
 
 export const PhoneSchema = z.object({
     id: z.number(),
@@ -53,7 +84,7 @@ export const ProfileSchema = z.object({
     created_at: z.coerce.date(),
     updated_at: z.coerce.date(),
 });
-export type Profile = z.infer<typeof ProfileSchema>;
+export type ProfileInterface = z.infer<typeof ProfileSchema>;
 export const UserSchema = z.object({
     email: z.string().email(),
     uid: z.string(),
@@ -71,4 +102,4 @@ export const UserSchema = z.object({
     created_at: z.coerce.date(),
     updated_at: z.coerce.date(),
 });
-export type User = z.infer<typeof UserSchema>;
+export type UserInterface = z.infer<typeof UserSchema>;

@@ -3,25 +3,29 @@
 import { cookies } from 'next/headers';
 
 import { createServerAction, ServerActionError } from '@/lib/server-utils';
-import { User } from '@/lib/zod';
+import { UserInterface } from '@/lib/zod';
 
-export const getProfile = createServerAction<User>(async () => {
+export const getProfile = createServerAction<UserInterface>(async () => {
+    try {
+        const cookieStore = cookies();
+        const barongSession = cookieStore.get('_barong_session')?.value;
 
-    const cookieStore = cookies();
-    const barongSession = cookieStore.get('_barong_session')?.value;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/barong/resource/users/me`, {
+            headers: {
+                'Cookie': `_barong_session=${barongSession}`,
+            },
+            cache: 'no-store',
+        });
 
-    const response = await fetch('https://gamma.coinfinacle.com/api/v2/barong/resource/users/me', {
-        headers: {
-            'Cookie': `_barong_session=${barongSession}`,
-        },
-        cache: 'no-store',
-    });
+        const data = await response.json();
 
-    const data = await response.json();
+        if (!response.ok) {
+            return  new ServerActionError('Unable to fetch profile.');
+        }
 
-    if (!response.ok) {
+        return data;
+    } catch (e) {
+        if (e instanceof ServerActionError) throw e;
         throw new ServerActionError('Unable to fetch profile.');
     }
-
-    return data;
 });

@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@nextui-org/button';
 import { Checkbox } from '@nextui-org/checkbox';
@@ -14,21 +14,32 @@ import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
 import { doLogin } from '@/actions/auth';
+import { EmailVerificationModal } from '@/components/AuthPages/EmailVerificationModal';
 import { link } from '@/components/primitives';
+import { ERROR_CODE_ACCOUNT_VERIFICATION_PENDING, ERROR_CODE_OTP_REQUIRED } from '@/lib/errors';
 import { InputOtp } from '@/lib/otpInput';
 import { SignInSchema, signInSchema } from '@/lib/zod';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
 export const LoginForm = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const {
+        isOpen: isOtpModalOpen,
+        onOpen: onOtpModalOpen,
+        onClose: onOtpModalClose,
+    } = useDisclosure();
+    const {
+        isOpen: isVerificationModalOpen,
+        onOpen: onVerificationModalOpen,
+        onClose: onVerificationModalClose,
+    } = useDisclosure();
 
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get('callbackUrl') || DEFAULT_LOGIN_REDIRECT;
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
-    const { handleSubmit, formState, control, watch, resetField } = useForm<SignInSchema>({
+    const { handleSubmit, formState, control, watch, getValues, resetField } = useForm<SignInSchema>({
         resolver: zodResolver(signInSchema),
         defaultValues: {
             email: '',
@@ -43,16 +54,18 @@ export const LoginForm = () => {
 
         if (!error) return;
 
-        if (error.code === '1005') {
-            onOpen();
+        if (error.code === ERROR_CODE_OTP_REQUIRED) {
+            onOtpModalOpen();
+        } else if (error.code === ERROR_CODE_ACCOUNT_VERIFICATION_PENDING) {
+            onVerificationModalOpen();
         } else {
             toast.error(error?.message);
         }
     };
 
-    const onModalClose = () => {
+    const handelOtpModalClose = () => {
         resetField('otp');
-        onClose();
+        onOtpModalClose();
     };
 
     return (
@@ -117,15 +130,15 @@ export const LoginForm = () => {
                 <Suspense>
                     <Button
                         color="primary"
-                        disabled={formState.isSubmitting || isOpen}
-                        isLoading={!isOpen && formState.isSubmitting}
+                        disabled={formState.isSubmitting || isOtpModalOpen}
+                        isLoading={!isOtpModalOpen && formState.isSubmitting}
                         type="submit"
                     >
                         Sign In
                     </Button>
                 </Suspense>
             </form>
-            <Modal backdrop="blur" isDismissable={false} isOpen={isOpen} onClose={onModalClose}>
+            <Modal backdrop="blur" isDismissable={false} isOpen={isOtpModalOpen} onClose={handelOtpModalClose}>
                 <ModalContent>
                     <ModalHeader className="flex flex-col gap-1">2FA Code</ModalHeader>
                     <ModalBody>
@@ -161,6 +174,11 @@ export const LoginForm = () => {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
+            <EmailVerificationModal
+                email={getValues().email}
+                isOpen={isVerificationModalOpen}
+                onClose={onVerificationModalClose}
+            />
         </>
     );
 };

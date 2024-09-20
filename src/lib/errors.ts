@@ -13,7 +13,7 @@ export class CustomError extends Error {
 
 export class OtpRequiredError extends CustomError {
     constructor(errors: string[] = []) {
-        super('OtpRequiredError', 'OTP is required for authentication.', '1005', errors);
+        super('OtpRequiredError', 'OTP is required for authentication.', ERROR_CODE_OTP_REQUIRED, errors);
     }
 }
 
@@ -25,12 +25,15 @@ export class OtpInvalidError extends CustomError {
 
 export class AccountVerificationError extends CustomError {
     constructor(errors: string[] = []) {
-        super('AccountVerificationError', 'Your account requires verification.', '1002', errors);
+        super('AccountVerificationError', 'Your account requires verification.', ERROR_CODE_ACCOUNT_VERIFICATION_PENDING, errors);
     }
 }
 
 export class InvalidCredentialsError extends CustomError {
     constructor(errors: string[] = []) {
-        super('InvalidCredentialsError', 'Invalid email or password.', '1003', errors);
+        super('InvalidCredentialsError', errors.length > 0 ? errors[0] : 'Invalid credentials.', '1003', errors);
     }
 }
+
+export const ERROR_CODE_OTP_REQUIRED: string = '1005' as const;
+export const ERROR_CODE_ACCOUNT_VERIFICATION_PENDING: string = '1010' as const;
