@@ -1,3 +1,2 @@
-path_filters:
-  exclude:
-    - 'src/lib/otpInput/**'
+reviews:
+  path_filters: ["!src/lib/otpInput/**"]
