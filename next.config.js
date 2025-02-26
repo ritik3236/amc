@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: "standalone",
     images: {
         remotePatterns: [
             {
@@ -7,11 +8,6 @@ const nextConfig = {
                 hostname: 'ca.slack-edge.com',
                 port: '',
                 pathname: '/**',
-            },{
-                protocol: 'https',
-                hostname: 'coinflow.cash',
-                port: '',
-                pathname: '/assets/**',
             },{
                 protocol: 'https',
                 hostname: 'pbs.twimg.com',

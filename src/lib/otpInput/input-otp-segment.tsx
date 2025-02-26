@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import { clsx, dataAttr } from '@nextui-org/shared-utils';
-import { HTMLNextUIProps } from '@nextui-org/system';
+import { clsx, dataAttr } from '@heroui/shared-utils';
+import { HTMLHeroUIProps } from '@heroui/system';
 
 import { ValueTypes } from './use-input-otp';
 
-interface InputOtpSegmentProps extends HTMLNextUIProps<'div'> {
+interface InputOtpSegmentProps extends HTMLHeroUIProps<'div'> {
     otplength: number;
     accessorIndex: number;
     value: string;

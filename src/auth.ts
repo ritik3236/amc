@@ -1,9 +1,10 @@
 import NextAuth, { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import { AccountVerificationError, InvalidCredentialsError, OtpInvalidError, OtpRequiredError } from '@/lib/errors';
-import { setAuthCookie } from '@/lib/server-utils';
-import { SignInSchema } from '@/lib/zod';
+import { authorize } from '@/auth-handler';
+import { makeApiRequest } from '@/lib/api';
+import { encryptToken } from '@/lib/encryption';
+import { UserInterface } from '@/lib/zod';
 
 export const authConfig: NextAuthConfig = {
     providers: [
@@ -14,76 +15,53 @@ export const authConfig: NextAuthConfig = {
                 password: { label: 'Password', type: 'password' },
                 remember: { label: 'Remember', type: 'boolean' },
             },
-            async authorize(credentials: SignInSchema) {
-                // return {
-                //     id: '23232',
-                //     email: credentials.email,
-                //     name: 'John Doe',
-                //     image: '',
-                // } as User;
-
-                const payload = {
-                    email: credentials.email,
-                    password: credentials.password,
-                    ...(!!credentials.otp && { otp_code: credentials.otp }),
-                };
-
-                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/barong/identity/sessions`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload),
-                });
-
-                const resBody = await res.json();
-
-                if (res.ok) {
-                    setAuthCookie(res.headers.get('set-cookie'));
-
-                    return resBody;
-                } else if (resBody.errors && Array.isArray(resBody.errors)) {
-                    if (resBody.errors.includes('identity.session.missing_otp')) {
-                        throw new OtpRequiredError(resBody.errors);
-                    }
-                    if (resBody.errors.includes('identity.session.invalid_otp')) {
-                        throw new OtpInvalidError(resBody.errors);
-                    }
-                    if (resBody.errors.includes('identity.session.not_active')) {
-                        throw new AccountVerificationError(resBody.errors);
-                    }
-                    throw new InvalidCredentialsError(resBody.errors);
-                } else {
-                    throw new InvalidCredentialsError();
-                }
-            },
+            authorize,
         }),
     ],
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user }: { token: any; user: UserInterface | undefined }) {
             if (user) {
-                token.user = user;
+                return {
+                    ...token,
+                    id: user.uid,
+                    email: user.email,
+                    access_token: await encryptToken(user.access_token.value),
+                    csrf_token: await encryptToken(user.csrf_token),
+                    name: user.profiles?.[0]?.full_name || user.username || 'N/A',
+                };
             }
-
-            // console.log('===============Callback JWT|auth.ts==================');
-            // console.log('token', token);
-            // console.log('user', user);
 
             return token;
         },
-        async session({ session, token }) {
-            // session.user = token.user;
-
-            // console.log('===============Callback session|auth.ts==================');
-            // console.log('session', session);
-            // console.log('token', token);
-            // console.log('===============End|auth.ts==================');
+        async session({ session, token }: { session: any; token: any }) {
+            Object.assign(session.user, {
+                id: token.id,
+                email: token.email,
+                csrf_token: token.csrf_token,
+                access_token: token.access_token,
+                name: token.name,
+            });
 
             return session;
         },
     },
+    events: {
+        signOut: async () => {
+            await makeApiRequest({
+                endpoint: '/identity/sessions',
+                apiVersion: 'barong',
+                method: 'DELETE',
+            });
+        },
+    },
+    session: {
+        strategy: 'jwt',
+        maxAge: 7 * 24 * 60 * 60,
+    },
     secret: process.env.AUTH_SECRET,
     pages: {
         signIn: '/login',
-        signOut: '/auth/signout',
+        signOut: '/logout',
     },
 };
 

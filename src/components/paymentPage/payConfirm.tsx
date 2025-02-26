@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from '@nextui-org/divider';
+import { Divider } from '@heroui/divider';
 
 import { Icons } from '@/components/icons';
 
