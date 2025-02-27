@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { ReactRef, useDOMRef } from '@nextui-org/react-utils';
-import { clsx, dataAttr, isEmpty, objectToDeps } from '@nextui-org/shared-utils';
-import { HTMLNextUIProps, mapPropsVariants, PropGetter, useProviderContext } from '@nextui-org/system';
+import { ReactRef, useDOMRef } from '@heroui/react-utils';
+import { clsx, dataAttr, isEmpty, objectToDeps } from '@heroui/shared-utils';
+import { HTMLHeroUIProps, mapPropsVariants, PropGetter, useProviderContext } from '@heroui/system';
 
 import { useFocusRing } from '@react-aria/focus';
 import { useHover } from '@react-aria/interactions';
@@ -9,9 +9,9 @@ import { mergeProps } from '@react-aria/utils';
 
 import { inputOtp, InputOtpReturnType, InputOtpSlots, InputOtpVariantProps } from '@/components/primitives';
 
-import type { SlotsToClasses } from '@nextui-org/theme';
+import type { SlotsToClasses } from '@heroui/theme';
 
-interface Props extends HTMLNextUIProps<'div'> {
+interface Props extends HTMLHeroUIProps<'div'> {
     /**
      * Ref to the DOM node.
      */
@@ -63,6 +63,8 @@ interface Props extends HTMLNextUIProps<'div'> {
      * ```
      */
     classNames?: SlotsToClasses<InputOtpSlots>;
+    label?: string;
+    value?: string | number;
 }
 
 export type ValueTypes = {

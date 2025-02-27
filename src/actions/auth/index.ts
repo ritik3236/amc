@@ -2,10 +2,11 @@
 
 import { isRedirectError } from 'next/dist/client/components/redirect';
 
-import { cookies } from 'next/headers';
 import { AuthError } from 'next-auth';
 
-import { signIn, signOut } from '@/auth';
+import { getConfig } from '@/actions';
+import { signOut } from '@/auth';
+import { ApiResponse, makeApiRequest } from '@/lib/api';
 import {
     AccountVerificationError,
     CustomError,
@@ -13,8 +14,17 @@ import {
     InvalidCredentialsError,
     OtpInvalidError,
     OtpRequiredError,
+    ServerError,
 } from '@/lib/errors';
-import { SignInSchema, signInSchema, signUpSchema, SignUpSchema, UserInterface } from '@/lib/zod';
+import {
+    ForgotPasswordSchema,
+    PasswordUpdateFormInterface,
+    SignInSchema,
+    signInSchema,
+    signUpSchema,
+    SignUpSchema,
+    UserInterface,
+} from '@/lib/zod';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
 export async function doLogin(formData: SignInSchema, callbackUrl = DEFAULT_LOGIN_REDIRECT) {
@@ -27,35 +37,39 @@ export async function doLogin(formData: SignInSchema, callbackUrl = DEFAULT_LOGI
                 error: { message: parsedCredentials.error.message, details: parsedCredentials.error.errors },
             };
         }
+        //
+        // await signIn('credentials', {
+        //     email: parsedCredentials.data.email,
+        //     otp: parsedCredentials.data.otp,
+        //     password: parsedCredentials.data.password,
+        //     redirect: true,
+        //     redirectTo: callbackUrl,
+        //     remember: parsedCredentials.data.remember,
+        // });
 
-        await signIn('credentials', {
-            redirect: true,
-            redirectTo: callbackUrl,
-            email: parsedCredentials.data.email,
-            otp: parsedCredentials.data.otp,
-            password: parsedCredentials.data.password,
-            remember: parsedCredentials.data.remember,
-        });
-
-        return { success: true, error: null };
+        return { success: false, error: { message: 'Login is currently disabled, Try again later.' } };
     } catch (e: unknown) {
         if (isRedirectError(e)) throw e;
         const nextError = e as AuthError;
         const error = nextError.cause?.err as CustomError;
 
-        if (error && (error instanceof InvalidCredentialsError
+        if (error && (
+            error instanceof InvalidCredentialsError
             || error instanceof OtpRequiredError
             || error instanceof AccountVerificationError
             || error instanceof OtpInvalidError
+            || error instanceof ServerError
         )) {
             return { success: false, error: { message: error.message, code: error.code } };
         }
 
-        return { success: false, error: { message: 'An unexpected error occurred.' } };
+        return { success: false, error: { message: error.errors?.[0] || 'An unexpected error occurred.' } };
     }
 }
 
 export async function doRegister(formData: SignUpSchema, callbackUrl = DEFAULT_LOGIN_REDIRECT) {
+    const config = await getConfig();
+
     try {
         const parsedCredentials = signUpSchema.safeParse(formData);
 
@@ -66,21 +80,20 @@ export async function doRegister(formData: SignUpSchema, callbackUrl = DEFAULT_L
             };
         }
 
-        const { email, password, referral_code } = parsedCredentials.data;
+        const { email, password } = parsedCredentials.data;
 
         const payload = {
+            data: JSON.stringify({ language: 'en' }),
             email: email,
             password: password,
-            data: JSON.stringify({ language: 'en' }),
-            ...(!!referral_code && { refid: referral_code }),
         };
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/barong/identity/users`, {
-            method: 'POST',
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${config['authEndPoint']}/identity/users`, {
+            body: JSON.stringify(payload),
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(payload),
+            method: 'POST',
         });
 
         const resBody = await response.json();
@@ -119,14 +132,78 @@ export async function doRegister(formData: SignUpSchema, callbackUrl = DEFAULT_L
     }
 }
 
-export async function doLogout() {
+export async function doLogout(path = '/') {
     try {
-        await signOut({ redirectTo: '/', redirect: true });
-        cookies().delete('_barong_session');
+        await signOut({ redirectTo: path, redirect: true });
     } catch (e: unknown) {
         if (isRedirectError(e)) throw e;
-        console.error(e);
+        console.error('Redirect error', e);
 
         return { success: false, error: { message: 'An unexpected error occurred.' } };
     }
+}
+
+export async function updatePassword(payload: PasswordUpdateFormInterface): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: '/resource/users/password',
+        method: 'PUT',
+        pathToRevalidate: ['/account/settings'],
+        payload,
+    });
+}
+
+export async function verifyEmailToken(payload: { token: string }): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: '/identity/users/email/confirm_code',
+        isPublic: true,
+        method: 'POST',
+        pathToRevalidate: ['/account/confirmation'],
+        payload,
+    });
+}
+
+export async function resendEmailToken(payload: { email: string }): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: '/identity/users/email/generate_code',
+        isPublic: true,
+        method: 'POST',
+        payload,
+    });
+}
+
+export async function generateForgetPasswordToken(payload: { email: string }): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: '/identity/users/password/generate_code',
+        isPublic: true,
+        method: 'POST',
+        payload,
+    });
+}
+
+export async function verifyForgetPasswordToken(payload: ForgotPasswordSchema): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: '/identity/users/password/confirm_code',
+        isPublic: true,
+        method: 'POST',
+
+        payload: {
+            confirm_password: payload.confirm_password,
+            password: payload.new_password,
+            reset_password_token: payload.reset_token,
+        },
+    });
+}
+
+export async function fetchAbilities(): Promise<ApiResponse> {
+    return { data: { manage: ['all'] }, error: null, success: true };
+    // return await makeApiRequest({
+    //     endpoint: '/abilities/user',
+    //     apiVersion: 'barong',
+    //     method: 'GET',
+    // });
 }

@@ -1,23 +1,18 @@
 import { Suspense } from 'react';
-import NextLink from 'next/link';
 
-import { Logo } from '@/components/icons';
-import { LoginForm } from '@/components/loginPage/loginForm';
-import { description, link, subtitle } from '@/components/primitives';
+import { LoginForm } from '@/app/(auth)/utils/LoginForm';
+import { description, title } from '@/components/primitives';
 
-export default function LoginPage() {
+export default function Page() {
     return (
-        <section className="m-6 rounded-lg border border-default shadow-lg md:w-[420px]">
-            <div className="border-b border-dashed border-default p-6">
-                <NextLink className="-ml-1 mb-4 flex items-center gap-1" href="/">
-                    <Logo size={32}/>
-                    <span className="font-bold">CoinDhan Pay</span>
-                </NextLink>
-                <h2 className={subtitle()}>
-                    Sign in to your account
+        <section className="m-auto w-full sm:w-[420px]">
+            <div className="p-6 text-center">
+                <h2 className={title({ size: 'xs' })}>
+                    Welcome back! 👋
                 </h2>
-                <p className={description({ size: 'xs', className: 'm-0' })}>
-                    Not a member? Start a 14 day free trial
+                <p className={description()}>
+                    Log in to manage your transactions and
+                    experience the future of digital payments today!
                 </p>
             </div>
             <div className="p-6">
@@ -25,12 +20,12 @@ export default function LoginPage() {
                     <LoginForm/>
                 </Suspense>
             </div>
-            <div className="pb-6">
-                <p className="flex justify-center gap-1 text-center text-sm">
-                    <span>Don&apos;t have an account?</span>
-                    <NextLink className={link().base()} href="/signup">Sign up</NextLink>
-                </p>
-            </div>
+            {/*<div className="pb-6">*/}
+            {/*    <p className="flex justify-center gap-1 text-center text-sm">*/}
+            {/*        <span>Don&apos;t have an account?</span>*/}
+            {/*        <NextLink className={linkStyles().base({ type: 'underline' })} href="/signup">Sign up</NextLink>*/}
+            {/*    </p>*/}
+            {/*</div>*/}
         </section>
     );
 }

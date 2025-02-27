@@ -2,12 +2,14 @@
 
 import React, { useEffect } from 'react';
 import * as qr from '@bitjson/qr-code';
-import { Spinner } from '@nextui-org/spinner';
+import { Spinner } from '@heroui/spinner';
 import { useEventListener } from 'ahooks';
-import Image from 'next/image';
+
+import { sleep } from '@/lib/utils';
 
 interface OwnProps {
     value: string;
+    icon?: string;
     size?: 'small' | 'medium' | 'large';
 }
 
@@ -18,7 +20,7 @@ const sizes = {
 };
 
 export const QRCodeGenerator: React.FC<OwnProps> = (props) => {
-    const { value, size = 'small' } = props;
+    const { value, icon, size = 'small' } = props;
 
     const qrRef = React.useRef(null);
     const logoRef = React.useRef(null);
@@ -36,11 +38,16 @@ export const QRCodeGenerator: React.FC<OwnProps> = (props) => {
             logoRef.current.classList.remove('hidden');
             setLoading(false);
         }
+        sleep(1000).then(() => setLoading(false));
     }, { target: qrRef });
 
     return (
         <div className="relative mx-auto flex items-center justify-center" style={sizes[size]}>
             {loading && <Spinner className="absolute inset-0" color="default"/>}
+            {!value &&
+                <div className="absolute inset-0 z-10 grid place-content-center text-sm font-bold backdrop-blur-sm">
+                    QR Error
+                </div>}
             {/*@ts-ignore*/}
             <qr-code
                 ref={qrRef}
@@ -50,13 +57,13 @@ export const QRCodeGenerator: React.FC<OwnProps> = (props) => {
                 position-center-color="#ff8e5a"
                 position-ring-color="#bf6331"
             >
-                <Image
+                <img
                     ref={logoRef}
                     alt=""
                     className="hidden"
                     height="64"
                     slot="icon"
-                    src="/images/logo.svg"
+                    src={icon ? icon : '/images/logo.svg'}
                     width="64"
                 />
             </qr-code>

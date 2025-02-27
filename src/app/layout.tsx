@@ -1,14 +1,12 @@
 import 'src/styles/globals.css';
 
 import React from 'react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata, Viewport } from 'next';
 
 import { figTree } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+import { Providers } from '@/lib/providers';
 import { cn } from '@/lib/utils';
-
-import { Providers } from './providers';
 
 export const metadata: Metadata = {
     title: {
@@ -31,12 +29,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html suppressHydrationWarning lang="en">
-            <body
-                className={cn('min-h-screen bg-background antialiased ', figTree.className)}
-            >
-                <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark', children: '' }}>
+            <body className={cn('min-h-screen bg-background antialiased ', figTree.className)}>
+                <Providers themeProps={{
+                    attribute: 'class',
+                    children: '',
+                    defaultTheme: 'light',
+                    enableSystem: false,
+                }}>
                     {children}
-                    <SpeedInsights/>
                 </Providers>
             </body>
         </html>

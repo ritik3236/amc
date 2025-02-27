@@ -8,6 +8,7 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:tailwindcss/recommended',
+        'plugin:@tanstack/query/recommended',
         'next/core-web-vitals',
     ],
     parser: '@typescript-eslint/parser',
@@ -30,80 +31,85 @@ module.exports = {
     root: true,
     rules: {
         '@stylistic/arrow-parens': ['warn', 'always'],
+        '@stylistic/eol-last': ['error', 'always'],
         '@stylistic/indent': ['error', 4],
         '@stylistic/jsx-indent': [2, 4],
         '@stylistic/jsx-indent-props': [2, 4],
         '@stylistic/jsx-quotes': ['warn', 'prefer-double'],
         '@stylistic/member-delimiter-style': 'off',
-        '@stylistic/object-curly-spacing': ['error', 'always'],
+        '@stylistic/no-multi-spaces': 'warn',
         '@stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
-        '@stylistic/eol-last': ['error', 'always'],
+        '@stylistic/object-curly-spacing': ['error', 'always'],
         '@stylistic/quotes': ['error', 'single'],
         '@stylistic/semi': ['error', 'always'],
+
         '@stylistic/comma-dangle': ['warn', {
             'arrays': 'always-multiline',
-            'objects': 'always-multiline',
-            'imports': 'always-multiline',
             'exports': 'never',
             'functions': 'never',
+            'imports': 'always-multiline',
+            'objects': 'always-multiline',
         }],
 
+        '@next/next/no-img-element': 'off',
         '@typescript-eslint/no-explicit-any': 'warn',
         '@typescript-eslint/no-unused-vars': [
-            'warn',
+            'error',
             {
                 'argsIgnorePattern': '^_',
-                'varsIgnorePattern': '^_',
                 'caughtErrorsIgnorePattern': '^_',
+                'varsIgnorePattern': '^_',
             },
         ],
 
         'react/display-name': 'off',
-        'react/prop-types': 'off',
-        'react/jsx-uses-react': 'off',
-        'react/react-in-jsx-scope': 'off',
-        'react/self-closing-comp': 'warn',
         'react/jsx-sort-props': [
             'warn',
             {
                 'callbacksLast': true,
-                'shorthandFirst': true,
                 'noSortAlphabetically': false,
                 'reservedFirst': true,
+                'shorthandFirst': true,
             },
         ],
+        'react/jsx-uses-react': 'off',
+        'react/prop-types': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'react/self-closing-comp': 'warn',
 
         'jsx-a11y/click-events-have-key-events': 'warn',
         'jsx-a11y/interactive-supports-focus': 'warn',
 
         'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
 
+        'sort-keys': ['warn', 'asc', { minKeys: 4, allowLineSeparatedGroups: true }],
         'unused-imports/no-unused-imports': 'error',
 
         'import/order': [
             'error',
             {
-                'groups': ['builtin', 'external', ['internal'], ['parent', 'sibling', 'index'], ['object', 'type']],
-                'pathGroupsExcludedImportTypes': ['builtin'],
-                // define next-ui group that will appear separately after other main externals
-                'pathGroups': [
-                    { pattern: '@nextui-org/{**}', group: 'external', position: 'after' },
-                    { pattern: 'react', group: 'external', position: 'before' },
-                ],
-                'newlines-between': 'always-and-inside-groups',
-                'distinctGroup': false,
                 'alphabetize': { order: 'asc', caseInsensitive: true },
+                'distinctGroup': false,
+                'groups': ['builtin', 'external', ['internal'], ['parent', 'sibling', 'index'], ['object', 'type']],
+                'newlines-between': 'always-and-inside-groups',
+                'pathGroupsExcludedImportTypes': ['builtin'],
+
+                // define hero-ui group that will appear separately after other main externals
+                'pathGroups': [
+                    { group: 'external', pattern: '@heroui/{**}', position: 'after' },
+                    { group: 'external', pattern: 'react', position: 'before' },
+                ],
             },
         ],
 
         'padding-line-between-statements': [
             'warn',
-            { 'blankLine': 'always', 'prev': '*', 'next': 'return' },
-            { 'blankLine': 'always', 'prev': ['const', 'let', 'var'], 'next': '*' },
+            { 'blankLine': 'always', 'next': 'return', 'prev': '*' },
+            { 'blankLine': 'always', 'next': '*', 'prev': ['const', 'let', 'var'] },
             {
                 'blankLine': 'any',
-                'prev': ['const', 'let', 'var'],
                 'next': ['const', 'let', 'var'],
+                'prev': ['const', 'let', 'var'],
             },
         ],
     },
