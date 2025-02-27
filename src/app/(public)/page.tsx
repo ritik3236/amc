@@ -19,18 +19,17 @@ export default function Home() {
     return (
         <React.Fragment>
             <section
-                className="relative z-20  col-span-4 mb-12 flex flex-1 flex-col items-center overflow-hidden pt-8 transition-all duration-1000 md:mb-28 md:pt-16"
+                className="relative z-20  col-span-4 mb-8 flex flex-1 flex-col items-center overflow-hidden pt-8 transition-all duration-1000 md:mb-28 md:pt-16"
             >
                 <div
-                    className="m-auto flex min-h-[50vh] w-full flex-1  flex-col items-center justify-center px-4 pb-16 pt-10 text-center lg:w-[1080px] lg:grid-cols-4 lg:px-0">
+                    className="m-auto flex w-full flex-1  flex-col items-center justify-center px-4 pt-12 text-center lg:w-[1080px] lg:grid-cols-4 lg:px-0">
                     <h1 className={title({ className: 'mb-8' })}>
                         Experiences the Safest and Fastest <br/> Payment
                         Gateway <Cover>With {siteConfig.name}</Cover>
                     </h1>
-                    <p className={description({ size: 'md', className: 'w-1/2 mx-auto mb-8' })}>
+                    <p className={description({ size: 'md', className: 'sm:w-1/2 mx-auto mb-8' })}>
                         Start accepting online payments within minutes with minimum documentation and 100% digital
-                        KYC
-                        at zero cost via <br/>{siteConfig.name} Payment Gateway
+                        KYC at zero cost via <br/>{siteConfig.name} Payment Gateway
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
                         <Button
