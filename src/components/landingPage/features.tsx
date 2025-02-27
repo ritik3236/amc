@@ -10,43 +10,6 @@ import {
 
 import { cn } from '@/lib/utils';
 
-//     {
-//         title: 'Instant Activation',
-//         description: 'Get activated within minutes. Completely online onboarding with minimum documentation.',
-//         link: 'https://stripe.com',
-//     },
-//     {
-//         title: 'Easy Integration',
-//         description:
-//             'Integrate our API & widget with your platform in minutes. No more hassle of setting up a payment gateway. Our API/Widget is easy to use and integrate with your platform.',
-//         link: 'https://netflix.com',
-//     },
-//     {
-//         title: 'No Limits',
-//         description:
-//             'Any amount may be transferred in accordance with your requirements. There are no restrictions in terms of upper-limits.',
-//         link: 'https://google.com',
-//     },
-//     {
-//         title: 'Initiative dashboard',
-//         description:
-//             'Track your transactions, view your dashboard, and manage your account with ease. Our dashboard is designed to make your life easier. make withdrawals, deposits, and more.',
-//         link: 'https://meta.com',
-//     },
-//     {
-//         title: 'Instant settlement',
-//         description:
-//             'Instant settlement. Get paid instantly and settle your funds in your preferred currency. no more waiting for your funds to be settled like traditional payment gateways.',
-//         link: 'https://amazon.com',
-//     },
-//     {
-//         title: 'Secure',
-//         description:
-//             'Your funds are safe with us. We use the latest encryption technology to ensure that your funds are protected at all times.',
-//         link: 'https://microsoft.com',
-//     },
-// ];
-
 const features = [
     {
         title: 'Built for developers',
@@ -67,7 +30,7 @@ const features = [
         icon: <IconCurrencyDollar/>,
     },
     {
-        title: '100% Uptime guarantee',
+        title: '100% Uptime',
         description: 'We just cannot be taken down by anyone. We are 100% uptime guaranteed.',
         icon: <IconCloud/>,
     },

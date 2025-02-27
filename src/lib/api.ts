@@ -53,6 +53,8 @@ export async function makeApiRequest<T = any>(params: ApiRequestParams): Promise
         pathToRevalidate,
     } = params;
 
+    return { data: null, success: false, error: 'Login is currently disabled, Try again later.' };
+
     const session = await auth();
 
     const headersList = next_headers();

@@ -12,7 +12,6 @@ import { FaqComponent } from '@/components/landingPage/faq';
 import { FeaturesSectionDemo } from '@/components/landingPage/features';
 import { WorldMap } from '@/components/landingPage/world-map';
 import { description, link, title } from '@/components/primitives';
-import { Meteors } from '@/components/ui/meteors';
 import { siteConfig } from '@/config/site';
 
 export default function Home() {
@@ -33,7 +32,7 @@ export default function Home() {
                             </span>
                         </h1>
                         <span className={description({ className: 'mb-8' })}>
-                            Enhance revenue by improving conversion rates with global payment acceptance, featuring instant settlement and payouts, all customized to meet the unique needs of each business.
+                            Enhance revenue by improving conversion rates with payment acceptance, featuring instant settlement and payouts, all customized to meet the unique needs of each business.
                         </span>
                         <NextLink className={link().base({ type: 'solid', className: 'mr-4' })} href="/contact-us">
                             <span>Get started</span>
@@ -133,7 +132,8 @@ export default function Home() {
             </section>
             <section className="w-full py-8 md:py-28">
                 <div className="relative z-20 mx-auto grid w-full translate-y-0 grid-cols-4 lg:w-[1080px] ">
-                    <div className="col-span-4  flex flex-col items-center justify-center gap-4 px-4 text-center md:px-0">
+                    <div
+                        className="col-span-4  flex flex-col items-center justify-center gap-4 px-4 text-center md:px-0">
                         <div className={title({ size: 'sm', color: 'foreground' })}>
                             Built for Developers by Developers
                         </div>
@@ -144,37 +144,42 @@ export default function Home() {
                 </div>
             </section>
             <section className="w-full py-8 md:py-28">
-                <div className="relative z-20 mx-auto grid w-full translate-y-0 grid-cols-4 px-4 md:px-0 lg:w-[1080px] ">
+                <div
+                    className="relative z-20 mx-auto grid w-full translate-y-0 grid-cols-4 px-4 md:px-0 lg:w-[1080px] ">
                     <div className="col-span-4 mb-12 flex flex-col items-center  justify-center gap-4">
                         <div className={title({ size: 'sm', color: 'foreground' })}>
-                            Worldwide Payments
+                            Bill Payment from Anywhere
                         </div>
                         <p className={description({ className: 'text-center' })}>
-                            Break free from traditional boundaries. Accept payments from any corner of the world.
+                            Break free from traditional boundaries. bill payment from any corner of the country.
                         </p>
                     </div>
                     <div className="col-span-4">
                         <WorldMap
                             dots={[
                                 {
-                                    start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
-                                    end: { lat: 34.0522, lng: -118.2437 }, // Los Angeles
+                                    start: { lat: 8.2008, lng: -70.4937 }, // Alaska (Fairbanks)
+                                    end: { lat: 34.0522, lng: -18.2437 }, // Los Angeles
                                 },
                                 {
-                                    start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
+                                    start: { lat: 8.2008, lng: -70.4937 }, // Alaska (Fairbanks)
                                     end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
                                 },
                                 {
                                     start: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
-                                    end: { lat: 38.7223, lng: -9.1393 }, // Lisbon
+                                    end: { lat: 20.6139, lng: -10.209 }, // New Delhi
                                 },
                                 {
-                                    start: { lat: 51.5074, lng: -0.1278 }, // London
-                                    end: { lat: 28.6139, lng: 77.209 }, // New Delhi
+                                    start: { lat: 20.6139, lng: -10.209 }, // New Delhi
+                                    end: { lat: 34.0522, lng: -18.2437 }, // Los Angeles
                                 },
                                 {
-                                    start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-                                    end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
+                                    start: { lat: -51.5074, lng: -40.1278 }, // London
+                                    end: { lat: 20.6139, lng: -10.209 }, // New Delhi
+                                },
+                                {
+                                    start: { lat: 20.6139, lng: -10.209 }, // New Delhi
+                                    end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
                                 },
                                 {
                                     start: { lat: 28.6139, lng: 77.209 }, // New Delhi
@@ -186,7 +191,8 @@ export default function Home() {
                 </div>
             </section>
             <section className="w-full py-8 md:py-28">
-                <div className="relative z-20  mx-auto grid w-full translate-y-0 grid-cols-4 px-4 md:px-0 lg:w-[1080px] ">
+                <div
+                    className="relative z-20  mx-auto grid w-full translate-y-0 grid-cols-4 px-4 md:px-0 lg:w-[1080px] ">
                     <div className="col-span-4 mb-12 flex flex-col items-center justify-center gap-4 text-center">
                         <div className={title({ size: 'sm', color: 'foreground' })}>
                             Frequently Asked Questions
@@ -199,7 +205,7 @@ export default function Home() {
             </section>
             <section className="relative z-20 mx-auto grid w-full py-8 md:py-28 lg:w-[1080px] lg:grid-cols-4">
                 <div
-                    className="relative col-span-4 space-y-12 overflow-hidden rounded-none bg-neutral-950 p-12 text-center text-neutral-50 lg:rounded-xl">
+                    className="relative col-span-4 space-y-12 overflow-hidden rounded-none bg-neutral-950 p-12 text-center text-neutral-50 bg-grid-small-white/[0.2] lg:rounded-xl">
                     <h2 className={title({ size: 'sm' })}>
                         <span>Supercharge Your Business With</span>
                         <br/>
@@ -234,7 +240,6 @@ export default function Home() {
                         <br/>
                         or book a demo to learn more about our solutions.
                     </p>
-                    <Meteors number={15} position={800}/>
                 </div>
             </section>
         </React.Fragment>
