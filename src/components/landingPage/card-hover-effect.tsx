@@ -115,36 +115,36 @@ export const projects = [
     {
         title: 'Developer-friendly APIs',
         description: 'We have built APIs that are easy to use and integrate with your platform.',
-        link: 'https://stripe.com',
+        link: '#',
     },
     {
         title: 'Flexible integration options',
         description:
             'Integrate our API & widget with your platform in minutes. Our API/Widget is easy to use and integrate with your platform.',
-        link: 'https://netflix.com',
+        link: '#',
     },
     {
         title: 'Sample codes for testing',
         description:
             'We provide sample codes for testing our API. You can use these codes to test our API and ensure that it works as expected.',
-        link: 'https://google.com',
+        link: '#',
     },
     {
         title: 'Plugins for major platforms',
         description:
             'We have plugins for major platforms such as WordPress, Shopify, WooCommerce, and Magento.',
-        link: 'https://meta.com',
+        link: '#',
     },
     {
         title: 'Webhooks for real-time updates',
         description:
             'We provide webhooks for real-time updates. You can use these webhooks to get updates on your transactions.',
-        link: 'https://amazon.com',
+        link: '#',
     },
     {
         title: 'Secure APIs',
         description:
             'All our APIs are secure. We use the latest encryption technology to ensure that your funds are protected at all times.',
-        link: 'https://microsoft.com',
+        link: '#',
     },
 ];
