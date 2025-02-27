@@ -8,6 +8,7 @@ import NextLink from 'next/link';
 
 import { Icons } from '@/components/icons';
 import { CardHoverEffect, projects } from '@/components/landingPage/card-hover-effect';
+import { Cover } from '@/components/landingPage/cover';
 import { FaqComponent } from '@/components/landingPage/faq';
 import { FeaturesSectionDemo } from '@/components/landingPage/features';
 import { WorldMap } from '@/components/landingPage/world-map';
@@ -18,55 +19,41 @@ export default function Home() {
     return (
         <React.Fragment>
             <section
-                className="relative z-20 col-span-4 mb-12 flex flex-1 flex-col items-center overflow-hidden pt-8 transition-all duration-1000 md:mb-28 md:pt-16"
+                className="relative z-20  col-span-4 mb-12 flex flex-1 flex-col items-center overflow-hidden pt-8 transition-all duration-1000 md:mb-28 md:pt-16"
             >
                 <div
-                    className="mx-auto grid w-full flex-1 grid-cols-1 px-4 pt-10 lg:w-[1080px] lg:grid-cols-4 lg:px-0">
-                    <div className="col-span-2">
-                        <h1 className="mb-5">
-                            <span className={title()}>Accept&nbsp;</span>
-                            <span className={title({ color: 'violet' })}>Payments</span>
-                            <br/>
-                            <span className={title({ color: 'yellow' })}>
-                                Instantly, anywhere
-                            </span>
-                        </h1>
-                        <span className={description({ className: 'mb-8' })}>
-                            Enhance revenue by improving conversion rates with payment acceptance, featuring instant settlement and payouts, all customized to meet the unique needs of each business.
-                        </span>
-                        <NextLink className={link().base({ type: 'solid', className: 'mr-4' })} href="/contact-us">
-                            <span>Get started</span>
-                            <Icons.arrowRight className={link().icon()}/>
-                        </NextLink>
-                        <NextLink
-                            className={link().base({ type: 'underline' })}
-                            href={siteConfig.links.book_a_demo}
-                            target="_blank"
+                    className="m-auto flex min-h-[50vh] w-full flex-1  flex-col items-center justify-center px-4 pb-16 pt-10 text-center lg:w-[1080px] lg:grid-cols-4 lg:px-0">
+                    <h1 className={title({ className: 'mb-8' })}>
+                        Experiences the Safest and Fastest <br/> Payment
+                        Gateway <Cover>With {siteConfig.name}</Cover>
+                    </h1>
+                    <p className={description({ size: 'md', className: 'w-1/2 mx-auto mb-8' })}>
+                        Start accepting online payments within minutes with minimum documentation and 100% digital
+                        KYC
+                        at zero cost via <br/>{siteConfig.name} Payment Gateway
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <Button
+                            as={NextLink}
+                            color="primary"
+                            href="/contact-us"
+                            size="md"
+                            variant="bordered"
                         >
-                            <span>Book demo</span>
-                        </NextLink>
-                        <div className="mx-auto flex flex-col items-start space-y-4 py-16">
-                            <p className=" w-full text-sm lg:w-[500px]">
-                                &quot;{siteConfig.name} eliminated the hassle and complexity of payments.
-                                They&apos;re more than a payment service; they’re an essential partner
-                                for our product&quot;
-                            </p>
-                            <div className="flex items-center space-x-3">
-                                <Image
-                                    alt="gameshift"
-                                    className="size-6 rounded-2xl object-contain"
-                                    height="60"
-                                    src="https://pbs.twimg.com/profile_images/1743115956568678400/9XjgNzuT_400x400.jpg"
-                                    width="60"
-                                />
-                                <p className="text-xs text-gray-600">
-                                    Davis, Product Lead at Solana Gameshift
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="group col-span-2 my-auto ml-auto">
-                        <Image alt="online payment" height="800" src="/images/online-payment.svg" width="800"/>
+                            <span>Get Started</span>
+                            <Icons.arrowRight className={link().icon()}/>
+                        </Button>
+                        <Button
+                            as={Link}
+                            color="primary"
+                            href={siteConfig.links.book_a_demo}
+                            isExternal={true}
+                            size="md"
+                            variant="solid"
+                        >
+                            <Icons.calendar/>
+                            <span>Book a Demo</span>
+                        </Button>
                     </div>
                 </div>
             </section>

@@ -8,11 +8,10 @@ export default function Page() {
         <section className="m-auto w-full sm:w-[420px]">
             <div className="p-6 text-center">
                 <h2 className={title({ size: 'xs' })}>
-                    Welcome back! 👋
+                    Login 🧑‍💻
                 </h2>
                 <p className={description()}>
-                    Log in to manage your transactions and
-                    experience the future of digital payments today!
+                    to manage your transactions and experience the future of digital payments today!
                 </p>
             </div>
             <div className="p-6">

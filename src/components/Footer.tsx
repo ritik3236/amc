@@ -18,11 +18,10 @@ export const Footer: React.FC = async () => {
                     <div className="relative col-span-4 px-4 md:col-span-1">
                         <span className="absolute left-0 h-6 w-px bg-orange-500"/>
                         <h3 className={subtitle({ className: 'relative mb-2' })}>
-                            <span>Locate us</span>
+                            <span>{siteConfig.name}</span>
                         </h3>
                         <div className="mb-0.5 flex max-w-36 flex-col gap-1 text-sm">
-                            <p>{siteConfig.address}</p>
-                            <p>{siteConfig.phone}</p>
+                            <p>{siteConfig.description}</p>
                         </div>
                     </div>
                     {Object.entries(siteConfig.footerNavItems).map(([key, items]) => (

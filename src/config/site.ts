@@ -13,8 +13,8 @@ const external_links = {
     twitter: 'https://twitter.com/getnextui',
     discord: 'https://discord.gg/9b6yyZKmH4',
     book_a_demo: 'https://calendly.com/ritikk-muc/30min',
-    docs: '#',
-    api: '#',
+    docs: '/#',
+    api: '/#',
 };
 
 export const siteConfig = {
@@ -26,7 +26,7 @@ export const siteConfig = {
     navItems: [
         {
             label: 'Contact Us',
-            href: '/contact-us',
+            href: '/#',
         },
         {
             label: 'Features',
