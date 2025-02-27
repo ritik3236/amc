@@ -12,7 +12,7 @@ const external_links = {
     github: 'https://github.com/nextui-org/nextui',
     twitter: 'https://twitter.com/getnextui',
     discord: 'https://discord.gg/9b6yyZKmH4',
-    book_a_demo: 'https://calendly.com/ritikk-muc/30min',
+    book_a_demo: '#',
     docs: '/#',
     api: '/#',
 };
