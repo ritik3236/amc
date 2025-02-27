@@ -11,3 +11,25 @@
         scrollbar-width: none;
     }
 }
+
+/*
+/* Patch for NextUI Image Loading problem
+/* https://github.com/heroui-inc/heroui/issues/4534
+*/
+.data-\[loaded\=true\]\:opacity-100 {
+    opacity: 1;
+}
+
+input:-webkit-autofill {
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s; /* Prevents background color override */
+}
+
+.dark input:-webkit-autofill, .dark input:-webkit-autofill:hover, .dark input:-webkit-autofill:focus {
+    -webkit-text-fill-color: white !important;
+}
+
+.light input:-webkit-autofill, .light input:-webkit-autofill:hover, .light input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black !important;
+}
+

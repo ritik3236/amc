@@ -1,0 +1,4 @@
+{
+  "sessionCookieName": "_barong_session",
+  "authEndPoint": "api/v2/barong"
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { pageConstants } from '@/constant';
 import { cn } from '@/lib/utils';
+import { pageConstants } from 'src/lib/constant';
 
 interface OwnProps {
     className?: string;

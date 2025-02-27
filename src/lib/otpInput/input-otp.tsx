@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { forwardRef } from '@nextui-org/system';
+import { forwardRef } from '@heroui/system';
 
 import { InputOtpSegment } from './input-otp-segment';
 import { useInputOtp, UseInputOtpProps } from './use-input-otp';
@@ -19,6 +19,7 @@ const InputOtp = forwardRef<'div', InputOtpProps>((props, ref) => {
         hasHelper,
         isInvalid,
         errorMessage,
+        label,
         description,
         getBaseProps,
         getInputWrapperProps,
@@ -33,6 +34,18 @@ const InputOtp = forwardRef<'div', InputOtpProps>((props, ref) => {
         ref,
     });
 
+    const labelSection = useMemo(() => {
+        if (!label) {
+            return null;
+        }
+
+        return (
+            <div className="mb-1 text-sm font-medium">
+                {label}
+            </div>
+        );
+    }, [label]);
+
     const segmentsSection = useMemo(() => {
         return (
             <div {...getSegmentWrapperProps()}>
@@ -44,7 +57,7 @@ const InputOtp = forwardRef<'div', InputOtpProps>((props, ref) => {
                         isInputFocused={isInputFocused}
                         otplength={otplength}
                         slots={values.slots}
-                        value={value}
+                        value={String(value)}
                     />
                 ))}
             </div>
@@ -84,6 +97,7 @@ const InputOtp = forwardRef<'div', InputOtpProps>((props, ref) => {
 
     return (
         <Component ref={domRef} className={styles} {...otherProps} {...getBaseProps()}>
+            {labelSection}
             {segmentsSection}
             {inputSection}
             {helperSection}

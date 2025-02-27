@@ -4,13 +4,13 @@ export const title = tv({
     base: 'inline-block font-semibold !leading-tight tracking-tight',
     variants: {
         color: {
-            violet: 'from-[#FF1CF7] to-[#b249f8]',
-            yellow: 'from-[#FF705B] to-[#FFB457]',
             blue: 'from-[#5EA2EF] to-[#0072F5]',
             cyan: 'from-[#00b7fa] to-[#01cfea]',
+            foreground: 'from-[#4B4B4B] to-[#444] dark:from-[#FFFFFF] dark:to-[#4B4B4B]',
             green: 'from-[#6FEE8D] to-[#17c964]',
             pink: 'from-[#FF72E1] to-[#F54C7A]',
-            foreground: 'dark:from-[#FFFFFF] dark:to-[#4B4B4B]',
+            violet: 'from-[#FF1CF7] to-[#b249f8]',
+            yellow: 'from-[#FF705B] to-[#FFB457]',
         },
         size: {
             xs: 'text-2xl lg:text-3xl',
@@ -42,13 +42,14 @@ export const title = tv({
 });
 
 export const subtitle = tv({
-    base: 'text-sm font-semibold text-default-900',
+    base: 'relative text-sm font-semibold text-default-900',
     variants: {
         size: {
             xs: 'text-sm',
             sm: 'text-sm lg:text-base',
             md: 'text-base lg:text-lg',
             lg: 'text-lg lg:text-xl',
+            xl: 'text-xl lg:text-2xl',
             base: 'text-base',
         },
     },
@@ -81,6 +82,7 @@ export const link = tv({
         type: {
             solid: 'rounded-full px-6 py-3',
             outline: 'rounded-full border px-6 py-3',
+            underline: 'border-b',
             tab: 'border-b-2 border-transparent p-4 opacity-100 transition-colors hover:border-default-800 hover:text-default-800',
         },
         color: {
@@ -110,6 +112,11 @@ export const link = tv({
             class: 'border-primary text-primary',
         },
         {
+            type: 'underline',
+            color: 'primary',
+            class: 'border-primary text-primary',
+        },
+        {
             type: 'tab',
             active: true,
             class: 'border-primary hover:border-primary-600 hover:text-primary-600 hover:opacity-100',
@@ -119,6 +126,8 @@ export const link = tv({
         color: 'primary',
     },
 });
+
+export const linkStyles = tv(link);
 
 const inputOtp = tv({
     slots: {

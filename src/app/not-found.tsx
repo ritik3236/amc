@@ -1,10 +1,12 @@
 import React from 'react';
+import { Button } from '@heroui/button';
 import NextLink from 'next/link';
 
 import { Icons } from '@/components/icons';
 import { Navbar } from '@/components/navbar';
-import { description, link } from '@/components/primitives';
+import { description } from '@/components/primitives';
 import { BackgroundGradient } from '@/components/ui/BackgroundGradient';
+import { GoBackBtn } from '@/lib/misc/goBackBtn';
 
 export default async function NotFound() {
     return (
@@ -17,10 +19,27 @@ export default async function NotFound() {
                         <p className={description({ size: 'xs', className: 'text-center mb-8' })}>
                             The page you were looking for appears to have been moved, deleted or does not exist.
                         </p>
-                        <NextLink className={link().base({ type: 'solid' })} href="/">
-                            <span>Go to Homepage</span>
-                            <Icons.arrowRight className={link().icon()}/>
-                        </NextLink>
+                        <div className="flex gap-4">
+                            <Button
+                                as={NextLink}
+                                className="text-sm"
+                                color="primary"
+                                href="/"
+                                radius="full"
+                                size="lg"
+                                variant="bordered"
+                            >
+                                <Icons.home/>
+                                <span>Homepage</span>
+                            </Button>
+                            <GoBackBtn
+                                className="text-sm"
+                                color="primary"
+                                radius="full"
+                                size="lg"
+                                variant="shadow"
+                            />
+                        </div>
                     </div>
                 </main>
                 <BackgroundGradient/>

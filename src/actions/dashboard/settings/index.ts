@@ -1,35 +1,102 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { ApiResponse, makeApiRequest } from '@/lib/api';
+import {
+    ApiKeyFormInterface,
+    ApiKeyResponseInterface,
+    TwoFactorAuthFormInterface,
+    TwoFactorAuthResponseInterface,
+    UserInterface,
+    UserPreferenceFormInterface,
+} from '@/lib/zod';
 
-import { createServerAction, ServerActionError } from '@/lib/server-utils';
-import { UserInterface } from '@/lib/zod';
+export async function getProfile(): Promise<ApiResponse<UserInterface>> {
+    return await makeApiRequest<UserInterface>({
+        apiVersion: 'barong',
+        cache: true,
+        endpoint: '/resource/users/me',
+    });
+}
 
-export const getProfile = createServerAction<UserInterface>(async () => {
-    try {
-        const cookieStore = cookies();
-        const barongSession = cookieStore.get('_barong_session')?.value;
+export async function getUserPreferences(): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'peatio',
+        endpoint: '/account/member_preferences',
+        payload: {
+            preference_type: 'selected_markets',
+        },
+    });
+}
 
-        if (!barongSession) {
-            return  new ServerActionError('User is not authenticated.');
-        }
+export async function updateUserPreferences(payload: UserPreferenceFormInterface): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'peatio',
+        endpoint: '/account/member_preferences',
+        method: 'POST',
+        pathToRevalidate: ['/dashboard/settings/general'],
+        payload: {
+            preference_type: 'selected_markets',
+            preference_value: JSON.stringify(payload),
+        },
+    });
+}
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/barong/resource/users/me`, {
-            headers: {
-                'Cookie': `_barong_session=${barongSession}`,
-            },
-            cache: 'no-store',
-        });
+export async function toggleTwoFactor(payload: TwoFactorAuthFormInterface): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: `/resource/otp/${payload.status}`,
+        method: 'POST',
+        pathToRevalidate: ['/dashboard/settings/security'],
+        payload: payload,
+    });
+}
 
-        const data = await response.json();
+export async function generateTwoFactorSecret(): Promise<ApiResponse<TwoFactorAuthResponseInterface>> {
+    return await makeApiRequest<TwoFactorAuthResponseInterface>({
+        apiVersion: 'barong',
+        endpoint: '/resource/otp/generate_qrcode',
+        method: 'POST',
+    });
+}
 
-        if (!response.ok) {
-            return  new ServerActionError('Unable to fetch profile.');
-        }
+export async function generateApiKey(payload: ApiKeyFormInterface): Promise<ApiResponse<ApiKeyResponseInterface>> {
+    return await makeApiRequest<ApiKeyResponseInterface>({
+        apiVersion: 'barong',
+        endpoint: '/resource/api_keys',
+        method: 'POST',
+        pathToRevalidate: ['/dashboard/settings/api'],
+        payload: {
+            totp_code: payload.totp_code,
+            algorithm: payload.algorithm,
+        },
+    });
+}
 
-        return data;
-    } catch (e) {
-        if (e instanceof ServerActionError) throw e;
-        throw new ServerActionError('Unable to fetch profile.');
-    }
-});
+export async function getApiKeyList(): Promise<ApiResponse<ApiKeyResponseInterface[]>> {
+    return await makeApiRequest<ApiKeyResponseInterface[]>({
+        apiVersion: 'barong',
+        endpoint: '/resource/api_keys',
+    });
+}
+
+export async function deleteApiKey(payload: ApiKeyFormInterface): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: `/resource/api_keys/${payload.kid}?totp_code=${payload.totp_code}`,
+        method: 'DELETE',
+        pathToRevalidate: ['/dashboard/settings/api'],
+    });
+}
+
+export async function updateApiKey(payload: ApiKeyFormInterface): Promise<ApiResponse> {
+    return await makeApiRequest({
+        apiVersion: 'barong',
+        endpoint: `/resource/api_keys/${payload.kid}`,
+        method: 'PATCH',
+        pathToRevalidate: ['/dashboard/settings/api'],
+        payload: {
+            totp_code: payload.totp_code,
+            state: payload.state,
+        },
+    });
+}

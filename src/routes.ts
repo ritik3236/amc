@@ -11,11 +11,7 @@ export const authRoutes: string[] = [
     '/account/verify-phone',
 ];
 
-export const privateRoutes: string[] = [
-    '/dashboard',
-    '/dashboard/profile',
-];
-
 export const apiAuthPrefix: string = '/api/auth';
 
 export const DEFAULT_LOGIN_REDIRECT: string = '/dashboard';
+export const DEFAULT_PRIVATE_ROUTE: string = '/dashboard';

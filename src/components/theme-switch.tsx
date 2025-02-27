@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { SwitchProps, useSwitch } from '@nextui-org/switch';
+import { SwitchProps, useSwitch } from '@heroui/switch';
 import { useIsSSR } from '@react-aria/ssr';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import clsx from 'clsx';
@@ -53,7 +53,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
                 className={slots.wrapper({
                     class: clsx(
                         [
-                            'size-auto',
+                            '!size-auto',
                             'bg-transparent',
                             'rounded-lg',
                             'flex items-center justify-center',
