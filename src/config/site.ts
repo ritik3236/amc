@@ -19,7 +19,7 @@ const external_links = {
 
 export const siteConfig = {
     name: siteName,
-    description: `${siteName}: A simple and secure crypto payment gateway for your business.`,
+    description: `${siteName}: A simple and secure payment gateway for your business.`,
     address: 'Dubai Silicon Oasis, DDP, Building A1, Dubai, UAE',
     phone: '',
     email: `support@${siteName.split(' ').join('').toLowerCase()}.com`,
