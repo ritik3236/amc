@@ -24,8 +24,8 @@ export default function Home() {
                 <div
                     className="m-auto flex w-full flex-1  flex-col items-center justify-center px-4 pt-12 text-center lg:w-[1080px] lg:grid-cols-4 lg:px-0">
                     <h1 className={title({ className: 'mb-8' })}>
-                        Experiences the Safest and Fastest <br/> Payment
-                        Gateway <Cover>With {siteConfig.name}</Cover>
+                        Experiences the Safest and Fastest
+                        <br/> Payments <Cover>With {siteConfig.name}</Cover>
                     </h1>
                     <p className={description({ size: 'md', className: 'sm:w-1/2 mx-auto mb-8' })}>
                         Start accepting online payments within minutes with minimum documentation and 100% digital
