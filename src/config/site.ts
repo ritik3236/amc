@@ -13,8 +13,8 @@ const external_links = {
     twitter: 'https://twitter.com/getnextui',
     discord: 'https://discord.gg/9b6yyZKmH4',
     book_a_demo: 'https://calendly.com/ritikk-muc/30min',
-    docs: 'https://app.theneo.io/white-label-payment/pay/getting-started/introduction',
-    api: 'https://www.postman.com/lunar-shadow-140772/domepe/collection/j7wotnn/coinfinacle',
+    docs: '#',
+    api: '#',
 };
 
 export const siteConfig = {
