@@ -52,7 +52,7 @@ export const Navbar: React.FC = async () => {
 
             <NavbarContent className="hidden md:flex" justify="end">
                 <NavbarItem>
-                    <Link as={NextLink} color="foreground" href="/login" underline="hover">My Account</Link>
+                    <Link as={NextLink} color="foreground" href="/login" underline="hover">Dashboard</Link>
                 </NavbarItem>
                 <ThemeSwitch/>
             </NavbarContent>
