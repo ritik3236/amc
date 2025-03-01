@@ -11,6 +11,7 @@ import { CardHoverEffect, projects } from '@/components/landingPage/card-hover-e
 import { Cover } from '@/components/landingPage/cover';
 import { FaqComponent } from '@/components/landingPage/faq';
 import { FeaturesSectionDemo } from '@/components/landingPage/features';
+import { LottieContainer } from '@/components/landingPage/lottie-conatiner';
 import { WorldMap } from '@/components/landingPage/world-map';
 import { description, link, title } from '@/components/primitives';
 import { siteConfig } from '@/config/site';
@@ -19,10 +20,10 @@ export default function Home() {
     return (
         <React.Fragment>
             <section
-                className="relative z-20  col-span-4 mb-8 flex flex-1 flex-col items-center overflow-hidden pt-8 transition-all duration-1000 md:mb-28 md:pt-16"
+                className="relative z-20  col-span-4 flex flex-1 flex-col items-center  overflow-hidden py-8 transition-all duration-1000 md:py-28"
             >
                 <div
-                    className="m-auto flex w-full flex-1  flex-col items-center justify-center px-4 pt-12 text-center lg:w-[1080px] lg:grid-cols-4 lg:px-0">
+                    className="m-auto flex w-full flex-1 flex-col items-center justify-center px-4 pb-16 pt-12 text-center lg:w-[1080px] lg:grid-cols-4 lg:px-0">
                     <h1 className={title({ className: 'mb-8' })}>
                         Experiences the Safest and Fastest
                         <br/> Payments <Cover>With {siteConfig.name}</Cover>
@@ -55,6 +56,7 @@ export default function Home() {
                         </Button>
                     </div>
                 </div>
+                <LottieContainer autoplay={true} className="absolute inset-0 -z-10 translate-y-[10%] opacity-40" loop={true} src="/images/wave.lottie"/>
             </section>
             <section
                 className="relative z-20 mx-auto grid w-full translate-y-0 py-8 opacity-100 transition-all duration-1000 md:py-28 lg:w-[1080px] lg:grid-cols-4"

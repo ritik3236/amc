@@ -26,9 +26,9 @@ export const CardHoverEffect = ({ items, className }: {
         >
             {items.map((item, idx) => (
                 <Link
-                    key={item?.link}
+                    key={item?.title}
                     className="group relative  block size-full p-2"
-                    href={item?.link}
+                    href={item.link}
                     onMouseEnter={() => setHoveredIndex(idx)}
                     onMouseLeave={() => setHoveredIndex(null)}
                 >

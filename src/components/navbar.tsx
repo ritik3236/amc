@@ -86,7 +86,7 @@ export const Navbar: React.FC = async () => {
                         href="/login"
                         size="md"
                     >
-                        My Account
+                        Dashboard
                     </Link>
                 </NavbarMenuItem>
             </NavbarMenu>

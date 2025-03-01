@@ -43,6 +43,7 @@
     "@heroui/theme": "2.4.6",
     "@heroui/tooltip": "2.2.8",
     "@hookform/resolvers": "^3.10.0",
+    "@lottiefiles/dotlottie-react": "^0.13.0",
     "@react-aria/ssr": "3.9.5",
     "@react-aria/visually-hidden": "3.8.15",
     "@react-three/fiber": "8.18.0",

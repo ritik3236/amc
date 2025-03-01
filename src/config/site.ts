@@ -6,21 +6,18 @@ export const PLATFORM_USER_CURRENCY = 'INR';
 export const PLATFORM_MAIN_CURRENCY = 'USDT';
 export const PLATFORM_FORMAT_STYLE = 'en-US';
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'GemzPay';
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'BillPe';
 
 const external_links = {
-    github: 'https://github.com/nextui-org/nextui',
-    twitter: 'https://twitter.com/getnextui',
-    discord: 'https://discord.gg/9b6yyZKmH4',
+    api: '/#',
     book_a_demo: '#',
     docs: '/#',
-    api: '/#',
 };
 
 export const siteConfig = {
     name: siteName,
     description: `${siteName}: A simple and secure payment gateway for your business.`,
-    address: 'Dubai Silicon Oasis, DDP, Building A1, Dubai, UAE',
+    address: '',
     phone: '',
     email: `support@${siteName.split(' ').join('').toLowerCase()}.com`,
     navItems: [
@@ -34,11 +31,11 @@ export const siteConfig = {
         },
         {
             label: 'Pricing',
-            href: '/pricing',
+            href: '/#',
         },
         {
-            label: 'Fees',
-            href: '/fee',
+            label: 'Faq',
+            href: '/#',
         },
         {
             label: 'APIs',
@@ -58,7 +55,7 @@ export const siteConfig = {
         },
         {
             label: 'Contact Us',
-            href: '/contact-us',
+            href: '/#',
         },
         {
             label: 'Login',
@@ -210,9 +207,9 @@ export const siteConfig = {
     links: external_links,
     footerNavItems: {
         company: [
-            { label: 'About', path: '/about' },
-            { label: 'Terms', path: '/terms' },
-            { label: 'Privacy', path: '/privacy' },
+            { label: 'About', path: '/#' },
+            { label: 'Terms', path: '/#' },
+            { label: 'Privacy', path: '/#' },
         ],
         developers: [
             { label: 'Documents', path: external_links.docs },
@@ -220,8 +217,8 @@ export const siteConfig = {
             { label: 'Integration Guides', path: external_links.docs },
         ],
         support: [
-            { label: 'Fee', path: '/fee' },
-            { label: 'Support', path: '/contact-us' },
+            { label: 'Fee', path: '/#' },
+            { label: 'Support', path: '/#' },
             { label: 'Book a Demo', path: external_links.book_a_demo },
         ],
     },
